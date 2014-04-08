@@ -19,3 +19,5 @@ nbproject/*
 *.swp
 *.DS_Store
 *.lock
+/TurboMedical4000-war/nbproject/private/
+/TurboMedical4000-ejb/nbproject/private/
