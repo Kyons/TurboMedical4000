@@ -24,6 +24,8 @@ public interface AdministradorFacadeLocal {
     void remove(Administrador administrador);
 
     Administrador find(Object id);
+    
+    Administrador findByUsuario(String nombre);
 
     List<Administrador> findAll();
 

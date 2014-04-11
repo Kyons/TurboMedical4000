@@ -28,5 +28,10 @@ public class AdministradorFacade extends AbstractFacade<Administrador> implement
     public AdministradorFacade() {
         super(Administrador.class);
     }
+
+    @Override
+    public Administrador findByUsuario(String nombre) {
+        return (Administrador) em.createNamedQuery("Administrador.findByUsuario").setParameter("usuario", nombre).getSingleResult();
+    }
     
 }
