@@ -1,14 +1,14 @@
 <%-- 
-    Document   : menuPaciente
-    Created on : 11-abr-2014, 2:12:50
-    Author     : jorge
+    Document   : PerfilUsuario
+    Created on : 13-abr-2014, 13:25:49
+    Author     : Sihame
 --%>
 
 <%@page import="turbomedical4000.entity.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Men&uacute; Paciente</title>
    <%

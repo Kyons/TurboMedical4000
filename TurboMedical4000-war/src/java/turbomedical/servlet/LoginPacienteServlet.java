@@ -7,7 +7,7 @@ package turbomedical.servlet;
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,22 +40,24 @@ public class LoginPacienteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
+     /*   HttpSession session = request.getSession();
         session.removeAttribute("usuario");
         if(session.getAttribute("usuario")!=null){
             RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
             dispatcher.forward(request, response);
-	}else{
+	}else{*/
             Paciente paciente = pacienteFacade.find(Integer.parseInt(request.getParameter("usuario")));
             if(paciente!= null && paciente.getContrasena().equals(request.getParameter("contrasena"))){
-                session.setAttribute("usuario", request.getParameter("usuario"));
-                RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
+               // session.setAttribute("usuario", request.getParameter("usuario"));
+                request.setAttribute("paciente",  paciente);
+                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuPaciente.jsp");
+               // RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
                 dispatcher.forward(request, response);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher("loginPacientes.jsp?msg=Usuario y/o contraseña incorrectos");
                 dispatcher.forward(request, response);
             }
-        }
+      //  }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
