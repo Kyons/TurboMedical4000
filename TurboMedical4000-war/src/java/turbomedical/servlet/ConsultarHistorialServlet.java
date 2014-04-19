@@ -44,7 +44,7 @@ public class ConsultarHistorialServlet extends HttpServlet {
             throws ServletException, IOException {
        Integer usuario = Integer.valueOf(request.getParameter("usuario"));
          Paciente paciente = pacienteFacade.find(usuario);
-         List<Lineahistorial> historial = lineahistorialFacade.findAll();
+         List<Lineahistorial> historial = lineahistorialFacade.findByUsuario(paciente);
          request.setAttribute("historial", historial);
          request.setAttribute("paciente", paciente);
          RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ConsultarHistorial.jsp");

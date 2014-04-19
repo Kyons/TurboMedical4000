@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lineahistorial.findByIdLineaHistorial", query = "SELECT l FROM Lineahistorial l WHERE l.idLineaHistorial = :idLineaHistorial"),
     @NamedQuery(name = "Lineahistorial.findByFecha", query = "SELECT l FROM Lineahistorial l WHERE l.fecha = :fecha"),
     @NamedQuery(name = "Lineahistorial.findByHora", query = "SELECT l FROM Lineahistorial l WHERE l.hora = :hora"),
+    @NamedQuery(name = "Lineahistorial.findByUsuario", query = "SELECT l FROM Lineahistorial l WHERE l.pacientenumSS = :usuario"),
     @NamedQuery(name = "Lineahistorial.findByEntrada", query = "SELECT l FROM Lineahistorial l WHERE l.entrada = :entrada")})
 public class Lineahistorial implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -6,10 +6,12 @@
 
 package turbomedical4000.ejb;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Lineahistorial;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
@@ -27,6 +29,11 @@ public class LineahistorialFacade extends AbstractFacade<Lineahistorial> impleme
 
     public LineahistorialFacade() {
         super(Lineahistorial.class);
+    }
+
+    @Override
+    public List<Lineahistorial> findByUsuario(Paciente usuario) {
+        return em.createNamedQuery("Lineahistorial.findByUsuario").setParameter("usuario", usuario).getResultList(); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

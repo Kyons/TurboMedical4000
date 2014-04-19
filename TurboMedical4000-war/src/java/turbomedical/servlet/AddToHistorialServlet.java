@@ -5,12 +5,23 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import turbomedical4000.ejb.LineahistorialFacadeLocal;
+import turbomedical4000.ejb.MedicoFacadeLocal;
+import turbomedical4000.ejb.PacienteFacadeLocal;
+import turbomedical4000.entity.Lineahistorial;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
@@ -18,6 +29,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AddToHistorialServlet", urlPatterns = {"/AddToHistorialServlet"})
 public class AddToHistorialServlet extends HttpServlet {
+    @EJB
+    private LineahistorialFacadeLocal lineahistorialFacade;
+    @EJB
+    private MedicoFacadeLocal medicoFacade;
+    @EJB
+    private PacienteFacadeLocal pacienteFacade;
 
     /**
      * Processes requests for both HTTP
@@ -31,22 +48,8 @@ public class AddToHistorialServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddToHistorialServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddToHistorialServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AddToHistorial.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,6 +80,28 @@ public class AddToHistorialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Integer usuario = Integer.valueOf(request.getParameter("usuario"));
+        
+         Paciente paciente = pacienteFacade.find(usuario);
+         
+        String date= request.getParameter("fecha");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+           try{
+         Date fecha = formatter.parse(date);
+           }catch(ParseException e){
+               e.printStackTrace();
+           }
+         String hora = request.getParameter("hora"); 
+         /*Dudas: 
+          *1: En la tabla de lineahistorial  la hora es de tipo time 
+          * pero en lineahistorial.java aparece como tipo date !!
+          * 2: El id de lineahistorial es autoincrementado o lo introduce el médico??
+          * ya que lo necesita el constructor 
+          */
+         
+         String entrada= request.getParameter("entrada");
+        // Lineahistorial l = new Lineahistorial()
         processRequest(request, response);
     }
 

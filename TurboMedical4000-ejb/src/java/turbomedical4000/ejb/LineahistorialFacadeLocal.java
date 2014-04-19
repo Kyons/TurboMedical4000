@@ -9,6 +9,7 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Local;
 import turbomedical4000.entity.Lineahistorial;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
@@ -26,6 +27,7 @@ public interface LineahistorialFacadeLocal {
     Lineahistorial find(Object id);
 
     List<Lineahistorial> findAll();
+    List<Lineahistorial> findByUsuario(Paciente usuario);
 
     List<Lineahistorial> findRange(int[] range);
 
