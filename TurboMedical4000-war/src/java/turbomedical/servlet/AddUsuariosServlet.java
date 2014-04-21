@@ -1,35 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package turbomedical.servlet;
-import java.io.PrintWriter;
+
 import java.io.IOException;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.AdministradorFacadeLocal;
-import turbomedical4000.entity.Administrador;
 
 /**
  *
- * @author jorge
+ * @author Juan
  */
-@WebServlet(name = "LoginAdministradorServlet", urlPatterns = {"/LoginAdministradorServlet"})
-public class LoginAdministradorServlet extends HttpServlet {
-    @EJB
-    private AdministradorFacadeLocal administradorFacade;
+@WebServlet(name = "AddUsuariosServlet", urlPatterns = {"/AddUsuariosServlet"})
+public class AddUsuariosServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,29 +32,14 @@ public class LoginAdministradorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("usuario");
-        if(session.getAttribute("usuario")!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
-            dispatcher.forward(request, response);
-	}else{
-            Administrador administrador = administradorFacade.findByUsuario(request.getParameter("usuario"));
-            if(administrador!= null && administrador.getContrasena().equals(request.getParameter("contrasena"))){
-                //session.setAttribute("usuario", request.getParameter("usuario"));
-                //RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
-                request.setAttribute("administrador",  administrador);
-                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuAdministrador.jsp");
-                dispatcher.forward(request, response);
-            }else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher("loginAdministrador.jsp?msg=Usuario y/o contraseña incorrectos");
-                dispatcher.forward(request, response);
-            }
-        }
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AddUsuarios.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -74,7 +53,8 @@ public class LoginAdministradorServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -96,5 +76,4 @@ public class LoginAdministradorServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
