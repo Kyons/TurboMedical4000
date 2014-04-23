@@ -10,15 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Men&uacute; M&eacute;dico</title>
+        <title>Men&uacute; Administrador</title>
 <% 
     Administrador administrador =(Administrador) request.getAttribute("administrador");
 %>
     </head>
     <body>
-        <h1>Menú del administrador</h1>
+        <h1>Menú de administrador</h1>
         
-        <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
+        <table width="100%" border="1" cellspacing="0" >
               
             <tr>
                 <th> &nbsp; </th> <th rowspan="5" >
@@ -26,9 +26,22 @@
                 </th>
             </tr>
             <tr>
-                <td><a href="AddUsuariosServlet"><input type="submit" value="Añadir usuarios"></a></td>
+                <td>Perfil</td>
+            </tr>
+            <tr>
+                <td><a href="ListaMedicosServlet">M&eacute;dicos</a></td>
+            </tr>
+            <tr>
+                <td><a href="ListaPacientesServlet">Pacientes</a></td>
+            </tr>
+            <tr>
+                <td><a href="ListaAdministradoresServlet">Administradores</a></td>
+            </tr>
+            <tr>
+                <td>Formularios</td>
             </tr>
         </table>
-        
+        </br>
+        Cerrar sesi&oacute;n
     </body>
 </html>
