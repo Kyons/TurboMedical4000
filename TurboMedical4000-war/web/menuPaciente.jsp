@@ -12,8 +12,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Men&uacute; Paciente</title>
    <%
-  	//get the book object from the request
-	Paciente paciente =(Paciente) request.getAttribute("paciente");
+      
+        Paciente paciente =(Paciente) session.getAttribute("paciente");
+       if(paciente ==null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("loginPacientes.jsp");
+            dispatcher.forward(request, response);
+       }
+            
+  	
+	
   %>
     </head>
     <body>
@@ -40,13 +47,6 @@
                     Tel&eacute;fono: <%= paciente.getTelefono() %>
                 </th></tr>
             
-            <tr> <td><a href="ConsultarPerfilUsuarioServlet?usuario=<%= paciente.getNumSS() %>"><input type ="submit" value ="Perfil"  ></a></td>  </tr>
-            <tr > <td ><input type="submit" value="Citas"></td>  </tr>
-            <tr > <td ><a href="ConsultarHistorialServlet?usuario=<%= paciente.getNumSS() %> "><input type="submit" value="Historial"></a></td>  </tr>
-
-        </table>
-            
-        </br>
-        <a href="loginPacientes.jsp"> <input type="submit" value="Cerrar Sesión" ></a>
+           <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
     </body>
 </html>
