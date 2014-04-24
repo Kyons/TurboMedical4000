@@ -25,7 +25,7 @@
     </head>
     <body>
      
-        <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
+        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
             <tr> <th> &nbsp; </th> <th rowspan="4" >
                      Nombre: <%= paciente.getNombre() %>

@@ -38,18 +38,19 @@ public class LoginAdministradorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
-        session.removeAttribute("usuario");
-        if(session.getAttribute("usuario")!=null){
+        session.removeAttribute("administrador");
+        if(session.getAttribute("administrador")!=null){
             RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
             dispatcher.forward(request, response);
 	}else{
             Administrador administrador = administradorFacade.findByUsuario(request.getParameter("usuario"));
             if(administrador!= null && administrador.getContrasena().equals(request.getParameter("contrasena"))){
-                //session.setAttribute("usuario", request.getParameter("usuario"));
-                //RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
-                request.setAttribute("administrador",  administrador);
-                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuAdministrador.jsp");
+                session.setAttribute("administrador", administrador);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
+                //request.setAttribute("administrador",  administrador);
+                //RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuAdministrador.jsp");
                 dispatcher.forward(request, response);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher("loginAdministrador.jsp?msg=Usuario y/o contraseña incorrectos");

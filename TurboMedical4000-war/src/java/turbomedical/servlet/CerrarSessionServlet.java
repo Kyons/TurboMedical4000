@@ -6,6 +6,7 @@ package turbomedical.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Sihame
+ * @author Sihame, Juan
  */
 @WebServlet(name = "CerrarSessionServlet", urlPatterns = {"/CerrarSessionServlet"})
 public class CerrarSessionServlet extends HttpServlet {
@@ -35,8 +36,10 @@ public class CerrarSessionServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("paciente");
         session.removeAttribute("medico");
+        session.removeAttribute("administrador");
        
-        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -9,6 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<%@ include file="ComprobacionesSesion/comprobacionAdministrador.jsp" %>
+
 <%
     List<Medico> lista;
     
@@ -18,18 +20,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Men&uacute; Administrador > Gesti&oacute;n M&eacute;dicos</title>
     </head>
     <body>
-        <h1>Menú de administrador</h1>
         
-        <table width="100%" border="1" cellspacing="0" >
+        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
             <tr>
                 <th> &nbsp; </th> <td rowspan="5" >
                 
                     
-                    <h1>Lista de M&eacute;dicos</h1>
+                    <h1>Gesti&oacute;n de M&eacute;dicos</h1>
                     <a href="">A&ntilde;adir nuevo m&eacute;dico</a>
         <table border="1">
             <tr>
@@ -71,23 +72,8 @@
                    </td> 
                
             </tr>
-            <tr>
-                <td>Perfil</td>
-            </tr>
-            <tr>
-                <td><a href="ListaMedicosServlet">M&eacute;dicos</a></td>
-            </tr>
-            <tr>
-                <td><a href="ListaPacientesServlet">Pacientes</a></td>
-            </tr>
-            <tr>
-                <td><a href="ListaAdministradoresServlet">Administradores</a></td>
-            </tr>
-            <tr>
-                <td>Formularios</td>
-            </tr>
-        </table>
-        </br>
-        Cerrar sesi&oacute;n
+            
+            <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
+            
     </body>
 </html>
