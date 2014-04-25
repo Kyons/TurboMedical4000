@@ -17,20 +17,24 @@
               
             <tr> <th> &nbsp; </th> <th rowspan="5" >
             <form name="add" accion="AdToHistorialServlet" method="post">
-              Usuario:  <input type="text" name="usuario" value=""> </br>
-              Fecha: <input type="text" name="fecha" value=""></br>
-              Hora: <input type="text" name="hora" value=""></br>
-              Entrada:<input type="text" name="entrada" value=""></br>
-              <input type="submit" name="guardar" value="Guardar">
+                <table>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Entrada</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="usuario" value=""></td>
+                        <td><input type="text" name="fecha" value=""></td>
+                        <td> <input type="text" name="hora" value=""></td>
+                        <td><input type="text" name="entrada" value=""></td>
+                        <td><input type="submit" name="guardar" value="Guardar"></td>
+                    </tr>
+                </table>
             </form>
                 </th></tr>
-            <tr> <td><input type ="submit" value ="Perfil Médico" ></td>  </tr>
-            <tr > <td ><input type="submit" value="Pacientes"></td>  </tr>
-            <tr > <td ><input type="submit" value="Citas"></td>  </tr>
-            <tr > <td ><a href="AddToHistorialServlet"><input type="submit" value="Historial"></a></td>  </tr>
-
-        </table>
-        </br>
-         <input type="submit" value="Cerrar Sesión">
+           <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
     </body>
 </html>

@@ -12,41 +12,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Men&uacute; Paciente</title>
    <%
-  	//get the book object from the request
-	Paciente paciente =(Paciente) request.getAttribute("paciente");
+  	
+	Paciente paciente =(Paciente) session.getAttribute("paciente");
   %>
     </head>
     <body>
      
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <th rowspan="4" >
-                     Nombre: <%= paciente.getNombre() %>
-                    </br>
-                    Apellidos: 
-                    </br> 
-                    N&uacute;mero S.S: <%= paciente.getNumSS()%>
-                    </br>
-                    DNI: <%= paciente.getDni() %>
-                    </br>
-                    Fecha naciemiento: <%= paciente.getFechaNac() %>
-                    </br>
-                    Direcci&oacute;n:<%= paciente.getDireccion() %>
-                    </br>
-                    Localidad:<%= paciente.getLocalidad() %>
-                    </br>
-                    Provincia: <%= paciente.getProvincia() %>
-                    </br>
-                    Tel&eacute;fono: <%= paciente.getTelefono() %>
-                </th></tr>
+            <tr> <th> &nbsp; </th> <td rowspan="4" >
+                  <h2>Perfil personal</h2>
+            <table border ="1">
+                <tr>
+                    <th> Nombre</th>
+                    <th> Apellidos</th>
+                    <th>  N&uacute;mero S.S</th>
+                    <th> Fecha nacimiento</th>
+                    <th> Direcci&oacute;n</th>
+                    <th>  Localidad</th>
+                    <th>  Provincia</th>
+                    <th> Tel&eacute;fono</th>
+                </tr>
+                <tr>
+                    <td> <%= paciente.getNombre() %></td>
+                    <td></td>
+                    <td> <%= paciente.getNumSS()%></td>
+                    <td><%= paciente.getFechaNac() %></td>
+                    <td><%= paciente.getDireccion() %></td>
+                    <td><%= paciente.getLocalidad() %></td>
+                    <td> <%= paciente.getProvincia() %></td>
+                    <td><%= paciente.getTelefono() %></td>
+                </tr>
+            </table>
+                </td></tr>
             
-            <tr> <td><a href="ConsultarPerfilUsuarioServlet?usuario=<%= paciente.getNumSS() %>"><input type ="submit" value ="Perfil"  ></a></td>  </tr>
-            <tr > <td ><input type="submit" value="Citas"></td>  </tr>
-            <tr > <td ><a href="ConsultarHistorialServlet?usuario=<%= paciente.getNumSS() %> "><input type="submit" value="Historial"></a></td>  </tr>
-
-        </table>
-            
-        </br>
-        <a href="loginPacientes.jsp"> <input type="submit" value="Cerrar Sesión" ></a>
+            <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
     </body>
 </html>

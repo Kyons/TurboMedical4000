@@ -49,8 +49,6 @@ public class LoginPacienteServlet extends HttpServlet {
             Paciente paciente = pacienteFacade.find(Integer.parseInt(request.getParameter("usuario")));
             if(paciente!= null && paciente.getContrasena().equals(request.getParameter("contrasena"))){
                 session.setAttribute("paciente", paciente);
-//                request.setAttribute("paciente",  paciente);
-//                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuPaciente.jsp");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
                 dispatcher.forward(request, response);
             }else{

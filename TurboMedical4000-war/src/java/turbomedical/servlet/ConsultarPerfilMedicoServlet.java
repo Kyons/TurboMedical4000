@@ -5,31 +5,20 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
-import java.util.List;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.LineahistorialFacadeLocal;
-import turbomedical4000.ejb.PacienteFacadeLocal;
-import turbomedical4000.entity.Lineahistorial;
-import turbomedical4000.entity.Paciente;
 
 /**
  *
  * @author Sihame
  */
-@WebServlet(name = "ConsultarHistorialServlet", urlPatterns = {"/ConsultarHistorialServlet"})
-public class ConsultarHistorialServlet extends HttpServlet {
-    @EJB
-    private LineahistorialFacadeLocal lineahistorialFacade;
-    @EJB
-    private PacienteFacadeLocal pacienteFacade;
+@WebServlet(name = "ConsultarPerfilMedicoServlet", urlPatterns = {"/ConsultarPerfilMedicoServlet"})
+public class ConsultarPerfilMedicoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -43,11 +32,7 @@ public class ConsultarHistorialServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession();
-         Paciente paciente = (Paciente) session.getAttribute("paciente");
-         List<Lineahistorial> historial = lineahistorialFacade.findByUsuario(paciente);
-         request.setAttribute("historial", historial);
-         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ConsultarHistorial.jsp");
+         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/PerfilMedico.jsp");
          dispatcher.forward(request, response);
     }
 

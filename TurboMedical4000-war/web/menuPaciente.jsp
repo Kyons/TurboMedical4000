@@ -27,25 +27,9 @@
      
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
-            <tr> <th> &nbsp; </th> <th rowspan="4" >
-                     Nombre: <%= paciente.getNombre() %>
-                    </br>
-                    Apellidos: 
-                    </br> 
-                    N&uacute;mero S.S: <%= paciente.getNumSS()%>
-                    </br>
-                    DNI: <%= paciente.getDni() %>
-                    </br>
-                    Fecha naciemiento: <%= paciente.getFechaNac() %>
-                    </br>
-                    Direcci&oacute;n:<%= paciente.getDireccion() %>
-                    </br>
-                    Localidad:<%= paciente.getLocalidad() %>
-                    </br>
-                    Provincia: <%= paciente.getProvincia() %>
-                    </br>
-                    Tel&eacute;fono: <%= paciente.getTelefono() %>
-                </th></tr>
+            <tr> <th> &nbsp; </th> <td rowspan="4" >
+                   Usuario:<%= paciente.getNombre()%>
+                </td></tr>
             
            <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
     </body>

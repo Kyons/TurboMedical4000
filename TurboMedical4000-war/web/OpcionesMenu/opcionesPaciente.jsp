@@ -3,11 +3,12 @@
     Created on : 24-abr-2014, 12:00:21
     Author     : Sihame
 --%>
+ 
 
 
- <tr> <td><a href=""><input type ="submit" value ="Perfil"  ></a></td>  </tr>
-            <tr > <td ><input type="submit" value="Citas"></td>  </tr>
-            <tr > <td ><a href=""><input type="submit" value="Historial"></a></td>  </tr>
+ <tr> <td><a href="ConsultarPerfilUsuarioServlet">Perfil</a></td>  </tr>
+            <tr > <td > <a href="">Citas</a></td>  </tr>
+            <tr > <td ><a href="ConsultarHistorialServlet">Historial</a></td>  </tr>
 
         </table>
             

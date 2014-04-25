@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import turbomedical4000.ejb.PacienteFacadeLocal;
 import turbomedical4000.entity.Paciente;
 
@@ -37,9 +38,7 @@ public class ConsultarPerfilUsuarioServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       Integer usuario = Integer.valueOf(request.getParameter("usuario"));
-         Paciente paciente = pacienteFacade.find(usuario);
-         request.setAttribute("paciente",  paciente);
+       
          RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/PerfilUsuario.jsp");
          dispatcher.forward(request, response);
     }

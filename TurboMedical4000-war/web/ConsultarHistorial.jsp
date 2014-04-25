@@ -15,38 +15,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Men&uacute; Paciente</title>
          <%
-  	//get the book object from the request
-	List <Lineahistorial> historial =(List <Lineahistorial>) request.getAttribute("historial");
-       Paciente paciente =(Paciente) request.getAttribute("paciente");
-       
-         
-  %>
+  	List <Lineahistorial> historial =(List <Lineahistorial>) request.getAttribute("historial");
+        %>
     </head>
     <body>
-        <form name="edit" action="ConsultarHistorialServlet" method="get">
+     
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <th rowspan="4" >
-               Nombre del paciente : <%= paciente.getNombre() %> </br>
-                <%
+            <tr> <th> &nbsp; </th> <td rowspan="4" >
+                    <h2>Historial Personal</h2>
+               <table border="1">
+                   <tr>
+                       <th>Fecha</th>
+                       <th>Hora</th>
+                       <th>Entrada</th>
+                   </tr>
+ <%
+            if(historial!=null)
             for(Lineahistorial lh: historial){
-             %>
-           
-             Fecha: <%= lh.getFecha() %> </br>
-             Hora: <%= lh.getHora() %> </br>
-             Entrada: <%= lh.getEntrada() %> </br>
-             <%
-            }
-       %>
-                    
-                </th></tr>
-            <tr> <td><a href="ConsultarPerfilUsuarioServlet?usuario=<%= paciente.getNumSS() %>"><input type ="submit" value ="Perfil"  ></a></td>  </tr>
-            <tr > <td ><input type="submit" value="Citas"></td>  </tr>
-            <tr > <td ><a href="ConsultarHistorialServlet?usuario=<%= paciente.getNumSS() %>"><input type="submit" value="Historial"></a></td>  </tr>
-
-        </table>
-        </form>
-        </br>
-        <a href="loginPacientes.jsp"> <input type="submit" value="Cerrar Sesión" ></a>
-    </body>
+                
+ %>
+                  <tr>
+                      <td><%= lh.getFecha() %></td>
+                      <td <%= lh.getHora() %></td>
+                      <td><%= lh.getEntrada() %></td>
+                  </tr>
+  <%
+            }          
+  %>
+               </table>  
+                </td></tr>
+             <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
 </html>

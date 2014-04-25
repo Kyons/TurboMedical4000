@@ -38,24 +38,23 @@ public class LoginMedicoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      /*  HttpSession session = request.getSession();
-        session.removeAttribute("usuario");
-        if(session.getAttribute("usuario")!=null){
+        HttpSession session = request.getSession();
+        session.removeAttribute("medico");
+        if(session.getAttribute("medico")!=null){
             RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
             dispatcher.forward(request, response);
-	}else{*/
+	}else{
             Medico medico = medicoFacade.find(Integer.parseInt(request.getParameter("usuario")));
             if(medico!= null && medico.getContrasena().equals(request.getParameter("contrasena"))){
-               // session.setAttribute("usuario", request.getParameter("usuario"));
-               // RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
-                request.setAttribute("medico",  medico);
-                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuMedico.jsp");
+                session.setAttribute("medico", medico);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
+                
                 dispatcher.forward(request, response);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher("loginMedicos.jsp?msg=Usuario y/o contraseña incorrectos");
                 dispatcher.forward(request, response);
             }
-       // }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
