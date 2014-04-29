@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Men&uacute; M&uacute;dico</title>
+        <title>A&ntilde;adir al Historial</title>
 
     </head>
     <body>
@@ -29,7 +29,7 @@
                         <td><input type="text" name="usuario" value=""></td>
                         <td><input type="text" name="fecha" value=""></td>
                         <td> <input type="text" name="hora" value=""></td>
-                        <td><input type="text" name="entrada" value=""></td>
+                        <td><textarea name="entrada" cols="20" rows="10"></textarea></td>
                         <td><input type="submit" name="guardar" value="Guardar"></td>
                     </tr>
                 </table>

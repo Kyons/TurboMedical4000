@@ -37,7 +37,7 @@
  %>
                   <tr>
                       <td><%= lh.getFecha() %></td>
-                      <td <%= lh.getHora() %></td>
+                      <td> <%= lh.getHora() %></td>
                       <td><%= lh.getEntrada() %></td>
                   </tr>
   <%

@@ -10,7 +10,7 @@
 <html>
    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Men&uacute; Paciente</title>
+        <title>Perfil Paciente</title>
    <%
   	
 	Paciente paciente =(Paciente) session.getAttribute("paciente");
@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                     <td> <%= paciente.getNombre() %></td>
-                    <td></td>
+                    <td><%= paciente.getApellidos()%></td>
                     <td> <%= paciente.getNumSS()%></td>
                     <td><%= paciente.getFechaNac() %></td>
                     <td><%= paciente.getDireccion() %></td>

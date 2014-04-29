@@ -47,6 +47,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paciente.findByTelefono", query = "SELECT p FROM Paciente p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Paciente.findByContrasena", query = "SELECT p FROM Paciente p WHERE p.contrasena = :contrasena")})
 public class Paciente implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "Apellidos")
+    private String apellidos;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -216,6 +221,14 @@ public class Paciente implements Serializable {
     @Override
     public String toString() {
         return "turbomedical4000.entity.Paciente[ numSS=" + numSS + " ]";
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
     
 }

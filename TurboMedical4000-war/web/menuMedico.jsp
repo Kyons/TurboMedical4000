@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Men&uacute; M&uacute;dico</title>
+        <title>Men&uacute; M&eacute;dico</title>
 <% 
     Medico medico =(Medico) session.getAttribute("medico");
     if(medico ==null){
