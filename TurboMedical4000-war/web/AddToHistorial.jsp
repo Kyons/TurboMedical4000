@@ -22,16 +22,27 @@
                         <th>Usuario</th>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>Entrada</th>
-                        <th>&nbsp;</th>
+                       
                     </tr>
                     <tr>
                         <td><input type="text" name="usuario" value=""></td>
                         <td><input type="text" name="fecha" value=""></td>
                         <td> <input type="text" name="hora" value=""></td>
-                        <td><textarea name="entrada" cols="20" rows="10"></textarea></td>
+                        
+                       
+                    </tr>
+                    <tr>  <th>Entrada</th> <th>&nbsp;</th><th>&nbsp;</th>
+                         
+                    </tr>
+                    <tr>
+                        <td colspan="4"><textarea name="entrada" cols="60" rows="10" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                         <td><input type="submit" name="guardar" value="Guardar"></td>
                     </tr>
+                    
                 </table>
             </form>
                 </th></tr>

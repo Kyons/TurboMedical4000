@@ -17,10 +17,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import turbomedical4000.ejb.LineahistorialFacadeLocal;
 import turbomedical4000.ejb.MedicoFacadeLocal;
 import turbomedical4000.ejb.PacienteFacadeLocal;
 import turbomedical4000.entity.Lineahistorial;
+import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
@@ -80,29 +82,35 @@ public class AddToHistorialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Integer usuario = Integer.valueOf(request.getParameter("usuario"));
+         HttpSession session = request.getSession();
+         Medico medico = (Medico) session.getAttribute("medico");
+         Integer usuario = Integer.valueOf(request.getParameter("usuario"));
         
          Paciente paciente = pacienteFacade.find(usuario);
          
         String date= request.getParameter("fecha");
+        String entrada= request.getParameter("entrada");
+         String time = request.getParameter("hora"); 
+        
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+         SimpleDateFormat formatter2 = new SimpleDateFormat("HH:MM:SS");
            try{
-         Date fecha = formatter.parse(date);
+           Date fecha = formatter.parse(date);
+           Date hora = formatter2.parse(time);
+           Lineahistorial l = new Lineahistorial(5);
+           l.setFecha(fecha);
+           l.setEntrada(entrada);
+           l.setHora(hora);
+           l.setPacientenumSS(paciente);
+           l.setMediconumColegiado(medico);
+           lineahistorialFacade.create(l);
            }catch(ParseException e){
                e.printStackTrace();
            }
-         String hora = request.getParameter("hora"); 
-         /*Dudas: 
-          *1: En la tabla de lineahistorial  la hora es de tipo time 
-          * pero en lineahistorial.java aparece como tipo date !!
-          * 2: El id de lineahistorial es autoincrementado o lo introduce el médico??
-          * ya que lo necesita el constructor 
-          */
-         
-         String entrada= request.getParameter("entrada");
-        // Lineahistorial l = new Lineahistorial()
+           
+        
         processRequest(request, response);
+        response.sendRedirect(request.getContextPath() + "/menuMedico");
     }
 
     /**
