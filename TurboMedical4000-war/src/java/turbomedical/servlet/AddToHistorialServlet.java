@@ -109,8 +109,8 @@ public class AddToHistorialServlet extends HttpServlet {
            }
            
         
-        processRequest(request, response);
-        response.sendRedirect(request.getContextPath() + "/menuMedico");
+       // processRequest(request, response);
+        response.sendRedirect(request.getContextPath() + "/menuMedico.jsp");
     }
 
     /**
