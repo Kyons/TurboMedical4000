@@ -31,10 +31,10 @@
                 
                     
                     <h1>Gesti&oacute;n de M&eacute;dicos</h1>
-                    <a href="">A&ntilde;adir nuevo m&eacute;dico</a>
+                    <a href="EditMedicosServlet?do=addForm">A&ntilde;adir nuevo m&eacute;dico</a>
         <table border="1">
             <tr>
-                <th>Numero colegiado</th>
+                <th>N&uacute;mero colegiado</th>
                 <th>Especialidad</th>                  
                 <th>Nombre</th>                
                 <th>Apellidos</th>                
@@ -47,26 +47,28 @@
                 <th>&nbsp;</th>
             </tr>
 <%
-    if (lista != null)
-        for (Medico medico: lista) {
+    if (lista != null){
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        for (Medico usuario: lista) {
 %>
             <tr>
-                <td><%= medico.getNumColegiado() %></td>
-                <td><%= medico.getEspecialidadidEspecialidad().getDescripcion() %></td>
-                <td><%= medico.getNombre() %></td>                
-                <td><%= medico.getApellidos() %></td>                
-                <td><%= medico.getFechaNac() %></td>                
-                <td><%= medico.getDni() %></td>                                
-                <td><%= medico.getDireccion() %></td>                          
-                <td><%= medico.getLocalidad() %></td>
-                <td><%= medico.getProvincia() %></td>
-                <td><%= medico.getTelefono() %></td>
-                <td><a href="" >Editar</a>
-                    <a href="" >Borrar</a></td>
+                <td><%= usuario.getNumColegiado() %></td>
+                <td><%= usuario.getEspecialidadidEspecialidad().getDescripcion() %></td>
+                <td><%= usuario.getNombre() %></td>                
+                <td><%= usuario.getApellidos() %></td>                
+                <td><%= df.format(usuario.getFechaNac()) %></td>                
+                <td><%= usuario.getDni() %></td>                                
+                <td><%= usuario.getDireccion() %></td>                          
+                <td><%= usuario.getLocalidad() %></td>
+                <td><%= usuario.getProvincia() %></td>
+                <td><%= usuario.getTelefono() %></td>
+                <td><a href="EditMedicosServlet?do=editForm&numColegiado=<%= usuario.getNumColegiado() %>" >Editar</a>
+                    <a href="EditMedicosServlet?do=delete&numColegiado=<%= usuario.getNumColegiado() %>" >Borrar</a></td>
             </tr>
 
 <%            
         }
+    }
 %>            
        </table>   
                    </td> 
