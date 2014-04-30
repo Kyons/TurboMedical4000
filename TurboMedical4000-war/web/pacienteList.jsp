@@ -26,7 +26,54 @@
         
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
 
-        <th> &nbsp; </th> <td rowspan="5" >POR IMPLEMENTAR
+        
+             <tr>
+                <th> &nbsp; </th> <td rowspan="5" >
+                
+                    
+                    <h1>Gesti&oacute;n de Pacientes</h1>
+                    <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a>
+        <table border="1">
+            <tr>
+                <th>N&uacute;mero SS</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fecha nacimiento</th>
+                <th>Direcci&oacute;n</th>
+                <th>Localidad</th>
+                <th>Provincia</th>
+                <th>Tel&eacute;fono</th>
+                <th>&nbsp;</th>
+            </tr>
+<%
+    if (lista != null){
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        for (Paciente usuario: lista) {
+%>
+            <tr>
+                <td><%= usuario.getNumSS() %></td>
+                <td><%= usuario.getDni()%></td>
+                <td><%= usuario.getNombre() %></td>
+                <td><%= usuario.getApellidos() %></td>
+                <td><%= df.format(usuario.getFechaNac()) %></td>
+                <td><%= usuario.getDireccion() %></td>
+                <td><%= usuario.getLocalidad() %></td>
+                <td><%= usuario.getProvincia() %></td>
+                <td><%= usuario.getTelefono() %></td>
+                <td><a href="EditPacientesServlet?do=editForm&numSS=<%= usuario.getNumSS() %>" >Editar</a>
+                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" >Borrar</a></td>
+            </tr>
+
+<%            
+        }
+    }
+%>            
+       </table>   
+                   </td> 
+               
+            </tr>
+        
 
         <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
         

@@ -6,11 +6,16 @@ package turbomedical.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import turbomedical4000.ejb.AdministradorFacadeLocal;
+import turbomedical4000.entity.Administrador;
 
 /**
  *
@@ -18,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "EditAdministradoresServlet", urlPatterns = {"/EditAdministradoresServlet"})
 public class EditAdministradoresServlet extends HttpServlet {
+    @EJB
+    private AdministradorFacadeLocal administradorFacade;
 
     /**
      * Processes requests for both HTTP
@@ -31,22 +38,86 @@ public class EditAdministradoresServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditAdministradoresServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditAdministradoresServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+        
+        //HttpSession session = request.getSession();
+	
+        // Obtener la acción a arealizar del parámetro do
+	String action = request.getParameter("do");
+	
+        // Obtener el id del administrador
+        int idAdministrador = -1;
+	if(request.getParameter("idAdministrador") != null){
+            idAdministrador = Integer.valueOf(request.getParameter("idAdministrador"));
+        }  
+
+	// Formularios Añadir/Editar
+        if(action.equals("addForm")){
+            RequestDispatcher rd;
+        
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorAdd.jsp");
+            rd.forward(request, response);	
+        
+        }else if(action.equals("editForm")){
+            //Obtener el administrador de la BD
+            Administrador usuario = administradorFacade.find(idAdministrador);
+			
+            request.setAttribute("usuario", usuario);
+			
+            RequestDispatcher rd;
+        
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp");
+            rd.forward(request, response);
+	
+        // Añadir/Editar
+        } else if(action.equals("add")){
+            // Crear el usuario
+            // Da igual el id que le demos, porque es autoincremental en la BD
+            Administrador usuario = new Administrador(1, request.getParameter("usuario"), request.getParameter("contrasena"));
+            // Añadirlo a la BD
+            administradorFacade.create(usuario);
+        
+            // Redirigir a la lista de usuarios
+            RequestDispatcher rd;
+        
+            rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=Usuario " + request.getParameter("usuario") + " creado");
+            rd.forward(request, response);
+        } else if(action.equals("edit")){
+            // Crear el usuario modificado
+            int i = Integer.valueOf(request.getParameter("idAdministrador"));
+            String u = request.getParameter("usuario");
+            String c = request.getParameter("contrasena");
+            Administrador usuario = new Administrador(i, u, c);
+            // Editarlo en la BD
+            administradorFacade.edit(usuario);
+        
+            // Redirigir a la lista de usuarios
+            RequestDispatcher rd;
+        
+            rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=Usuario " + u + " modificado");
+            rd.forward(request, response);
+	
+        // Eliminar
+        }else if(action.equals("delete")){
+            // Comprobar que el administrador a eliminar no es el que esta en la sesión
+            HttpSession session = request.getSession();
+            Administrador administrador =(Administrador) session.getAttribute("administrador");
+            
+            RequestDispatcher rd;
+            
+            if (idAdministrador == administrador.getIdAdministrador()){
+                rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=No puede eliminarse a usted mismo");
+            }else{
+                //Obtener el administrador de la BD
+                Administrador usuario = administradorFacade.find(idAdministrador);
+            
+                administradorFacade.remove(usuario);
+                
+                rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=Usuario " + usuario.getUsuario() + " eliminado");
+            }
+
+            rd.forward(request, response);
+	}
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

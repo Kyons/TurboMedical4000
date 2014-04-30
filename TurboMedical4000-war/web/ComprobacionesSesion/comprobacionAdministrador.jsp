@@ -9,7 +9,7 @@
 <%
 Administrador administrador =(Administrador) session.getAttribute("administrador");
 
-if(administrador ==null){
+if(administrador == null){
     RequestDispatcher dispatcher = request.getRequestDispatcher("loginAdministrador.jsp?msg=Necesaria autenticación de administrador");
     dispatcher.forward(request, response);
 }

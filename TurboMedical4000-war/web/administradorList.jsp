@@ -25,7 +25,37 @@
         
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
         
-        <th> &nbsp; </th> <td rowspan="5" >POR IMPLEMENTAR
+             <tr>
+                <th> &nbsp; </th> <td rowspan="5" >
+                
+                    
+                    <h1>Gesti&oacute;n de Administradores</h1>
+                    <a href="EditAdministradoresServlet?do=addForm">A&ntilde;adir nuevo administrador</a><br>
+                    <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>                  
+                <th>&nbsp;</th>
+            </tr>
+<%
+    if (lista != null)
+        for (Administrador usuario: lista) {
+%>
+            <tr>
+                <td><%= usuario.getIdAdministrador() %></td>
+                <td><%= usuario.getUsuario() %></td>
+                <td><a href="EditAdministradoresServlet?do=editForm&idAdministrador=<%= usuario.getIdAdministrador() %>">Editar</a>
+                    <a href="EditAdministradoresServlet?do=delete&idAdministrador=<%= usuario.getIdAdministrador() %>">Borrar</a></td>
+            </tr>
+
+<%            
+        }
+%>            
+       </table>   
+                   </td> 
+               
+            </tr>
         
         <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
         
