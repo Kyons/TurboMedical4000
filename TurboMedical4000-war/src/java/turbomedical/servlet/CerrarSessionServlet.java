@@ -37,8 +37,10 @@ public class CerrarSessionServlet extends HttpServlet {
         session.removeAttribute("paciente");
         session.removeAttribute("medico");
         session.removeAttribute("administrador");
+        
+        session.invalidate();
        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("loginPacientes.jsp");
         dispatcher.forward(request, response);
     }
 

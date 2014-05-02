@@ -41,13 +41,18 @@ public class LoginPacienteServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        session.removeAttribute("paciente");
         if(session.getAttribute("paciente")!=null){
             RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
             dispatcher.forward(request, response);
 	}else{
-            Paciente paciente = pacienteFacade.find(Integer.parseInt(request.getParameter("usuario")));
-            if(paciente!= null && paciente.getContrasena().equals(request.getParameter("contrasena"))){
+            boolean userNum = true ;
+            Paciente paciente = null;
+            try{
+                paciente = pacienteFacade.find(Integer.parseInt(request.getParameter("usuario")));
+            }catch(NumberFormatException n){
+                userNum = false;
+            }
+            if(paciente!= null && userNum && paciente.getContrasena().equals(request.getParameter("contrasena"))){
                 session.setAttribute("paciente", paciente);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
                 dispatcher.forward(request, response);

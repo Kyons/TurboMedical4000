@@ -39,13 +39,18 @@ public class LoginMedicoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.removeAttribute("medico");
         if(session.getAttribute("medico")!=null){
             RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
             dispatcher.forward(request, response);
 	}else{
-            Medico medico = medicoFacade.find(Integer.parseInt(request.getParameter("usuario")));
-            if(medico!= null && medico.getContrasena().equals(request.getParameter("contrasena"))){
+            boolean userNum = true;
+            Medico medico = null;
+            try{
+                medico = medicoFacade.find(Integer.parseInt(request.getParameter("usuario")));
+            }catch(NumberFormatException n){
+                userNum = false;
+            }
+            if(medico!= null && userNum && medico.getContrasena().equals(request.getParameter("contrasena"))){
                 session.setAttribute("medico", medico);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
                 

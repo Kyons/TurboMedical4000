@@ -8,6 +8,7 @@ package turbomedical4000.ejb;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Administrador;
 
@@ -31,7 +32,13 @@ public class AdministradorFacade extends AbstractFacade<Administrador> implement
 
     @Override
     public Administrador findByUsuario(String nombre) {
-        return (Administrador) em.createNamedQuery("Administrador.findByUsuario").setParameter("usuario", nombre).getSingleResult();
+        Administrador administrador = null;
+        try{
+            administrador = (Administrador) em.createNamedQuery("Administrador.findByUsuario").setParameter("usuario", nombre).getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("No se encontró ningún resultado");
+        }
+        return administrador;
     }
     
 }
