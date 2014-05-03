@@ -30,6 +30,7 @@
                 <form name="editForm" action="EditAdministradoresServlet">
                 <input type="hidden" name="do" value="edit">
                 <input type="hidden" name="idAdministrador" value="<%=usuario.getIdAdministrador()%>">
+                <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                 <table border="1">
                     <tr>
                         <td>Usuario:</td>

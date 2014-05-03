@@ -6,6 +6,7 @@
 
 package turbomedical4000.ejb;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,5 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
     public PacienteFacade() {
         super(Paciente.class);
     }
-    
+
 }

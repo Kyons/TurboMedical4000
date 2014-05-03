@@ -25,6 +25,7 @@
                 
                 <form name="addForm" action="EditAdministradoresServlet">
                 <input type="hidden" name="do" value="add">
+                <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                 <table border="1">
                     <tr>
                         <td>Usuario:</td>

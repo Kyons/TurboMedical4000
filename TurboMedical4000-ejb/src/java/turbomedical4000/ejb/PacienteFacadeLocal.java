@@ -30,5 +30,5 @@ public interface PacienteFacadeLocal {
     List<Paciente> findRange(int[] range);
 
     int count();
-    
+
 }

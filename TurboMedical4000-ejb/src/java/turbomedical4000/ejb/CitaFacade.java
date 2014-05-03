@@ -6,6 +6,7 @@
 
 package turbomedical4000.ejb;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,18 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
         super(Cita.class);
     }
     
+    @Override
+    public Cita findCitaProxima(int numSS) {
+        List<Cita> listaCitas = em.createNamedQuery("Cita.findCitaProxima").setParameter("numSS", numSS).getResultList();
+    
+        Cita cita;
+                
+        if(!listaCitas.isEmpty()){
+           cita = listaCitas.get(0);
+        }else{
+            cita = new Cita(-1);
+        }
+        
+        return cita;
+    }
 }

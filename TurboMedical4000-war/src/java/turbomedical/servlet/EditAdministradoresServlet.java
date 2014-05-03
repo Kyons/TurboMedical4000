@@ -39,9 +39,7 @@ public class EditAdministradoresServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //HttpSession session = request.getSession();
-	
-        // Obtener la acción a arealizar del parámetro do
+        // Obtener la acción a a realizar del parámetro do
 	String action = request.getParameter("do");
 	
         // Obtener el id del administrador
@@ -72,14 +70,16 @@ public class EditAdministradoresServlet extends HttpServlet {
         } else if(action.equals("add")){
             // Crear el usuario
             // Da igual el id que le demos, porque es autoincremental en la BD
-            Administrador usuario = new Administrador(1, request.getParameter("usuario"), request.getParameter("contrasena"));
+            String u = request.getParameter("usuario");
+            String c = request.getParameter("contrasena");
+            Administrador usuario = new Administrador(1, u, c);
             // Añadirlo a la BD
             administradorFacade.create(usuario);
         
-            // Redirigir a la lista de usuarios
+            // Redirigir de nuevo al añadir usuarios
             RequestDispatcher rd;
         
-            rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=Usuario " + request.getParameter("usuario") + " creado");
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorAdd.jsp?msg=Usuario " + request.getParameter("usuario") + " creado");
             rd.forward(request, response);
         } else if(action.equals("edit")){
             // Crear el usuario modificado
@@ -89,11 +89,13 @@ public class EditAdministradoresServlet extends HttpServlet {
             Administrador usuario = new Administrador(i, u, c);
             // Editarlo en la BD
             administradorFacade.edit(usuario);
-        
-            // Redirigir a la lista de usuarios
+
+            request.setAttribute("usuario", usuario);
+            
+            // Redirigir de nuevo a la edicion de usuarios
             RequestDispatcher rd;
         
-            rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=Usuario " + u + " modificado");
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=Usuario " + u + " modificado");
             rd.forward(request, response);
 	
         // Eliminar
@@ -104,6 +106,7 @@ public class EditAdministradoresServlet extends HttpServlet {
             
             RequestDispatcher rd;
             
+            // El administrador no puede borrarse a si mismo
             if (idAdministrador == administrador.getIdAdministrador()){
                 rd = this.getServletContext().getRequestDispatcher("/ListaAdministradoresServlet?msg=No puede eliminarse a usted mismo");
             }else{

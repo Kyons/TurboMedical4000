@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <tr> <td><a href="ConsultarPerfilMedicoServlet">Perfil Médico</a></td>  </tr>
-             <tr ><td ><a href="">Pacientes</a></td>  </tr>
+             <tr ><td ><a href="ListaPacientesAsignadosServlet">Pacientes</a></td>  </tr>
             <tr > <td ><a href="">Citas</a></td>  </tr>
             <tr > <td ><a href="AddToHistorialServlet">A&ntilde;dir Historial</a></td>  </tr>
 

@@ -5,7 +5,9 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,20 +16,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.CitaFacadeLocal;
-import turbomedical4000.ejb.PacienteFacadeLocal;
-import turbomedical4000.entity.Cita;
+import turbomedical4000.ejb.MedicoFacade;
+import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author Sihame
+ * @author Juan
  */
-@WebServlet(name = "ConsultarPerfilUsuarioServlet", urlPatterns = {"/ConsultarPerfilUsuarioServlet"})
-public class ConsultarPerfilUsuarioServlet extends HttpServlet {
-    @EJB
-    private CitaFacadeLocal citaFacade;
-
+@WebServlet(name = "ListaPacientesAsignadosServlet", urlPatterns = {"/ListaPacientesAsignadosServlet"})
+public class ListaPacientesAsignadosServlet extends HttpServlet {
+    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -41,14 +40,17 @@ public class ConsultarPerfilUsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Paciente paciente =(Paciente) session.getAttribute("paciente");
+        Medico medico = (Medico) session.getAttribute("medico");
+
+        List<Paciente> lista = new ArrayList<Paciente>();
+        lista.addAll(medico.getPacienteCollection());
         
-        // Buscar citas en las proximas 24 horas
-        Cita citaProxima = citaFacade.findCitaProxima(paciente.getNumSS());
-        request.setAttribute("citaProxima", citaProxima);
+        request.setAttribute("lista", lista);
         
-         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/PerfilUsuario.jsp");
-         dispatcher.forward(request, response);
+        RequestDispatcher rd;
+        
+        rd = this.getServletContext().getRequestDispatcher("/pacienteAsignadoList.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

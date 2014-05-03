@@ -32,7 +32,8 @@
                 
                     
                     <h1>Gesti&oacute;n de Pacientes</h1>
-                    <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a>
+                    <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a><br>
+                    <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
         <table border="1">
             <tr>
                 <th>N&uacute;mero SS</th>
@@ -62,7 +63,7 @@
                 <td><%= usuario.getProvincia() %></td>
                 <td><%= usuario.getTelefono() %></td>
                 <td><a href="EditPacientesServlet?do=editForm&numSS=<%= usuario.getNumSS() %>" >Editar</a>
-                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" >Borrar</a></td>
+                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNombre()%>?')">Borrar</a></td>
             </tr>
 
 <%            

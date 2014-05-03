@@ -31,4 +31,5 @@ public interface CitaFacadeLocal {
 
     int count();
     
+    public Cita findCitaProxima(int numSS);
 }

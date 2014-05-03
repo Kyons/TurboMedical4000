@@ -46,7 +46,7 @@
                 <td><%= usuario.getIdAdministrador() %></td>
                 <td><%= usuario.getUsuario() %></td>
                 <td><a href="EditAdministradoresServlet?do=editForm&idAdministrador=<%= usuario.getIdAdministrador() %>">Editar</a>
-                    <a href="EditAdministradoresServlet?do=delete&idAdministrador=<%= usuario.getIdAdministrador() %>">Borrar</a></td>
+                    <a href="EditAdministradoresServlet?do=delete&idAdministrador=<%= usuario.getIdAdministrador() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getUsuario()%>?')">Borrar</a></td>
             </tr>
 
 <%            

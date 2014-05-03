@@ -4,6 +4,7 @@
     Author     : Sihame
 --%>
 
+<%@page import="turbomedical4000.entity.Cita"%>
 <%@page import="turbomedical4000.entity.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +13,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil Paciente</title>
    <%
-  	
 	Paciente paciente =(Paciente) session.getAttribute("paciente");
   %>
     </head>
@@ -22,6 +22,27 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="4" >
                   <h2>Perfil personal</h2>
+                  
+            <table border="1">
+                <tr><td>
+                    <b>Pr&oacute;ximas citas: </b>
+<%
+        Cita citaProxima = (Cita)request.getAttribute("citaProxima");
+        if(citaProxima.getIdCita() != -1){
+            java.text.DateFormat dfFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
+            java.text.DateFormat dfHora = new java.text.SimpleDateFormat("HH:mm");
+%>
+                    Usted tiene una cita pendiente el <%= dfFecha.format(citaProxima.getFecha()) %> a las <%= dfHora.format(citaProxima.getHora()) %> <a href="">(Ir a citas)</a></td>
+<%
+        }else{
+%>
+                    Usted no tiene ninguna cita pendiente.
+<%
+        }
+%>
+                </td></tr>
+            </table>
+                  
             <table border ="1">
                 <tr>
                     <th> Nombre</th>
@@ -45,6 +66,8 @@
                 </tr>
             </table>
                 </td></tr>
+            
+            
             
             <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
     </body>
