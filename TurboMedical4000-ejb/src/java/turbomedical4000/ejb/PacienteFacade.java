@@ -9,12 +9,13 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author jorge
+ * @author jorge, juan
  */
 @Stateless
 public class PacienteFacade extends AbstractFacade<Paciente> implements PacienteFacadeLocal {
@@ -30,4 +31,14 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         super(Paciente.class);
     }
 
+    @Override
+    public Paciente findByNumSS(int numSS) {
+        Paciente paciente = null;
+        try{
+            paciente = (Paciente) em.createNamedQuery("Paciente.findByNumSS").setParameter("numSS", numSS).getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("No se encontró ningún resultado");
+        }
+        return paciente;
+    }
 }

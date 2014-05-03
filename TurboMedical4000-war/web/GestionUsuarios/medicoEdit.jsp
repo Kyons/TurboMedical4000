@@ -41,7 +41,7 @@
                 <table border="1">
                     <tr>
                         <td>N&uacute;mero colegiado:</td>
-                        <td><input type="text" name="numColegiado" value="<%=usuario.getNumColegiado()%>"></td>
+                        <td><input type="text" name="numCol" value="<%=usuario.getNumColegiado()%>" readonly></td>
                     </tr><tr>
                         <td>Especialidad:</td>
                         <td><select name="idEspecialidad">                    

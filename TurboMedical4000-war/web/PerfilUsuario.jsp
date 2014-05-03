@@ -27,12 +27,12 @@
                 <tr><td>
                     <b>Pr&oacute;ximas citas: </b>
 <%
-        Cita citaProxima = (Cita)request.getAttribute("citaProxima");
-        if(citaProxima.getIdCita() != -1){
+        Cita proximaCitaPaciente = (Cita)request.getAttribute("proximaCitaPaciente");
+        if(proximaCitaPaciente != null){
             java.text.DateFormat dfFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
             java.text.DateFormat dfHora = new java.text.SimpleDateFormat("HH:mm");
 %>
-                    Usted tiene una cita pendiente el <%= dfFecha.format(citaProxima.getFecha()) %> a las <%= dfHora.format(citaProxima.getHora()) %> <a href="">(Ir a citas)</a></td>
+                    Usted tiene una cita pendiente el <%= dfFecha.format(proximaCitaPaciente.getFecha()) %> a las <%= dfHora.format(proximaCitaPaciente.getHora()) %> <a href="">(Ir a citas)</a></td>
 <%
         }else{
 %>

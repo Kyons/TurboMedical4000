@@ -9,12 +9,13 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Cita;
 
 /**
  *
- * @author jorge
+ * @author jorge, juan
  */
 @Stateless
 public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal {
@@ -31,17 +32,13 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
     }
     
     @Override
-    public Cita findCitaProxima(int numSS) {
-        List<Cita> listaCitas = em.createNamedQuery("Cita.findCitaProxima").setParameter("numSS", numSS).getResultList();
-    
-        Cita cita;
-                
-        if(!listaCitas.isEmpty()){
-           cita = listaCitas.get(0);
-        }else{
-            cita = new Cita(-1);
-        }
-        
+    public Cita findProximaCitaPaciente(int numSS) {
+        Cita cita = null;
+        try{
+            cita = (Cita) em.createNamedQuery("Cita.findProximaCitaPaciente").setParameter("numSS", numSS).getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("No se encontró ningún resultado");
+        }        
         return cita;
     }
 }

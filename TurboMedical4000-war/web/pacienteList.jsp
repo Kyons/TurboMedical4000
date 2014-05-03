@@ -63,7 +63,7 @@
                 <td><%= usuario.getProvincia() %></td>
                 <td><%= usuario.getTelefono() %></td>
                 <td><a href="EditPacientesServlet?do=editForm&numSS=<%= usuario.getNumSS() %>" >Editar</a>
-                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNombre()%>?')">Borrar</a></td>
+                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNumSS()%>?')">Borrar</a></td>
             </tr>
 
 <%            

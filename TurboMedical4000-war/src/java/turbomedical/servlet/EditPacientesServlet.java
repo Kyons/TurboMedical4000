@@ -69,37 +69,47 @@ public class EditPacientesServlet extends HttpServlet {
 	
         // Añadir/Editar
         } else if(action.equals("add")){
-            // Crear el usuario
-            int nSS = Integer.valueOf(request.getParameter("numSS"));
-            Paciente usuario = new Paciente(nSS);
             
-            usuario.setNombre(request.getParameter("nombre"));
-            usuario.setApellidos(request.getParameter("apellidos"));
-            
-            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-            Date fechaNac = null;
-            try {
-                fechaNac = df.parse(request.getParameter("fechaNac"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            usuario.setFechaNac(fechaNac);
-            
-            usuario.setDni(request.getParameter("dni"));
-            usuario.setDireccion(request.getParameter("direccion"));
-            usuario.setLocalidad(request.getParameter("localidad"));
-            usuario.setProvincia(request.getParameter("provincia"));
-            usuario.setTelefono(request.getParameter("telefono"));
-            usuario.setContrasena(request.getParameter("contrasena"));
-            
-            // Añadirlo a la BD
-            pacienteFacade.create(usuario);
+            //Comprobar si el usuario ya existe
+            Paciente usuario = pacienteFacade.findByNumSS(Integer.valueOf(request.getParameter("numSS")));
+            if(usuario != null){
+                RequestDispatcher rd;
         
-            // Redirigir de nuevo al añadir usuarios
-            RequestDispatcher rd;
-            
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Usuario " + usuario.getNombre() + " creado");
-            rd.forward(request, response);
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=El usuario " + usuario.getNumSS() + " ya existe");
+                rd.forward(request, response);
+            }else{
+                // Crear el usuario
+                int nSS = Integer.valueOf(request.getParameter("numSS"));
+                usuario = new Paciente(nSS);
+
+                usuario.setNombre(request.getParameter("nombre"));
+                usuario.setApellidos(request.getParameter("apellidos"));
+
+                java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                Date fechaNac = null;
+                try {
+                    fechaNac = df.parse(request.getParameter("fechaNac"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                usuario.setFechaNac(fechaNac);
+
+                usuario.setDni(request.getParameter("dni"));
+                usuario.setDireccion(request.getParameter("direccion"));
+                usuario.setLocalidad(request.getParameter("localidad"));
+                usuario.setProvincia(request.getParameter("provincia"));
+                usuario.setTelefono(request.getParameter("telefono"));
+                usuario.setContrasena(request.getParameter("contrasena"));
+
+                // Añadirlo a la BD
+                pacienteFacade.create(usuario);
+
+                // Redirigir de nuevo al añadir usuarios
+                RequestDispatcher rd;
+
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Usuario " + usuario.getNumSS() + " creado");
+                rd.forward(request, response);
+            }
         } else if(action.equals("edit")){
             // Crear el usuario modificado
             int nSS = Integer.valueOf(request.getParameter("numSS"));
@@ -132,7 +142,7 @@ public class EditPacientesServlet extends HttpServlet {
             // Redirigir de nuevo a la edicion de usuarios
             RequestDispatcher rd;
 
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteEdit.jsp?msg=Usuario " + usuario.getNombre() + " modificado");
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteEdit.jsp?msg=Usuario " + usuario.getNumSS() + " modificado");
             rd.forward(request, response);
 	
         // Eliminar
@@ -144,7 +154,7 @@ public class EditPacientesServlet extends HttpServlet {
             
             pacienteFacade.remove(usuario);
                
-            rd = this.getServletContext().getRequestDispatcher("/ListaPacientesServlet?msg=Usuario " + usuario.getNombre() + " eliminado");
+            rd = this.getServletContext().getRequestDispatcher("/ListaPacientesServlet?msg=Usuario " + usuario.getNumSS() + " eliminado");
 
             rd.forward(request, response);
 	}

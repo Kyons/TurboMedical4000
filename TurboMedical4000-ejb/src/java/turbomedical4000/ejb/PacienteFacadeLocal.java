@@ -12,7 +12,7 @@ import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author jorge
+ * @author jorge, juan
  */
 @Local
 public interface PacienteFacadeLocal {
@@ -31,4 +31,5 @@ public interface PacienteFacadeLocal {
 
     int count();
 
+    public Paciente findByNumSS(int numSS);
 }
