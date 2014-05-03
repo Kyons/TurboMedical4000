@@ -27,6 +27,16 @@
                 <tr><td>
                     <b>Pr&oacute;ximas citas: </b>
 <%
+        /*
+         * El indicador de proximas citas solo funciona si la cita en cuestion está
+         * en el dia siguiente, ya que el campo de la fecha tiene la hora a 00:00
+         * y no encuentro la forma de unir el campo fecha y el campo hora para
+         * poder compararlo con el tiempo actual sin que de fallo
+         * 
+         * Si se encuentra como hacerlo, la consulta es findProximasCitasPaciente
+         * de la clase Cita
+         */
+        
         Cita proximaCitaPaciente = (Cita)request.getAttribute("proximaCitaPaciente");
         if(proximaCitaPaciente != null){
             java.text.DateFormat dfFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
@@ -39,7 +49,8 @@
                     Usted no tiene ninguna cita pendiente.
 <%
         }
-%>
+%>                  <%-- QUITAR ESTE AVISO CUANDO SE ARREGLE EL AVISO DE CITAS PROXIMAS --%>
+                    <b><a style="color:red">(AVISO: No funciona si la pr&oacute;xima cita est&aacute; en el mismo d&iacute;a que el actual)</a></b>
                 </td></tr>
             </table>
                   

@@ -4,6 +4,10 @@
     Author     : Juan
 --%>
 
+<%-- 
+    FALTA LA ASIGANACION DE PACIENTES A MEDICOS
+--%>
+
 <%@page import="turbomedical4000.entity.Especialidad"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

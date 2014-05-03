@@ -43,8 +43,8 @@ public class ConsultarPerfilUsuarioServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Paciente paciente =(Paciente) session.getAttribute("paciente");
         
-        // Buscar citas en las proximas 24 horas
-        Cita proximaCitaPaciente = citaFacade.findProximaCitaPaciente(paciente.getNumSS());
+        // Buscar proximas citas
+        Cita proximaCitaPaciente = citaFacade.findProximasCitasPaciente(paciente.getNumSS());
         
         request.setAttribute("proximaCitaPaciente", proximaCitaPaciente);
         

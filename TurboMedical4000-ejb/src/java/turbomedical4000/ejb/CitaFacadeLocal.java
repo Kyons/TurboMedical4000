@@ -31,5 +31,5 @@ public interface CitaFacadeLocal {
 
     int count();
     
-    public Cita findProximaCitaPaciente(int numSS);
+    public Cita findProximasCitasPaciente(int numSS);
 }

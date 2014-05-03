@@ -32,13 +32,14 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
     }
     
     @Override
-    public Cita findProximaCitaPaciente(int numSS) {
+    public Cita findProximasCitasPaciente(int numSS) {
+        List<Cita> proximasCitas = (List<Cita>) em.createNamedQuery("Cita.findProximasCitasPaciente").setParameter("numSS", numSS).getResultList();
+        
         Cita cita = null;
-        try{
-            cita = (Cita) em.createNamedQuery("Cita.findProximaCitaPaciente").setParameter("numSS", numSS).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("No se encontró ningún resultado");
-        }        
+        if(!proximasCitas.isEmpty()){
+            cita = proximasCitas.get(0);
+        }
+
         return cita;
     }
 }
