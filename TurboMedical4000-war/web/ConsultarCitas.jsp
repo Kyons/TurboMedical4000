@@ -32,17 +32,20 @@
                        <th>Medico</th>
                    </tr>
  <%
-            if(cita!=null)
-            for(Cita ct: cita){             
+            if(cita!=null){
+                java.text.DateFormat dfFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                java.text.DateFormat dfHora = new java.text.SimpleDateFormat("HH:mm");
+                for(Cita ct: cita){             
  %>
                   <tr>
-                      <td> <%=ct.getFecha()%> </td>
-                      <td> <%=ct.getHora()%> </td>
-                      <td> <%=ct.getLugar()%> </td>
-                      <td> <%=ct.getMediconumColegiado()%> </td>
+                      <td> <%= dfFecha.format(ct.getFecha()) %> </td>
+                      <td> <%= dfHora.format(ct.getHora()) %> </td>
+                      <td> <%= ct.getLugar() %> </td>
+                      <td> <%= ct.getMediconumColegiado().getNumColegiado() %> </td>
                   </tr>
   <%
-            }          
+                }  
+            }
   %>
                </table>  
                 </td></tr>
