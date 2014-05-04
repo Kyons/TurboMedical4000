@@ -16,7 +16,7 @@
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
         <tr> <th> &nbsp; </th> <td rowspan="4" >
         <h2>Solicitar Cita</h2>
-        <form name="addCita" accion="SolicitarCitaServlet" method="post">
+        <form name="addCita" action="SolicitarCitaServlet" method="post">
               <table>
                     <tr>
                         <th>N&uacute;mero colegiado:</th>

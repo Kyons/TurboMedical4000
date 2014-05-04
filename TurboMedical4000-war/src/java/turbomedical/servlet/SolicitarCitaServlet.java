@@ -1,11 +1,11 @@
-package turbomedical.servlet;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package turbomedical.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -15,19 +15,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import turbomedical4000.ejb.CitaFacadeLocal;
+import turbomedical4000.ejb.MedicoFacadeLocal;
 import turbomedical4000.entity.Cita;
 import turbomedical4000.entity.Medico;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
  * @author Tomás
  */
-@WebServlet(urlPatterns = {"/SolicitarCitaServlet"})
+@WebServlet(name = "SolicitarCitaServlet", urlPatterns = {"/SolicitarCitaServlet"})
 public class SolicitarCitaServlet extends HttpServlet {
+    @EJB
+    private MedicoFacadeLocal medicoFacade;
+    @EJB
+    private CitaFacadeLocal citaFacade;
 
-     @EJB
-     private CitaFacadeLocal CitaFacade;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -41,36 +46,46 @@ public class SolicitarCitaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        System.out.println("Este mensaje es para comprobar si se llega de forma correcta a este servlet");
         
-        int numMedico= Integer.valueOf(request.getParameter("numCol"));
-        String lug= request.getParameter("lugar");
+        Cita cita = new Cita(1);
+
+        HttpSession session = request.getSession();
+        Paciente paciente =(Paciente) session.getAttribute("paciente");
+        cita.setPacientenumSS(paciente);
+        
+        int numColegiado = Integer.valueOf(request.getParameter("numCol"));
+        Medico medico = medicoFacade.find(numColegiado);
+        if (medico != null){
+            cita.setMediconumColegiado(medico);
+        }
+
         java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        Date fech = null;
+        Date fecha = null;
         try {
-            fech = df.parse(request.getParameter("fecha"));
+            fecha = df.parse(request.getParameter("fecha"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        java.text.DateFormat dh = new java.text.SimpleDateFormat("00:00");
-        Date hor = null;
-         try {
-             hor = dh.parse(request.getParameter("hora"));
-         } catch (ParseException ex) {
-              ex.printStackTrace();
-         }
+        cita.setFecha(fecha);
         
+        df = new java.text.SimpleDateFormat("HH:mm");
+        Date hora = null;
+        try {
+            hora = df.parse(request.getParameter("hora"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        cita.setHora(hora);
         
-        Cita cita = new Cita(Integer.SIZE, fech, hor, lug);
-               
-        Medico med = new Medico(numMedico);       
-        cita.setMediconumColegiado(med);        
-        cita.getPacientenumSS();
+        cita.setLugar(request.getParameter("lugar"));
         
-        CitaFacade.create(cita);
-        // Redirigir de nuevo al añadir cita
+        citaFacade.create(cita);
+
         RequestDispatcher rd;
-        rd = this.getServletContext().getRequestDispatcher("ConsultarCitas.jsp?msg=cita " + cita.getIdCita() + " creada");
+        rd = this.getServletContext().getRequestDispatcher("/ConsultarCitasServlet?msg=Cita " + cita.getIdCita() + " creada");
         rd.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

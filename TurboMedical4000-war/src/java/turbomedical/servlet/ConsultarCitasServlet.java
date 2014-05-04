@@ -30,6 +30,7 @@ public class ConsultarCitasServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         Paciente paciente = (Paciente) session.getAttribute("paciente");
         List<Cita> cita;

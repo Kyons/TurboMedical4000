@@ -24,6 +24,8 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="4" >
                     <h2>Lista de Citas</h2>
+                    <a href="SolicitarCita.jsp">Solicitar cita</a><br>
+                    <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                <table border="1">
                    <tr>
                        <th>Fecha</th>
@@ -49,7 +51,6 @@
   %>
                </table>  
                 </td></tr>
-            <tr> <td><a href="SolicitarCita.jsp">Solicitar Cita</a></td>  </tr>
 
              <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>       
         
