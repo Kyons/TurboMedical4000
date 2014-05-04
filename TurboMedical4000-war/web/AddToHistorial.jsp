@@ -38,13 +38,15 @@
                         <td colspan="4"><textarea name="entrada" cols="60" rows="10" ></textarea></td>
                     </tr>
                     <tr>
-                        <td>&nbsp;</td>
+                        <td>&nbsp</td>
                         <td>&nbsp;</td>
                         <td><input type="submit" name="guardar" value="Guardar"></td>
                     </tr>
-                    
+           
                 </table>
-            </form>
+           
+              </form> 
+
                 </th></tr>
            <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
     </body>

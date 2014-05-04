@@ -92,7 +92,7 @@ public class AddToHistorialServlet extends HttpServlet {
         String entrada= request.getParameter("entrada");
          String time = request.getParameter("hora"); 
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
          SimpleDateFormat formatter2 = new SimpleDateFormat("HH:MM:SS");
            try{
            Date fecha = formatter.parse(date);

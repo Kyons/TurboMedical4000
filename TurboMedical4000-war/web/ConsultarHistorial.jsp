@@ -31,17 +31,20 @@
                        <th>Entrada</th>
                    </tr>
  <%
-            if(historial!=null)
+            if(historial!=null){
+            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+             java.text.DateFormat hf = new java.text.SimpleDateFormat("HH:MM:SS");
             for(Lineahistorial lh: historial){
                 
  %>
                   <tr>
-                      <td><%= lh.getFecha() %></td>
-                      <td> <%= lh.getHora() %></td>
+                      <td><%= df.format(lh.getFecha()) %></td>
+                      <td> <%= hf.format(lh.getHora()) %></td>
                       <td><%= lh.getEntrada() %></td>
                   </tr>
   <%
-            }          
+            }
+            }
   %>
                </table>  
                 </td></tr>

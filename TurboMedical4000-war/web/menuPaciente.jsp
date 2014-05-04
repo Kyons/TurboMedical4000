@@ -28,7 +28,7 @@
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
             <tr> <th> &nbsp; </th> <td rowspan="4" >
-                   Usuario:<%= paciente.getNombre()%>
+                   Usuario:<%= paciente.getNombre()+" "+ paciente.getApellidos() %>
                 </td></tr>
             
            <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>

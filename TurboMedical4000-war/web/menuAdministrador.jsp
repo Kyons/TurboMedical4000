@@ -20,7 +20,7 @@
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
             <tr>
-                <th> &nbsp; </th> <th rowspan="5" >
+                <th> &nbsp; </th> <th rowspan="6" >
                     Usuario: <%= administrador.getUsuario() %> </br>
                 </th>
             </tr>

@@ -14,6 +14,7 @@
         <title>Perfil Paciente</title>
    <%
 	Paciente paciente =(Paciente) session.getAttribute("paciente");
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
   %>
     </head>
     <body>
@@ -58,7 +59,7 @@
                     <td> <%= paciente.getNombre() %></td>
                     <td><%= paciente.getApellidos()%></td>
                     <td> <%= paciente.getNumSS()%></td>
-                    <td><%= paciente.getFechaNac() %></td>
+                    <td><%= df.format( paciente.getFechaNac()) %></td>
                     <td><%= paciente.getDireccion() %></td>
                     <td><%= paciente.getLocalidad() %></td>
                     <td> <%= paciente.getProvincia() %></td>

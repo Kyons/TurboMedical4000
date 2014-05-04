@@ -13,6 +13,7 @@
         <title>Perfil M&eacute;dico</title>
         <% 
             Medico medico= (Medico) session.getAttribute("medico");
+            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
         %>
     </head>
    <body>
@@ -39,7 +40,7 @@
                     <td><%=medico.getDni() %> </td>
                     <td><%=medico.getNumColegiado() %></td>
                     <td> <%= medico.getEspecialidadidEspecialidad().getDescripcion() %></td>
-                    <td><%=medico.getFechaNac() %></td>
+                    <td><%=df.format(medico.getFechaNac()) %></td>
                     <td><%=medico.getDireccion() %></td>
                     <td><%=medico.getLocalidad() %></td>
                     <td><%=medico.getProvincia() %> </td>
