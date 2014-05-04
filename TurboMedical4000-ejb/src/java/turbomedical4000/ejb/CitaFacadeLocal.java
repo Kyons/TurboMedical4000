@@ -12,7 +12,7 @@ import turbomedical4000.entity.Cita;
 
 /**
  *
- * @author jorge
+ * @author jorge, juan
  */
 @Local
 public interface CitaFacadeLocal {
@@ -31,5 +31,5 @@ public interface CitaFacadeLocal {
 
     int count();
     
-    public Cita findCitaProxima(int numSS);
+    public Cita findProximasCitasPaciente(int numSS);
 }

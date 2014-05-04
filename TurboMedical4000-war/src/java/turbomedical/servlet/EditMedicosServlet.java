@@ -91,49 +91,62 @@ public class EditMedicosServlet extends HttpServlet {
 	
         // Añadir/Editar
         } else if(action.equals("add")){
-            // Crear el usuario
-            int nC = Integer.valueOf(request.getParameter("numColegiado"));
-            Medico usuario = new Medico(nC);
             
-            int idEspecialidad = Integer.valueOf(request.getParameter("idEspecialidad"));
-            Especialidad especialidad = especialidadFacade.find(idEspecialidad);
-            usuario.setEspecialidadidEspecialidad(especialidad);
+            //Comprobar si el usuario ya existe
+            Medico usuario = medicoFacade.findByNumColegiado(Integer.valueOf(request.getParameter("numColegiado")));
             
-            usuario.setNombre(request.getParameter("nombre"));
-            usuario.setApellidos(request.getParameter("apellidos"));
-            
-            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-            Date fechaNac = null;
-            try {
-                fechaNac = df.parse(request.getParameter("fechaNac"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            usuario.setFechaNac(fechaNac);
-            
-            usuario.setDni(request.getParameter("dni"));
-            usuario.setDireccion(request.getParameter("direccion"));
-            usuario.setLocalidad(request.getParameter("localidad"));
-            usuario.setProvincia(request.getParameter("provincia"));
-            usuario.setTelefono(request.getParameter("telefono"));
-            usuario.setContrasena(request.getParameter("contrasena"));
-            
-            // Añadirlo a la BD
-            medicoFacade.create(usuario);
-        
             // Obtener la lista de especialidades
             List<Especialidad> especialidades;
-        
+
             especialidades = especialidadFacade.findAll();
-        
+
             request.setAttribute("especialidades", especialidades);
             
-            // Redirigir de nuevo al añadir usuarios
-            RequestDispatcher rd;
+            if(usuario != null){
+                RequestDispatcher rd;
+        
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=El usuario " + usuario.getNumColegiado() + " ya existe");
+                rd.forward(request, response);
+            }else{
+                // Crear el usuario
+                int nC = Integer.valueOf(request.getParameter("numColegiado"));
+                usuario = new Medico(nC);
+
+                int idEspecialidad = Integer.valueOf(request.getParameter("idEspecialidad"));
+                Especialidad especialidad = especialidadFacade.find(idEspecialidad);
+                usuario.setEspecialidadidEspecialidad(especialidad);
+
+                usuario.setNombre(request.getParameter("nombre"));
+                usuario.setApellidos(request.getParameter("apellidos"));
+
+                java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                Date fechaNac = null;
+                try {
+                    fechaNac = df.parse(request.getParameter("fechaNac"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                usuario.setFechaNac(fechaNac);
+
+                usuario.setDni(request.getParameter("dni"));
+                usuario.setDireccion(request.getParameter("direccion"));
+                usuario.setLocalidad(request.getParameter("localidad"));
+                usuario.setProvincia(request.getParameter("provincia"));
+                usuario.setTelefono(request.getParameter("telefono"));
+                usuario.setContrasena(request.getParameter("contrasena"));
+
+                // Añadirlo a la BD
+                medicoFacade.create(usuario);
+
+                // Redirigir de nuevo al añadir usuarios
+                RequestDispatcher rd;
+
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Usuario " + usuario.getNumColegiado()+ " creado");
+                rd.forward(request, response);
+            }
             
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Usuario " + usuario.getNombre() + " creado");
-            rd.forward(request, response);
         } else if(action.equals("edit")){
+            
             // Crear el usuario modificado
             int nC = Integer.valueOf(request.getParameter("numColegiado"));
 
@@ -177,7 +190,7 @@ public class EditMedicosServlet extends HttpServlet {
             // Redirigir de nuevo a la edicion de usuarios
             RequestDispatcher rd;
 
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoEdit.jsp?msg=Usuario " + usuario.getNombre() + " modificado");
+            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoEdit.jsp?msg=Usuario " + usuario.getNumColegiado() + " modificado");
             rd.forward(request, response);
 	
         // Eliminar
@@ -189,7 +202,7 @@ public class EditMedicosServlet extends HttpServlet {
             
             medicoFacade.remove(usuario);
                
-            rd = this.getServletContext().getRequestDispatcher("/ListaMedicosServlet?msg=Usuario " + usuario.getNombre() + " eliminado");
+            rd = this.getServletContext().getRequestDispatcher("/ListaMedicosServlet?msg=Usuario " + usuario.getNumColegiado() + " eliminado");
 
             rd.forward(request, response);
 	}

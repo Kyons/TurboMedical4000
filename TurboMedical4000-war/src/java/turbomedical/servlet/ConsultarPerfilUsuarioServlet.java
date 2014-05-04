@@ -43,12 +43,13 @@ public class ConsultarPerfilUsuarioServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Paciente paciente =(Paciente) session.getAttribute("paciente");
         
-        // Buscar citas en las proximas 24 horas
-        Cita citaProxima = citaFacade.findCitaProxima(paciente.getNumSS());
-        request.setAttribute("citaProxima", citaProxima);
+        // Buscar proximas citas
+        Cita proximaCitaPaciente = citaFacade.findProximasCitasPaciente(paciente.getNumSS());
         
-         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/PerfilUsuario.jsp");
-         dispatcher.forward(request, response);
+        request.setAttribute("proximaCitaPaciente", proximaCitaPaciente);
+        
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/PerfilUsuario.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

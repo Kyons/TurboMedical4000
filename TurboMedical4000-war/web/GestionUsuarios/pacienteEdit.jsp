@@ -4,6 +4,10 @@
     Author     : Juan
 --%>
 
+<%-- 
+    FALTA LA ASIGANACION DE PACIENTES A MEDICOS
+--%>
+
 <%@page import="turbomedical4000.entity.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,7 +40,7 @@
                 <table border="1">
                     <tr>
                         <td>N&uacute;mero Seguridad Social:</td>
-                        <td><input type="text" name="numSS" value="<%=usuario.getNumSS()%>"></td>
+                        <td><input type="text" name="numSegSoc" value="<%=usuario.getNumSS()%>" readonly></td>
                     </tr><tr>
                         <td>Nombre:</td>	
                         <td><input type="text" name="nombre" value="<%=usuario.getNombre()%>"></td>

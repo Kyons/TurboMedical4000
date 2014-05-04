@@ -12,7 +12,7 @@ import turbomedical4000.entity.Medico;
 
 /**
  *
- * @author jorge
+ * @author jorge, juan
  */
 @Local
 public interface MedicoFacadeLocal {
@@ -31,4 +31,5 @@ public interface MedicoFacadeLocal {
 
     int count();
     
+    public Medico findByNumColegiado(int numColegiado);
 }

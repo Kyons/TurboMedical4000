@@ -68,36 +68,54 @@ public class EditAdministradoresServlet extends HttpServlet {
 	
         // Añadir/Editar
         } else if(action.equals("add")){
-            // Crear el usuario
-            // Da igual el id que le demos, porque es autoincremental en la BD
-            String u = request.getParameter("usuario");
-            String c = request.getParameter("contrasena");
-            Administrador usuario = new Administrador(1, u, c);
-            // Añadirlo a la BD
-            administradorFacade.create(usuario);
+            //Comprobar si el usuario ya existe
+            Administrador usuario = administradorFacade.findByUsuario(request.getParameter("usuario"));
+            if(usuario != null){
+                RequestDispatcher rd;
         
-            // Redirigir de nuevo al añadir usuarios
-            RequestDispatcher rd;
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorAdd.jsp?msg=El usuario " + usuario.getUsuario() + " ya existe");
+                rd.forward(request, response);
+            }else{
+                // Crear el usuario
+                // Da igual el id que le demos, porque es autoincremental en la BD
+                String u = request.getParameter("usuario");
+                String c = request.getParameter("contrasena");
+                usuario = new Administrador(1, u, c);
+                // Añadirlo a la BD
+                administradorFacade.create(usuario);
         
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorAdd.jsp?msg=Usuario " + request.getParameter("usuario") + " creado");
-            rd.forward(request, response);
+                // Redirigir de nuevo al añadir usuarios
+                RequestDispatcher rd;
+        
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorAdd.jsp?msg=Usuario " + request.getParameter("usuario") + " creado");
+                rd.forward(request, response);
+            }
         } else if(action.equals("edit")){
             // Crear el usuario modificado
             int i = Integer.valueOf(request.getParameter("idAdministrador"));
             String u = request.getParameter("usuario");
             String c = request.getParameter("contrasena");
             Administrador usuario = new Administrador(i, u, c);
-            // Editarlo en la BD
-            administradorFacade.edit(usuario);
-
+            
             request.setAttribute("usuario", usuario);
             
-            // Redirigir de nuevo a la edicion de usuarios
-            RequestDispatcher rd;
-        
-            rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=Usuario " + u + " modificado");
-            rd.forward(request, response);
-	
+            //Comprobar si el usuario ya existe
+            Administrador usuarioExis = administradorFacade.findByUsuario(request.getParameter("usuario"));
+            if(usuarioExis != null){
+                RequestDispatcher rd;
+
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=El usuario " + usuarioExis.getUsuario() + " ya existe");
+                rd.forward(request, response);
+            }else{
+                // Editarlo en la BD
+                administradorFacade.edit(usuario);
+
+                // Redirigir de nuevo a la edicion de usuarios
+                RequestDispatcher rd;
+
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=Usuario " + u + " modificado");
+                rd.forward(request, response);
+            }
         // Eliminar
         }else if(action.equals("delete")){
             // Comprobar que el administrador a eliminar no es el que esta en la sesión

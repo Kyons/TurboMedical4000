@@ -64,7 +64,7 @@
                 <td><%= usuario.getProvincia() %></td>
                 <td><%= usuario.getTelefono() %></td>
                 <td><a href="EditMedicosServlet?do=editForm&numColegiado=<%= usuario.getNumColegiado() %>" >Editar</a>
-                    <a href="EditMedicosServlet?do=delete&numColegiado=<%= usuario.getNumColegiado() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNombre()%>?')">Borrar</a></td>
+                    <a href="EditMedicosServlet?do=delete&numColegiado=<%= usuario.getNumColegiado() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNumColegiado()%>?')">Borrar</a></td>
             </tr>
 
 <%            
