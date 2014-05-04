@@ -15,7 +15,7 @@
     <body>
          <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <th rowspan="5" >
+            <tr> <th> &nbsp; </th> <td rowspan="5" >
             <form name="add" accion="AdToHistorialServlet" method="post">
                 <table>
                     <tr>
@@ -47,7 +47,7 @@
            
               </form> 
 
-                </th></tr>
+                </td></tr>
            <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
     </body>
 </html>

@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Cita;
+import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
@@ -48,5 +49,10 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
      public List<Cita> findByUsuario(Paciente usuario) {
           return em.createNamedQuery("Cita.findByUsuario").setParameter("pacientenumSS", usuario).getResultList(); 
      }
+
+    @Override
+    public List<Cita> findByMedico(Medico mediconumColegiado) {
+        return em.createNamedQuery("Cita.findByMedico").setParameter("mediconumColegiado", mediconumColegiado).getResultList(); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
