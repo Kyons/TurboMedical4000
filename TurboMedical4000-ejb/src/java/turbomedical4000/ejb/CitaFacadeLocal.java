@@ -9,6 +9,7 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Local;
 import turbomedical4000.entity.Cita;
+import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
@@ -35,4 +36,6 @@ public interface CitaFacadeLocal {
     int count();
     
     public Cita findProximasCitasPaciente(int numSS);
+    
+    List<Cita> findByMedico (Medico mediconumColegiado);
 }
