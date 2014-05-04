@@ -12,10 +12,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Cita;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author jorge, juan
+ * @author jorge, juan, tomas
  */
 @Stateless
 public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal {
@@ -42,4 +43,10 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
 
         return cita;
     }
+    
+     @Override
+     public List<Cita> findByUsuario(Paciente usuario) {
+          return em.createNamedQuery("Cita.findByUsuario").setParameter("pacientenumSS", usuario).getResultList(); 
+     }
+
 }
