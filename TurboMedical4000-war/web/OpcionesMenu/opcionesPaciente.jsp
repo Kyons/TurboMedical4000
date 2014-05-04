@@ -7,7 +7,7 @@
 
 
  <tr> <td><a href="ConsultarPerfilUsuarioServlet">Perfil</a></td>  </tr>
-            <tr > <td > <a href="">Citas</a></td>  </tr>
+            <tr > <td > <a href="ConsultarCitasServlet">Citas</a></td>  </tr>
             <tr > <td ><a href="ConsultarHistorialServlet">Historial</a></td>  </tr>
 
         </table>
