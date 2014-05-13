@@ -26,8 +26,8 @@
                     </tr>
                     <tr>
                         <td><input type="text" name="usuario" value=""></td>
-                        <td><input type="text" name="fecha" value=""></td>
-                        <td> <input type="text" name="hora" value=""></td>
+                        <td><input type="date" name="fecha" value=""></td>
+                        <td> <input type="time" name="hora" value=""></td>
                         
                        
                     </tr>

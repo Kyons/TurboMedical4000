@@ -26,7 +26,7 @@
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
         
              <tr>
-                <th> &nbsp; </th> <td rowspan="5" >
+                <th> &nbsp; </th> <td rowspan="7" >
                 
                     
                     <h1>Gesti&oacute;n de Administradores</h1>

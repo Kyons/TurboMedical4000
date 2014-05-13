@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package turbomedical4000.ejb;
 
 import javax.ejb.Stateless;
@@ -11,10 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Medico;
+import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author jorge, juan
+ * @author Sihame
  */
 @Stateless
 public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacadeLocal {
@@ -29,10 +28,10 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
     public MedicoFacade() {
         super(Medico.class);
     }
-    
+
     @Override
     public Medico findByNumColegiado(int numColegiado) {
-        Medico medico = null;
+         Medico medico = null;
         try{
             medico = (Medico) em.createNamedQuery("Medico.findByNumColegiado").setParameter("numColegiado", numColegiado).getSingleResult();
         }catch(NoResultException e){
@@ -40,4 +39,8 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
         }
         return medico;
     }
-}
+
+    
+    }
+    
+

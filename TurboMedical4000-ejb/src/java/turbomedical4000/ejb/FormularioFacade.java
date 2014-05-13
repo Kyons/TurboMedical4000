@@ -7,14 +7,14 @@ package turbomedical4000.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import turbomedical4000.entity.Especialidad;
+import turbomedical4000.entity.Formulario;
 
 /**
  *
  * @author Sihame
  */
 @Stateless
-public class EspecialidadFacade extends AbstractFacade<Especialidad> implements EspecialidadFacadeLocal {
+public class FormularioFacade extends AbstractFacade<Formulario> implements FormularioFacadeLocal {
     @PersistenceContext(unitName = "TurboMedical4000-ejbPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class EspecialidadFacade extends AbstractFacade<Especialidad> implements 
         return em;
     }
 
-    public EspecialidadFacade() {
-        super(Especialidad.class);
+    public FormularioFacade() {
+        super(Formulario.class);
     }
     
 }

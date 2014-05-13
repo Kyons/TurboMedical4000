@@ -30,7 +30,7 @@
 
         <tr>
             <th> &nbsp; </th>
-            <td rowspan="5" >
+            <td rowspan="7" >
                 <h1>Editar paciente</h1>
                 
                 <form name="editForm" action="EditPacientesServlet">

@@ -1,18 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package turbomedical4000.ejb;
 
 import java.util.List;
 import javax.ejb.Local;
+import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
  *
- * @author jorge, juan
+ * @author Sihame
  */
 @Local
 public interface PacienteFacadeLocal {
@@ -30,6 +29,7 @@ public interface PacienteFacadeLocal {
     List<Paciente> findRange(int[] range);
 
     int count();
-
     public Paciente findByNumSS(int numSS);
+   
+    
 }

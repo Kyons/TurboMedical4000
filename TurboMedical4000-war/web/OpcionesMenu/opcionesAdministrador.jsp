@@ -19,6 +19,7 @@
     <tr>
         <td><a href="">Formularios</a></td>
     </tr>
+    <tr> <td><a href="ListaMedicoPaciente">Medico-Paciente</a></td></tr>
 </table>
 
-<br><a href="CerrarSessionServlet">Cerrar sesi&oacute;n</a>
+<br><a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión"></a>

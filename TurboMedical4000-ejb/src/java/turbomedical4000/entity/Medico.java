@@ -48,6 +48,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Medico.findByTelefono", query = "SELECT m FROM Medico m WHERE m.telefono = :telefono"),
     @NamedQuery(name = "Medico.findByContrasena", query = "SELECT m FROM Medico m WHERE m.contrasena = :contrasena")})
 public class Medico implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
+    private Collection<PacienteHasMedico> pacienteHasMedicoCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -237,5 +239,16 @@ public class Medico implements Serializable {
     public String toString() {
         return "turbomedical4000.entity.Medico[ numColegiado=" + numColegiado + " ]";
     }
+
+    @XmlTransient
+    public Collection<PacienteHasMedico> getPacienteHasMedicoCollection() {
+        return pacienteHasMedicoCollection;
+    }
+
+    public void setPacienteHasMedicoCollection(Collection<PacienteHasMedico> pacienteHasMedicoCollection) {
+        this.pacienteHasMedicoCollection = pacienteHasMedicoCollection;
+    }
+    
+    
     
 }
