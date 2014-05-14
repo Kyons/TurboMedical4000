@@ -17,7 +17,7 @@
         <td><a href="ListaAdministradoresServlet">Administradores</a></td>
     </tr>
     <tr>
-        <td><a href="">Formularios</a></td>
+        <td><a href="GeneradorInformesServlet">Formularios</a></td>
     </tr>
     <tr> <td><a href="ListaMedicoPaciente">Medico-Paciente</a></td></tr>
 </table>

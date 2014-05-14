@@ -4,6 +4,7 @@
  */
 package turbomedical4000.ejb;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 import turbomedical4000.entity.Formulario;
@@ -28,5 +29,7 @@ public interface FormularioFacadeLocal {
     List<Formulario> findRange(int[] range);
 
     int count();
+    
+    public List<Formulario> findByDateAndIdTipo(Date fecha1, Date fecha2, int idTipoFormulario);
     
 }

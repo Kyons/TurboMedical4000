@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Formulario.findByIdFormulario", query = "SELECT f FROM Formulario f WHERE f.idFormulario = :idFormulario"),
     @NamedQuery(name = "Formulario.findByEntrada", query = "SELECT f FROM Formulario f WHERE f.entrada = :entrada"),
     @NamedQuery(name = "Formulario.findByFecha", query = "SELECT f FROM Formulario f WHERE f.fecha = :fecha"),
+    @NamedQuery(name = "Formulario.findByDateAndIdTipo", query = "SELECT f FROM Formulario f WHERE f.fecha >= :fecha1 AND f.fecha <= :fecha2 AND f.tipoFormularioidTipoFormulario.idTipoFormulario = :idTipoFormulario"),
     @NamedQuery(name = "Formulario.findByHora", query = "SELECT f FROM Formulario f WHERE f.hora = :hora")})
 public class Formulario implements Serializable {
     private static final long serialVersionUID = 1L;
