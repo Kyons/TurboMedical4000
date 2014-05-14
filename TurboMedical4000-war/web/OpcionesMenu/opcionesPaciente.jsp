@@ -8,7 +8,9 @@
 
  <tr> <td><a href="ConsultarPerfilUsuarioServlet">Perfil</a></td>  </tr>
             <tr > <td > <a href="ConsultarCitasServlet">Citas</a></td>  </tr>
-            <tr > <td ><a href="ConsultarHistorialServlet">Historial</a></td>  </tr>
+            <tr > <td ><a href="ConsultarHistorialServlet">Historial</a></td>
+            <tr > <td ><a href="NuevoFormularioServlet">Enviar formulario</a><br>
+                        (Quejas, reclamaciones, ...)</td></tr>
 
         </table>
             

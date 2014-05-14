@@ -5,7 +5,7 @@
 --%>
 
 <%-- 
-    FALTA LA ASIGANACION DE PACIENTES A MEDICOS
+    FALTA LA ASIGANACION DE PACIENTES A MEDICOS -- Se hace desde el menu de administrador
 --%>
 
 <%@page import="turbomedical4000.entity.Especialidad"%>
