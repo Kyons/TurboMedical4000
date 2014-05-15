@@ -9,7 +9,6 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Cita;
 import turbomedical4000.entity.Medico;

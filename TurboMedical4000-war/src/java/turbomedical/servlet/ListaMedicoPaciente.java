@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import turbomedical4000.ejb.PacienteFacadeLocal;
+
 import turbomedical4000.ejb.PacienteHasMedicoFacadeLocal;
 import turbomedical4000.entity.PacienteHasMedico;
 
@@ -40,7 +40,7 @@ public class ListaMedicoPaciente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<PacienteHasMedico> lista = (List<PacienteHasMedico>)pacienteHasMedicoFacade.findAll();
+        List<PacienteHasMedico> lista = pacienteHasMedicoFacade.findAll();
         request.setAttribute("lista", lista);
         RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/MedicoPacienteList.jsp");
         rd.forward(request, response);

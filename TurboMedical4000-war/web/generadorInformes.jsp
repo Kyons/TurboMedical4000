@@ -33,6 +33,7 @@
                     <h1>Generar informe de formularios</h1>
                     
                     <form name="generadorInformes" action="GenerarInformeServlet" method="post">
+                <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                 <table border="1">
                     <tr>
                         <td>Tipos de formulario a incluir en el informe:</td>

@@ -88,12 +88,12 @@ public class AddToHistorialServlet extends HttpServlet {
         
          Paciente paciente = pacienteFacade.find(usuario);
          
-        String date= request.getParameter("fecha");
+        
+        String  date =  request.getParameter("fecha");
         String entrada= request.getParameter("entrada");
          String time = request.getParameter("hora"); 
         
-         //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-         //SimpleDateFormat formatter2 = new SimpleDateFormat("HH:MM:SS");
+         
          SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
          SimpleDateFormat formatter2 = new SimpleDateFormat("HH:MM");
            try{
@@ -111,7 +111,7 @@ public class AddToHistorialServlet extends HttpServlet {
            }
            
         
-       // processRequest(request, response);
+      
         response.sendRedirect(request.getContextPath() + "/menuMedico.jsp");
     }
 
