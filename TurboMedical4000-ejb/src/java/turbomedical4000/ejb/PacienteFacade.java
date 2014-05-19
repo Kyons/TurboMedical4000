@@ -51,15 +51,15 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         String dni = dniP == null ? "" : dniP;
         String nombre = nombreP == null ? "" : nombreP;
         String apellidos = apellidosP == null ? "" : apellidosP;
-//        java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy/MM/dd");
-//        Date fechaNac = null;
-//        try {
-//                fechaNac = (Date) (fechaNacP == null ? "" : df.parse(fechaNacP));
-//        } catch (ParseException e) {
-//                fechaNac = null;
-//        }     
-//        System.out.println(fechaNac);
-        String fechaNac = fechaNacP == null ? "" : fechaNacP;
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        Date fechaNac = null;
+        try {
+                fechaNac = df.parse(fechaNacP);
+        } catch (ParseException e) {
+                fechaNac = null;
+        }     
+
+        //String fechaNac = fechaNacP == null ? "" : fechaNacP;
         String direccion = direccionP == null ? "" : direccionP;
         String localidad = localidadP == null ? "" : localidadP;
         String provincia = provinciaP == null ? "" : provinciaP;
@@ -69,16 +69,22 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         String likeDNI = (dni.equals("")) ? "" : " (p.dni LIKE '%" + dni + "%') AND ";
         String likeNombre = (nombre.equals("")) ? "" : " (p.nombre LIKE '%" + nombre + "%') AND ";
         String likeApellidos = (apellidos.equals("")) ? "" : " (p.apellidos LIKE '%" + apellidos + "%') AND ";
-        String likeFechaNac= (fechaNac.equals("")) ? "" : " (p.fechaNac LIKE '" + fechaNac + "') AND ";
+        String likeFechaNac= (fechaNac == null) ? "" : " (p.fechaNac = :fechaNac) AND ";
         String likeDireccion = (direccion.equals("")) ? "" : " (p.direccion LIKE '%" + direccion + "%') AND ";
         String likeLocalidad = (localidad.equals("")) ? "" : " (p.localidad LIKE '%" + localidad + "%') AND ";
         String likeProvincia = (provincia.equals("")) ? "" : " (p.provincia LIKE '%" + provincia + "%') AND ";
         String likeTelefono = (telefono.equals("")) ? "" : " (p.telefono LIKE '%" + telefono + "%') AND ";
         
-        return (List<Paciente>) em.createQuery("SELECT p FROM Paciente p "
-                + "where " + likeNumSS + likeDNI + likeNombre + likeApellidos + likeFechaNac +
-                likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").getResultList();
-
+        if(fechaNac!=null){
+                
+            return (List<Paciente>) em.createQuery("SELECT p FROM Paciente p " 
+                    + "where " + likeNumSS + likeDNI + likeNombre + likeApellidos + likeFechaNac + 
+                    likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").setParameter("fechaNac", fechaNac).getResultList();    
+        }else{
+              return (List<Paciente>) em.createQuery("SELECT p FROM Paciente p " 
+                    + "where " + likeNumSS + likeDNI + likeNombre + likeApellidos + likeFechaNac + 
+                    likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").getResultList();             
+        }
     }
 
     

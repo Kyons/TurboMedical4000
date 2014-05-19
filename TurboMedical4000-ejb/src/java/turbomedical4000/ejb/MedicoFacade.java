@@ -4,6 +4,8 @@
  */
 package turbomedical4000.ejb;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -49,15 +51,13 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
         String especialidad = especialidadP == null ? "" : especialidadP;
         String nombre = nombreP == null ? "" : nombreP;
         String apellidos = apellidosP == null ? "" : apellidosP;
-//        java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy/MM/dd");
-//        Date fechaNac = null;
-//        try {
-//                fechaNac = (Date) (fechaNacP == null ? "" : df.parse(fechaNacP));
-//        } catch (ParseException e) {
-//                fechaNac = null;
-//        }     
-//        System.out.println(fechaNac);
-        String fechaNac = fechaNacP == null ? "" : fechaNacP;
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        Date fechaNac;
+        try {
+                fechaNac = df.parse(fechaNacP);
+        } catch (ParseException e) {
+                fechaNac = null;
+        }     
         String dni = dniP == null ? "" : dniP;
         String direccion = direccionP == null ? "" : direccionP;
         String localidad = localidadP == null ? "" : localidadP;
@@ -68,17 +68,22 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
         String likeEspecialidad = (especialidad.equals("")) ? "" : " (m.especialidadidEspecialidad.descripcion LIKE '%" + especialidad + "%') AND ";
         String likeNombre = (nombre.equals("")) ? "" : " (m.nombre LIKE '%" + nombre + "%') AND ";
         String likeApellidos = (apellidos.equals("")) ? "" : " (m.apellidos LIKE '%" + apellidos + "%') AND ";
-        String likeFechaNac= (fechaNac.equals("")) ? "" : " (m.fechaNac LIKE '" + fechaNac + "') AND ";
+        String likeFechaNac= (fechaNac == null) ? "" : " (m.fechaNac = :fechaNac) AND ";
         String likeDNI = (dni.equals("")) ? "" : " (m.dni LIKE '%" + dni + "%') AND ";
         String likeDireccion = (direccion.equals("")) ? "" : " (m.direccion LIKE '%" + direccion + "%') AND ";
         String likeLocalidad = (localidad.equals("")) ? "" : " (m.localidad LIKE '%" + localidad + "%') AND ";
         String likeProvincia = (provincia.equals("")) ? "" : " (m.provincia LIKE '%" + provincia + "%') AND ";
         String likeTelefono = (telefono.equals("")) ? "" : " (m.telefono LIKE '%" + telefono + "%') AND ";
         
-        return (List<Medico>) em.createQuery("SELECT m FROM Medico m "
-                + "where " + likeNumCol + likeEspecialidad + likeNombre + likeApellidos + likeFechaNac + likeDNI +
-                likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").getResultList();
-
+        if(fechaNac != null){
+            return (List<Medico>) em.createQuery("SELECT m FROM Medico m "
+                    + "where " + likeNumCol + likeEspecialidad + likeNombre + likeApellidos + likeFechaNac + likeDNI +
+                    likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").setParameter("fechaNac", fechaNac).getResultList();
+        }else{
+            return (List<Medico>) em.createQuery("SELECT m FROM Medico m "
+                    + "where " + likeNumCol + likeEspecialidad + likeNombre + likeApellidos + likeFechaNac + likeDNI +
+                    likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").getResultList();
+        }
     }
 
     
