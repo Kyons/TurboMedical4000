@@ -18,12 +18,8 @@
 <%
     Map<Tipoformulario,List<Formulario>> formularios = (Map<Tipoformulario,List<Formulario>>)request.getAttribute("formularios");
     
-    /*
-     * Las fechas se reciben como nulos y no se porque. Esto provoca que al
-     * usarlas se lance una excepcion
-     */
-    //Date fecha1 = (Date)request.getAttribute("fecha1");
-    //Date fecha2 = (Date)request.getAttribute("fecha2");
+    Date fecha1 = (Date)request.getAttribute("fecha1");
+    Date fecha2 = (Date)request.getAttribute("fecha2");
 
     java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
     java.text.DateFormat df2 = new java.text.SimpleDateFormat("HH:MM");
@@ -32,21 +28,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <%-- 
         <title>Informe de formularios enviados entre el d&iacute;a <%= df.format(fecha1) %> y el <%= df.format(fecha2) %></title>
-        --%>
-        <title>Informe de formularios</title>
-        
     </head>
     <body>
         <a href="GeneradorInformesServlet">&#8592; Volver</a>
         
-        <%--
         <a name="inicio"><h1>Informe de formularios entre el <%= df.format(fecha1) %> y el <%= df.format(fecha2) %></h1></a>
-        --%>
-        <a name="inicio"><h1>Informe de formularios</h1></a>
-        
+
         <b>Tipos de formularios incluidos en este informe: 
 <%
     if((Boolean)request.getAttribute("ninguno")){
@@ -78,7 +66,7 @@
 %>
                 <b>Identificador de formulario:</b> <%= formul.getIdFormulario() %><br>
                 <b>Formulario enviado por el paciente con num. SS</b> <%= formul.getPacientenumSS().getNumSS() %><b>.</b>
-                <b>El d&iacute;a</b> <%= df.format(formul.getHora()) %> <b>a las</b> <%= df2.format(formul.getHora()) %>
+                <b>El d&iacute;a</b> <%= df.format(formul.getFecha() ) %> <b>a las</b> <%= df2.format(formul.getHora()) %>
                 <br>
                 <b>Contenido:</b>
                 <p><%= formul.getEntrada() %></p>

@@ -12,10 +12,12 @@
         <title>A&ntilde;adir al Historial</title>
 
     </head>
+    
     <body>
          <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
             <tr> <th> &nbsp; </th> <td rowspan="5" >
+                     <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
             <form name="add" accion="AdToHistorialServlet" method="post">
                 <table>
                     <tr>
@@ -26,8 +28,8 @@
                     </tr>
                     <tr>
                         <td><input type="text" name="usuario" value=""></td>
-                        <td><input type="date" name="fecha" value=""></td>
-                        <td> <input type="time" name="hora" value=""></td>
+                        <td><input type="text" name="fecha" value="dd/mm/yyyy"></td>
+                        <td> <input type="text" name="hora" value="HH:MM"></td>
                         
                        
                     </tr>
@@ -44,6 +46,7 @@
                     </tr>
            
                 </table>
+                
            
               </form> 
 

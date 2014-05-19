@@ -5,7 +5,6 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
@@ -50,6 +49,21 @@ public class GenerarInformeServlet extends HttpServlet {
         // Obtener los tipos de formulario a incluir
         String[] idTiposFormulario = request.getParameterValues("idTiposFormulario");
         
+        // Obtener fecha 1 y fecha 2
+        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        Date fecha1 = null;
+        try {
+            fecha1 = df.parse(request.getParameter("fecha1"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date fecha2 = null;
+        try {
+            fecha2 = df.parse(request.getParameter("fecha2"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
         /*
          * Al tener el campo hidden con valor -1 en el formulario, siempre tendremos
          * al menos un valor aunque no se seleccione ningun tipo, lo que facilita el
@@ -59,22 +73,7 @@ public class GenerarInformeServlet extends HttpServlet {
             request.setAttribute("ninguno", true);
         }else{ // Si se ha seleccionado algun tipo
             request.setAttribute("ninguno", false);
-            
-            // Obtener fecha 1 y fecha 2
-            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-            Date fecha1 = null;
-            try {
-                fecha1 = df.parse(request.getParameter("fecha1"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            Date fecha2 = null;
-            try {
-                fecha1 = df.parse(request.getParameter("fecha2"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            
+
             // Se crea un mapa para almacenar las listas de formularios
             Map<Tipoformulario,List<Formulario>> formularios = new HashMap<Tipoformulario,List<Formulario>>();
             
@@ -84,17 +83,16 @@ public class GenerarInformeServlet extends HttpServlet {
                     // Obtener el tipo de formulario
                     Tipoformulario tipo = tipoformularioFacade.find(numId);
                 
-                    // Esta linea hay que cambiarla por una que busque por fecha y tipo
-                    //List<Formulario> listaFormul = formularioFacade.findByDateAndIdTipo(fecha1,fecha2,numId);
-                    List<Formulario> listaFormul = formularioFacade.findAll();
+                    List<Formulario> listaFormul = formularioFacade.findByDateAndIdTipo(fecha1,fecha2,numId);
                     formularios.put(tipo, listaFormul);
                 }
             }
             
-            request.setAttribute("fecha", fecha1);
-            request.setAttribute("fecha2", fecha2);
             request.setAttribute("formularios",formularios);
         }
+        
+        request.setAttribute("fecha1", fecha1);
+        request.setAttribute("fecha2", fecha2);
         
         // Redirigir a la página que muestra el informe
         RequestDispatcher rd;
