@@ -38,4 +38,8 @@ public interface CitaFacadeLocal {
     public Cita findProximasCitasPaciente(int numSS);
     
     List<Cita> findByMedico (Medico mediconumColegiado);
+    
+    List<Cita> filtrarCitasPaciente (String fechaP, String horaP, String lugarP, String medicoP, Paciente paciente);
+    
+    List<Cita> filtrarCitasMedico (String fechaP, String horaP, String lugarP, String pacienteP, Medico medico);
 }

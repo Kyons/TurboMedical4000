@@ -24,6 +24,19 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="4" >
                     <h2>Historial Personal</h2>
+                    <form name="filtrarHistorial" action="BusquedaHistorialPacienteServlet" method="post">
+                        <table>
+                            <tr>
+                                <td align="right">Fecha<input type="text" maxlength="20" size="20" name="fecha"/></td>
+                                <td align="right">Hora<input type="text" maxlength="20" size="20" name="hora"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Entrada<input type="text" maxlength="40" size="20" name="entrada"/></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <input type="Submit" value="Buscar">
+                    </form>
                <table border="1">
                    <tr>
                        <th>Fecha</th>

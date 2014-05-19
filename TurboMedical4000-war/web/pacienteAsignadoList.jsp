@@ -31,6 +31,26 @@
                 <th> &nbsp; </th> <td rowspan="5" >
 
                     <h1>Pacientes asignados a <%= medico.getNombre() %> <%= medico.getApellidos() %></h1>
+                    <form name="filtrarPacientesAsignados" action="BusquedaPacienteAsignadoServlet" method="post">
+                        <table>
+                            <tr>
+                                <td align="right">N&uacute;meroSS<input type="text" maxlength="20" size="20" name="numSS"/></td>
+                                <td align="right">DNI<input type="text" maxlength="20" size="20" name="dni"/></td>
+                                <td align="right">Nombre<input type="text" maxlength="20" size="20" name="nombre"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Apellidos<input type="text" maxlength="20" size="20" name="apellidos"/></td>
+                                <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac"/></td>
+                                <td align="right">Direcci&oacute;n<input type="text" maxlength="20" size="20" name="direcc"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Localidad<input type="text" maxlength="20" size="20" name="localidad"/></td>
+                                <td align="right">Provincia<input type="text" maxlength="20" size="20" name="provincia"/></td>
+                                <td align="right">Tel&eacute;fono<input type="text" maxlength="20" size="20" name="telefono"/></td>
+                            </tr>
+                        </table>
+                        <input type="Submit" value="Buscar" align="right">                       
+                    </form>
         <table border="1">
             <tr>
                 <th>N&uacute;mero SS</th>                

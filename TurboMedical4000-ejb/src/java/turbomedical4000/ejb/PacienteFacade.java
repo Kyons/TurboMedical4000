@@ -87,9 +87,4 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         }
     }
 
-    
-    
-
-  
-    
 }

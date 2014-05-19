@@ -24,6 +24,19 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="4" >
                     <h2>Lista de Citas</h2>
+                    <form name="filtrarCitas" action="BusquedaCitasPacienteServlet" method="post">
+                        <table>
+                            <tr>
+                                <td align="right">Fecha<input type="text" maxlength="20" size="20" name="fecha"/></td>
+                                <td align="right">Hora<input type="text" maxlength="20" size="20" name="hora"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Lugar<input type="text" maxlength="20" size="20" name="lugar"/></td>
+                                <td align="right">M&eacute;dico<input type="text" maxlength="20" size="20" name="medico"/></td>
+                            </tr>
+                        </table>
+                        <input type="Submit" value="Buscar">
+                    </form>
                     <a href="SolicitarCita.jsp">Solicitar cita</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                <table border="1">
@@ -43,7 +56,7 @@
                       <td> <%= dfFecha.format(ct.getFecha()) %> </td>
                       <td> <%= dfHora.format(ct.getHora()) %> </td>
                       <td> <%= ct.getLugar() %> </td>
-                      <td> <%= ct.getMediconumColegiado().getNumColegiado() %> </td>
+                      <td> <%= ct.getMediconumColegiado().getNombre() %> <%= ct.getMediconumColegiado().getApellidos() %> </td>
                   </tr>
   <%
                 }  

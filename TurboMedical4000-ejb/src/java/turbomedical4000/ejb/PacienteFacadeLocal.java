@@ -35,6 +35,6 @@ public interface PacienteFacadeLocal {
     List<Paciente> filtrarPacientes(String numSSP, String dniP, String nombreP,
             String apellidosP, String fechaNacP, String direccionP,
                     String localidadP, String provinciaP, String telefonoP);
-   
+    
     
 }

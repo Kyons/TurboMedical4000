@@ -33,4 +33,6 @@ public interface LineahistorialFacadeLocal {
 
     int count();
     
+    List<Lineahistorial> filtrarHistorialPaciente (String fechaP, String horaP, String entradaP, Paciente paciente);
+    
 }
