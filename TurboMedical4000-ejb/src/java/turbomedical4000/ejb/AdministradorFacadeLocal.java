@@ -26,6 +26,8 @@ public interface AdministradorFacadeLocal {
     Administrador find(Object id);
     
     Administrador findByUsuario(String nombre);
+    
+    List<Administrador> filtrarAdministrador(String nombreP);
 
     List<Administrador> findAll();
 

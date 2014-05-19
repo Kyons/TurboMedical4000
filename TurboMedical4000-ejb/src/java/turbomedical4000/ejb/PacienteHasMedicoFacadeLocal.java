@@ -28,6 +28,8 @@ public interface PacienteHasMedicoFacadeLocal {
     List<PacienteHasMedico> findRange(int[] range);
 
     int count();
+    
+    List<PacienteHasMedico> filtrarPacMed(String pacienteP, String numSSP, String medicoP, String numColP);
    
     
 }

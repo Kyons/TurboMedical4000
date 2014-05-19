@@ -30,6 +30,10 @@
                 
                     
                     <h1>Gesti&oacute;n de Administradores</h1>
+                    <form name="filtarAdmin" action="BusquedaAdministradorServlet" method="post">
+                        Usuario<input type="text" maxlength="20" size="20" name="usuario"/>
+                        <input type="Submit" value="Buscar" align="right">
+                    </form>
                     <a href="EditAdministradoresServlet?do=addForm">A&ntilde;adir nuevo administrador</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
         <table border="1">

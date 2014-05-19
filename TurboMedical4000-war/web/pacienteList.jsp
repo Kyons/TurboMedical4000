@@ -32,6 +32,26 @@
                 
                     
                     <h1>Gesti&oacute;n de Pacientes</h1>
+                    <form name="filtrarPacientes" action="BusquedaPacienteServlet" method="post">
+                        <table>
+                            <tr>
+                                <td align="right">N&uacute;meroSS<input type="text" maxlength="20" size="20" name="numSS"/></td>
+                                <td align="right">DNI<input type="text" maxlength="20" size="20" name="dni"/></td>
+                                <td align="right">Nombre<input type="text" maxlength="20" size="20" name="nombre"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Apellidos<input type="text" maxlength="20" size="20" name="apellidos"/></td>
+                                <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac"/></td>
+                                <td align="right">Direcci&oacute;n<input type="text" maxlength="20" size="20" name="direcc"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Localidad<input type="text" maxlength="20" size="20" name="localidad"/></td>
+                                <td align="right">Provincia<input type="text" maxlength="20" size="20" name="provincia"/></td>
+                                <td align="right">Tel&eacute;fono<input type="text" maxlength="20" size="20" name="telefono"/></td>
+                            </tr>
+                        </table>
+                        <input type="Submit" value="Buscar" align="right">                       
+                    </form>
                     <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
         <table border="1">
