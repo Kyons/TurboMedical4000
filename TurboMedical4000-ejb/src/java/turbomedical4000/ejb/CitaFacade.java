@@ -65,10 +65,10 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
         } catch (ParseException e) {
                 fecha = null;
         } 
-        df = new java.text.SimpleDateFormat("hh:mm:ss");
+        df = new java.text.SimpleDateFormat("hh:mm");
         Date hora;
         try {
-                hora = df.parse(fechaP);
+                hora = df.parse(horaP);
         } catch (ParseException e) {
                 hora = null;
         } 
@@ -111,10 +111,10 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
         } catch (ParseException e) {
                 fecha = null;
         } 
-        df = new java.text.SimpleDateFormat("hh:mm:ss");
+        df = new java.text.SimpleDateFormat("hh:mm");
         Date hora;
         try {
-                hora = df.parse(fechaP);
+                hora = df.parse(horaP);
         } catch (ParseException e) {
                 hora = null;
         } 

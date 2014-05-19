@@ -7,7 +7,6 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.PacienteFacadeLocal;
+import turbomedical4000.ejb.PacienteHasMedicoFacadeLocal;
 import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
@@ -28,7 +27,7 @@ import turbomedical4000.entity.Paciente;
 @WebServlet(name = "BusquedaPacienteAsignadoServlet", urlPatterns = {"/BusquedaPacienteAsignadoServlet"})
 public class BusquedaPacienteAsignadoServlet extends HttpServlet {
     @EJB
-    private PacienteFacadeLocal pacienteFacade;
+    private PacienteHasMedicoFacadeLocal pacienteHasMedicoFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,12 +41,12 @@ public class BusquedaPacienteAsignadoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        List<Paciente> pacientes = null;
+        List<Paciente> pacientes;
             
-//        pacientes = pacienteFacade.filtrarPacientesAsignados(request.getParameter("numSS"), 
-//                request.getParameter("dni"), request.getParameter("nombre"), request.getParameter("apellidos"), 
-//                request.getParameter("fechaNac"), request.getParameter("direcc"), request.getParameter("localidad"), 
-//                request.getParameter("provincia"), request.getParameter("telefono"), (Medico) session.getAttribute("medico"));
+        pacientes = pacienteHasMedicoFacade.filtrarPacientesDelMedico(request.getParameter("numSS"), 
+                request.getParameter("dni"), request.getParameter("nombre"), request.getParameter("apellidos"), 
+                request.getParameter("fechaNac"), request.getParameter("direcc"), request.getParameter("localidad"), 
+                request.getParameter("provincia"), request.getParameter("telefono"), (Medico) session.getAttribute("medico"));
 
         request.setAttribute("lista", pacientes);
 

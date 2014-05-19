@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
@@ -52,14 +51,13 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         String nombre = nombreP == null ? "" : nombreP;
         String apellidos = apellidosP == null ? "" : apellidosP;
         java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        Date fechaNac = null;
+        Date fechaNac;
         try {
                 fechaNac = df.parse(fechaNacP);
         } catch (ParseException e) {
                 fechaNac = null;
         }     
 
-        //String fechaNac = fechaNacP == null ? "" : fechaNacP;
         String direccion = direccionP == null ? "" : direccionP;
         String localidad = localidadP == null ? "" : localidadP;
         String provincia = provinciaP == null ? "" : provinciaP;

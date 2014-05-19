@@ -6,9 +6,7 @@ package turbomedical.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.MedicoFacade;
 import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
@@ -42,7 +39,7 @@ public class ListaPacientesAsignadosServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Medico medico = (Medico) session.getAttribute("medico");
 
-        List<Paciente> lista = new ArrayList<Paciente>();
+        List<Paciente> lista = new ArrayList<>();
         lista.addAll(medico.getPacienteCollection());
         
         request.setAttribute("lista", lista);

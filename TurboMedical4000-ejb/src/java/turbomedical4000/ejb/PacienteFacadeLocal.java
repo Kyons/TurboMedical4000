@@ -6,7 +6,6 @@ package turbomedical4000.ejb;
 
 import java.util.List;
 import javax.ejb.Local;
-import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
