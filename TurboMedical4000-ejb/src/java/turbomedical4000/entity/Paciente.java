@@ -9,6 +9,7 @@ package turbomedical4000.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,6 +48,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paciente.findByTelefono", query = "SELECT p FROM Paciente p WHERE p.telefono = :telefono"),
     @NamedQuery(name = "Paciente.findByContrasena", query = "SELECT p FROM Paciente p WHERE p.contrasena = :contrasena")})
 public class Paciente implements Serializable {
+    @ManyToMany(mappedBy = "pacienteList")
+    private List<Medico> medicoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
     private Collection<PacienteHasMedico> pacienteHasMedicoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacientenumSS")
@@ -251,6 +254,15 @@ public class Paciente implements Serializable {
 
     public void setPacienteHasMedicoCollection(Collection<PacienteHasMedico> pacienteHasMedicoCollection) {
         this.pacienteHasMedicoCollection = pacienteHasMedicoCollection;
+    }
+
+    @XmlTransient
+    public List<Medico> getMedicoList() {
+        return medicoList;
+    }
+
+    public void setMedicoList(List<Medico> medicoList) {
+        this.medicoList = medicoList;
     }
     
 }

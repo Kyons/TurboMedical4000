@@ -1,11 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package turbomedical.servlet;
+
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,21 +14,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import turbomedical4000.ejb.AdministradorFacadeLocal;
-import turbomedical4000.entity.Administrador;
+import turbomedical4000.ejb.AlertasFacadeLocal;
+import turbomedical4000.entity.Alertas;
+import turbomedical4000.entity.Paciente;
 
 /**
- *
- * @author jorge
+ * @me devuelve la lista de alertas que tenga un paciente. 
+ * @author Tomás
  */
-@WebServlet(name = "LoginAdministradorServlet", urlPatterns = {"/LoginAdministradorServlet"})
-public class LoginAdministradorServlet extends HttpServlet {
-    @EJB
-    private AdministradorFacadeLocal administradorFacade;
+@WebServlet(name = "ConsultarAlertasServlet", urlPatterns = {"/ConsultarAlertasServlet"})
+public class ConsultarAlertasServlet extends HttpServlet {
 
+    @EJB
+    private AlertasFacadeLocal alertaFacade;
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -39,28 +41,19 @@ public class LoginAdministradorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        session.removeAttribute("administrador");
-        if(session.getAttribute("administrador")!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
-            dispatcher.forward(request, response);
-	}else{
-            Administrador administrador = administradorFacade.findByUsuario(request.getParameter("usuario"));
-            if(administrador!= null && administrador.getContrasena().equals(request.getParameter("contrasena"))){
-                session.setAttribute("administrador", administrador);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("menuAdministrador.jsp");
-                //request.setAttribute("administrador",  administrador);
-                //RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/menuAdministrador.jsp");
-                dispatcher.forward(request, response);
-            }else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher("loginAdministrador.jsp?msg=Usuario y/o contraseña incorrectos");
-                dispatcher.forward(request, response);
-            }
-        }
+        Paciente paciente = (Paciente) session.getAttribute("paciente");
+        List<Alertas> alerta;
+        alerta= (List<Alertas>) alertaFacade.find(paciente);
+       
+        request.setAttribute("alerta", alerta);
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/ConsultarAlertas.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -74,7 +67,8 @@ public class LoginAdministradorServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -96,5 +90,4 @@ public class LoginAdministradorServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

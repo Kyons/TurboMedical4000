@@ -5,7 +5,6 @@
 package turbomedical.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import turbomedical4000.ejb.CitaFacadeLocal;
-import turbomedical4000.ejb.PacienteFacadeLocal;
 import turbomedical4000.entity.Cita;
 import turbomedical4000.entity.Paciente;
 

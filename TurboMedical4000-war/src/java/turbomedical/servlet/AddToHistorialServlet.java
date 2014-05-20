@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 
 import javax.servlet.RequestDispatcher;
