@@ -35,5 +35,6 @@ public interface PacienteFacadeLocal {
             String apellidosP, String fechaNacP, String direccionP,
                     String localidadP, String provinciaP, String telefonoP);
     
+    public Paciente findByDni(String dni);
     
 }

@@ -35,5 +35,6 @@ public interface MedicoFacadeLocal {
                     String direccionP, String localidadP, String provinciaP, 
                             String telefonoP);
    
-    
+    public Medico findByDni(String dni);
+        
 }

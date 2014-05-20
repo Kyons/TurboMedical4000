@@ -89,7 +89,12 @@ public class EditMedicosServlet extends HttpServlet {
         } else if(action.equals("add")){
             
             //Comprobar si el usuario ya existe
+            // Buscar por num colegiado
             Medico usuario = medicoFacade.findByNumColegiado(Integer.valueOf(request.getParameter("numColegiado")));
+            if(usuario == null){
+                // Si no se encuentra por num colegiado, buscar por DNI
+                usuario = medicoFacade.findByDni(request.getParameter("dni"));
+            }
             
             // Obtener la lista de especialidades
             List<Especialidad> especialidades;

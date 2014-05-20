@@ -86,6 +86,16 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
         }
     }
 
+    @Override
+    public Medico findByDni(String dni) {
+        Medico medico = null;
+        try{
+            medico = (Medico) em.createNamedQuery("Medico.findByDni").setParameter("dni", dni).getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("No se encontró ningún resultado");
+        }
+        return medico;
+    }
     
     }
     

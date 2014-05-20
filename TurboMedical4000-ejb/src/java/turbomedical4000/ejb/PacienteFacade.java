@@ -84,5 +84,16 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
                     likeDireccion + likeLocalidad + likeProvincia + likeTelefono+ " TRUE = TRUE").getResultList();             
         }
     }
+    
+    @Override
+    public Paciente findByDni(String dni) {
+        Paciente paciente = null;
+        try{
+            paciente = (Paciente) em.createNamedQuery("Paciente.findByDni").setParameter("dni", dni).getSingleResult();
+        }catch(NoResultException e){
+            System.out.println("No se encontró ningún resultado");
+        }
+        return paciente;
+    }
 
 }

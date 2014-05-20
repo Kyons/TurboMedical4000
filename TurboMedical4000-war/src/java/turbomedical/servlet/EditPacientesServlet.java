@@ -70,7 +70,13 @@ public class EditPacientesServlet extends HttpServlet {
         } else if(action.equals("add")){
             
             //Comprobar si el usuario ya existe
+            // Buscar por num SS
             Paciente usuario = pacienteFacade.findByNumSS(Integer.valueOf(request.getParameter("numSS")));
+            if(usuario == null){
+                // Si no se encuentra por num SS, buscar por DNI
+                usuario = pacienteFacade.findByDni(request.getParameter("dni"));
+            }
+            
             if(usuario != null){
                 RequestDispatcher rd;
         
