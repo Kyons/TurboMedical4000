@@ -33,7 +33,7 @@
             <td rowspan="7" >
                 <h1>Editar paciente</h1>
                 
-                <form name="editForm" action="EditPacientesServlet">
+                <form name="editForm" action="EditPacientesServlet" method="post">
                 <input type="hidden" name="do" value="edit">
                 <input type="hidden" name="numSS" value="<%=usuario.getNumSS()%>">
                 <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>

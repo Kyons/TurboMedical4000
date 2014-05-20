@@ -28,8 +28,8 @@
                     </tr>
                     <tr>
                         <td><input type="text" name="usuario" value=""></td>
-                        <td><input type="text" name="fecha" value="dd/mm/yyyy"></td>
-                        <td> <input type="text" name="hora" value="HH:MM"></td>
+                        <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
+                        <td> <input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''" ></td>
                         
                        
                     </tr>

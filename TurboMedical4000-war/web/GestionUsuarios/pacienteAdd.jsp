@@ -27,7 +27,7 @@
             <td rowspan="7" >
                 <h1>A&ntilde;adir nuevo paciente</h1>
                 
-                <form name="addForm" action="EditPacientesServlet">
+                <form name="addForm" action="EditPacientesServlet" method="post">
                 <input type="hidden" name="do" value="add">
                 <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                 <table border="1">
@@ -42,7 +42,7 @@
                         <td><input type="text" name="apellidos" value=""></td>
                     </tr><tr>
                         <td>Fecha nacimient:</td>	
-                        <td><input type="text" name="fechaNac" value=""></td>
+                        <td><input type="text" name="fechaNac" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
                     </tr><tr>
                         <td>DNI:</td>	
                         <td><input type="text" name="dni" value=""></td>
