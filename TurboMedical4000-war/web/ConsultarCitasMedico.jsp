@@ -21,7 +21,19 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="5" >
                     <h1>Citas actualmente registradas</h1>
-           
+                    <form name="filtrarCitas" action="BusquedaCitasMedicoServlet" method="post">
+                        <table>
+                            <tr>
+                                <td align="right">Fecha<input type="text" maxlength="20" size="20" name="fecha"/></td>
+                                <td align="right">Hora<input type="text" maxlength="20" size="20" name="hora"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Lugar<input type="text" maxlength="20" size="20" name="lugar"/></td>
+                                <td align="right">Paciente<input type="text" maxlength="20" size="20" name="paciente"/></td>
+                            </tr>
+                        </table>
+                        <input type="Submit" value="Buscar">
+                    </form>
                 <table border="1">
                    <tr>
                        <th>Paciente</th>

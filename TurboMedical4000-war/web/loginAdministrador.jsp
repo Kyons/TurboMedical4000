@@ -17,7 +17,7 @@
         <form action="LoginAdministradorServlet" method="post">
             Usuario: <input type="text" maxlength="20" size="20" name="usuario"> 
             <br/>
-            Contraseña: <input type="password" maxlength="20" size="20" name="contrasena"> 
+            Contrase&ntilde;a: <input type="password" maxlength="20" size="20" name="contrasena"> 
             <br/>
             <input type="submit" value="Entrar"> 
         </form>
@@ -25,6 +25,6 @@
         <br/>         
         <br/>
         <a href="loginPacientes.jsp">Acceso pacientes</a>
-         | <a href="loginMedicos.jsp">Acceso medicos</a>
+        | <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a>
     </body>
 </html>

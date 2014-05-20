@@ -17,14 +17,14 @@
         <form action="LoginPacienteServlet" method="post">
             Usuario: <input type="text" maxlength="20" size="20" name="usuario"> 
             <br/>
-            Contraseña: <input type="password" maxlength="20" size="20" name="contrasena"> 
+            Contrase&ntilde;a: <input type="password" maxlength="20" size="20" name="contrasena"> 
             <br/>
             <input type="submit" value="Entrar"> 
         </form>
         <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
         <br/>
         <br/>
-        <a href="loginMedicos.jsp">Acceso médicos</a>
+        <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a>
          | <a href="loginAdministrador.jsp">Acceso administrador</a>
     </body>
 </html>

@@ -6,7 +6,6 @@ package turbomedical4000.ejb;
 
 import java.util.List;
 import javax.ejb.Local;
-import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 
 /**
@@ -29,7 +28,12 @@ public interface PacienteFacadeLocal {
     List<Paciente> findRange(int[] range);
 
     int count();
+    
     public Paciente findByNumSS(int numSS);
-   
+    
+    List<Paciente> filtrarPacientes(String numSSP, String dniP, String nombreP,
+            String apellidosP, String fechaNacP, String direccionP,
+                    String localidadP, String provinciaP, String telefonoP);
+    
     
 }

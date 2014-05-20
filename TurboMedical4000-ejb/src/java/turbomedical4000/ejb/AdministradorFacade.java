@@ -6,6 +6,7 @@
 
 package turbomedical4000.ejb;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -39,6 +40,16 @@ public class AdministradorFacade extends AbstractFacade<Administrador> implement
             System.out.println("No se encontró ningún resultado");
         }
         return administrador;
+    }
+
+    @Override
+    public List<Administrador> filtrarAdministrador(String nombreP) {
+        String nombre = nombreP == null ? "" : nombreP;
+        
+        String likeNombre = (nombre.equals("")) ? "" : " (a.usuario LIKE '%" + nombre + "%') AND";
+        
+        return (List<Administrador>) em.createQuery("SELECT a FROM Administrador a "
+                + "where " + likeNombre + " TRUE = TRUE").getResultList();
     }
     
 }

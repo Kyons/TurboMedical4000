@@ -13,11 +13,11 @@
     </head>
     <body>
         <h1>Login</h1>
-        <h3>Acceso médicos</h3>
+        <h3>Acceso m&eacute;dicos</h3>
         <form action="LoginMedicoServlet" method="post">
             Usuario: <input type="text" maxlength="20" size="20" name="usuario"> 
             <br/>
-            Contraseña: <input type="password" maxlength="20" size="20" name="contrasena"> 
+            Contrase&ntilde;a: <input type="password" maxlength="20" size="20" name="contrasena"> 
             <br/>
             <input type="submit" value="Entrar"> 
         </form>
