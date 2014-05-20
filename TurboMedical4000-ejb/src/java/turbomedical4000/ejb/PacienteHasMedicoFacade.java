@@ -75,7 +75,7 @@ public class PacienteHasMedicoFacade extends AbstractFacade<PacienteHasMedico> i
         String likeDNI = (dni.equals("")) ? "" : " (p.paciente.dni LIKE '%" + dni + "%') AND ";
         String likeNombre = (nombre.equals("")) ? "" : " (p.paciente.nombre LIKE '%" + nombre + "%') AND ";
         String likeApellidos = (apellidos.equals("")) ? "" : " (p.paciente.apellidos LIKE '%" + apellidos + "%') AND ";
-        String likeFechaNac= (fechaNac == null) ? "" : " (p.pacientefechaNac = :fechaNac) AND ";
+        String likeFechaNac= (fechaNac == null) ? "" : " (p.paciente.fechaNac = :fechaNac) AND ";
         String likeDireccion = (direccion.equals("")) ? "" : " (p.paciente.direccion LIKE '%" + direccion + "%') AND ";
         String likeLocalidad = (localidad.equals("")) ? "" : " (p.paciente.localidad LIKE '%" + localidad + "%') AND ";
         String likeProvincia = (provincia.equals("")) ? "" : " (p.paciente.provincia LIKE '%" + provincia + "%') AND ";

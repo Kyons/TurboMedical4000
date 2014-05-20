@@ -40,7 +40,7 @@
                             </tr>
                             <tr>
                                 <td align="right">Apellidos<input type="text" maxlength="20" size="20" name="apellidos"/></td>
-                                <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac"/></td>
+                                <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"/></td>
                                 <td align="right">DNI<input type="text" maxlength="20" size="20" name="dni"/></td>
                             </tr>
                             <tr>

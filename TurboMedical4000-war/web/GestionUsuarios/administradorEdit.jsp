@@ -27,7 +27,7 @@
             <td rowspan="7" >
                 <h1>Editar administrador</h1>
                 
-                <form name="editForm" action="EditAdministradoresServlet">
+                <form name="editForm" action="EditAdministradoresServlet" method="post">
                 <input type="hidden" name="do" value="edit">
                 <input type="hidden" name="idAdministrador" value="<%=usuario.getIdAdministrador()%>">
                 <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>

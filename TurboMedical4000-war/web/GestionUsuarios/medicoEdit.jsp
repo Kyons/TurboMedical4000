@@ -38,7 +38,7 @@
             <td rowspan="7" >
                 <h1>Editar m&eacute;dico</h1>
                 
-                <form name="editForm" action="EditMedicosServlet">
+                <form name="editForm" action="EditMedicosServlet" method="post">
                 <input type="hidden" name="do" value="edit">
                 <input type="hidden" name="numColegiado" value="<%=usuario.getNumColegiado()%>">
                 <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>

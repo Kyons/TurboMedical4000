@@ -23,7 +23,7 @@
             <td rowspan="7" >
                 <h1>A&ntilde;adir nuevo administrador</h1>
                 
-                <form name="addForm" action="EditAdministradoresServlet">
+                <form name="addForm" action="EditAdministradoresServlet" method="post">
                 <input type="hidden" name="do" value="add">
                 <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                 <table border="1">

@@ -27,8 +27,8 @@
                     <form name="filtrarCitas" action="BusquedaCitasPacienteServlet" method="post">
                         <table>
                             <tr>
-                                <td align="right">Fecha<input type="text" maxlength="20" size="20" name="fecha"/></td>
-                                <td align="right">Hora<input type="text" maxlength="20" size="20" name="hora"/></td>
+                                <td align="right">Fecha<input type="text" maxlength="20" size="20" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"/></td>
+                                <td align="right">Hora<input type="text" maxlength="20" size="20" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''"/></td>
                             </tr>
                             <tr>
                                 <td align="right">Lugar<input type="text" maxlength="20" size="20" name="lugar"/></td>

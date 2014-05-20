@@ -47,7 +47,7 @@ public class LineahistorialFacade extends AbstractFacade<Lineahistorial> impleme
         } catch (ParseException e) {
                 fecha = null;
         } 
-        df = new java.text.SimpleDateFormat("hh:mm:ss");
+        df = new java.text.SimpleDateFormat("hh:mm");
         Date hora;
         try {
                 hora = df.parse(horaP);
