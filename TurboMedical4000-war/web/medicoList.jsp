@@ -73,21 +73,21 @@
 <%
     if (lista != null){
         java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        for (Medico usuario: lista) {
+        for (Medico medico: lista) {
 %>
             <tr>
-                <td><%= usuario.getNumColegiado() %></td>
-                <td><%= usuario.getEspecialidadidEspecialidad().getDescripcion() %></td>
-                <td><%= usuario.getNombre() %></td>                
-                <td><%= usuario.getApellidos() %></td>                
-                <td><%= df.format(usuario.getFechaNac()) %></td>                
-                <td><%= usuario.getDni() %></td>                                
-                <td><%= usuario.getDireccion() %></td>                          
-                <td><%= usuario.getLocalidad() %></td>
-                <td><%= usuario.getProvincia() %></td>
-                <td><%= usuario.getTelefono() %></td>
-                <td><a href="EditMedicosServlet?do=editForm&numColegiado=<%= usuario.getNumColegiado() %>" >Editar</a>
-                    <a href="EditMedicosServlet?do=delete&numColegiado=<%= usuario.getNumColegiado() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNumColegiado()%>?')">Borrar</a></td>
+                <td><%=medico.getNumColegiado() == null ? "-":medico.getNumColegiado() %></td>
+                <td> <%= medico.getEspecialidadidEspecialidad().getDescripcion() == null ? "-":medico.getEspecialidadidEspecialidad().getDescripcion() %></td>
+                <td><%=medico.getNombre() == null ? "-":medico.getNombre() %> </td>
+                <td><%= medico.getApellidos() == null ? "-":medico.getApellidos() %></td>
+                <td><%=medico.getFechaNac() == null ? "-":df.format(medico.getFechaNac()) %></td>
+                <td><%=medico.getDni() == null ? "-":medico.getDni() %> </td>
+                <td><%=medico.getDireccion() == null ? "-":medico.getDireccion() %></td>
+                <td><%=medico.getLocalidad() == null ? "-":medico.getLocalidad() %></td>
+                <td><%=medico.getProvincia() == null ? "-":medico.getProvincia() %> </td>
+                <td><%=medico.getTelefono() == null ? "-":medico.getTelefono() %></td>
+                <td><a href="EditMedicosServlet?do=editForm&numColegiado=<%= medico.getNumColegiado() %>" >Editar</a>
+                    <a href="EditMedicosServlet?do=delete&numColegiado=<%= medico.getNumColegiado() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= medico.getNumColegiado()%>?')">Borrar</a></td>
             </tr>
 
 <%            

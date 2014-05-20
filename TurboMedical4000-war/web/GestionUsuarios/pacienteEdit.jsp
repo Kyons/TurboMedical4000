@@ -40,37 +40,37 @@
                 <table border="1">
                     <tr>
                         <td>N&uacute;mero Seguridad Social:</td>
-                        <td><input type="text" name="numSegSoc" value="<%=usuario.getNumSS()%>" readonly></td>
+                        <td><input type="text" name="numSegSoc" value="<%=usuario.getNumSS() == null ? "":usuario.getNumSS()%>" readonly></td>
                     </tr><tr>
                         <td>Nombre:</td>	
-                        <td><input type="text" name="nombre" value="<%=usuario.getNombre()%>"></td>
+                        <td><input type="text" name="nombre" value="<%=usuario.getNombre() == null ? "":usuario.getNombre()%>"></td>
                     </tr><tr>
                         <td>Apellidos:</td>	
-                        <td><input type="text" name="apellidos" value="<%=usuario.getApellidos()%>"></td>
+                        <td><input type="text" name="apellidos" value="<%=usuario.getApellidos() == null ? "":usuario.getApellidos()%>"></td>
                     </tr><tr>
 <%
     java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
 %>
                         <td>Fecha nacimiento:</td>	
-                        <td><input type="text" name="fechaNac" value="<%= df.format(usuario.getFechaNac()) %>"></td>
+                        <td><input type="text" name="fechaNac" value="<%= usuario.getFechaNac() == null ? "":df.format(usuario.getFechaNac()) %>"></td>
                     </tr><tr>
                         <td>DNI:</td>	
-                        <td><input type="text" name="dni" value="<%=usuario.getDni()%>"></td>
+                        <td><input type="text" name="dni" value="<%=usuario.getDni() == null ? "":usuario.getDni()%>"></td>
                     </tr><tr>
                         <td>Direcci&oacute;n:</td>	
-                        <td><input type="text" name="direccion" value="<%=usuario.getDireccion()%>"></td>
+                        <td><input type="text" name="direccion" value="<%=usuario.getDireccion() == null ? "":usuario.getDireccion()%>"></td>
                     </tr><tr>
                         <td>Localidad:</td>	
-                        <td><input type="text" name="localidad" value="<%=usuario.getLocalidad()%>"></td>
+                        <td><input type="text" name="localidad" value="<%=usuario.getLocalidad() == null ? "":usuario.getLocalidad()%>"></td>
                     </tr><tr>
                         <td>Provincia:</td>	
-                        <td><input type="text" name="provincia" value="<%=usuario.getProvincia()%>"></td>
+                        <td><input type="text" name="provincia" value="<%=usuario.getProvincia() == null ? "":usuario.getProvincia() %>"></td>
                     </tr><tr>
                         <td>Tel&eacute;fono:</td>	
-                        <td><input type="text" name="telefono" value="<%=usuario.getTelefono()%>"></td>
+                        <td><input type="text" name="telefono" value="<%=usuario.getTelefono() == null ? "":usuario.getTelefono()%>"></td>
                     </tr><tr>
                         <td>Contrase&ntilde;a:</td>	
-                        <td><input type="password" name="contrasena" value="<%=usuario.getContrasena()%>"></td>
+                        <td><input type="password" name="contrasena" value="<%=usuario.getContrasena() == null ? "":usuario.getContrasena()%>"></td>
                     </tr><tr>
                         <td colspan="2"><input type="submit" name="btnEditar" value="Editar"></td>
                     </tr>

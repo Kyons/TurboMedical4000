@@ -70,20 +70,20 @@
 <%
     if (lista != null){
         java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        for (Paciente usuario: lista) {
+        for (Paciente paciente: lista) {
 %>
             <tr>
-                <td><%= usuario.getNumSS() %></td>
-                <td><%= usuario.getDni()%></td>
-                <td><%= usuario.getNombre() %></td>
-                <td><%= usuario.getApellidos() %></td>
-                <td><%= df.format(usuario.getFechaNac()) %></td>
-                <td><%= usuario.getDireccion() %></td>
-                <td><%= usuario.getLocalidad() %></td>
-                <td><%= usuario.getProvincia() %></td>
-                <td><%= usuario.getTelefono() %></td>
-                <td><a href="EditPacientesServlet?do=editForm&numSS=<%= usuario.getNumSS() %>" >Editar</a>
-                    <a href="EditPacientesServlet?do=delete&numSS=<%= usuario.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= usuario.getNumSS()%>?')">Borrar</a></td>
+                <td><%= paciente.getNumSS() == null ? "-":paciente.getNumSS() %></td>
+                <td><%= paciente.getDni() == null ? "-":paciente.getDni() %></td>
+                <td><%= paciente.getNombre() == null ? "-":paciente.getNombre() %></td>
+                <td><%= paciente.getApellidos() == null ? "-":paciente.getApellidos() %></td>
+                <td><%= paciente.getFechaNac() == null ? "-":df.format( paciente.getFechaNac()) %></td>               
+                <td><%= paciente.getDireccion() == null ? "-":paciente.getDireccion() %></td>
+                <td><%= paciente.getLocalidad() == null ? "-":paciente.getLocalidad() %></td>
+                <td><%= paciente.getProvincia() == null ? "-":paciente.getProvincia() %></td>
+                <td><%= paciente.getTelefono() == null ? "-":paciente.getTelefono() %></td>
+                <td><a href="EditPacientesServlet?do=editForm&numSS=<%= paciente.getNumSS() %>" >Editar</a>
+                    <a href="EditPacientesServlet?do=delete&numSS=<%= paciente.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= paciente.getNumSS()%>?')">Borrar</a></td>
             </tr>
 
 <%            

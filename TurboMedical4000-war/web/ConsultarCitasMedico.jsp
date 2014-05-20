@@ -49,8 +49,8 @@
  %>
                   <tr>
                       <td><%= c.getPacientenumSS().getNombre()+" "+c.getPacientenumSS().getApellidos() %></td>
-                      <td> <%= df.format(c.getFecha()) %></td>
-                      <td><%= hf.format(c.getHora()) %></td>
+                      <td> <%= c.getFecha() == null ? "-":df.format(c.getFecha()) %> </td>
+                      <td> <%= c.getHora() == null ? "-":hf.format(c.getHora()) %> </td>
                   </tr>
   <%
             }

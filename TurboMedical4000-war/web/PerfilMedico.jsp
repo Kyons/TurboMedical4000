@@ -35,16 +35,16 @@
                     <th> Tel&eacute;fono</th>
                 </tr>
                 <tr>
-                    <td><%=medico.getNombre() %> </td>
-                    <td><%= medico.getApellidos()%></td>
-                    <td><%=medico.getDni() %> </td>
-                    <td><%=medico.getNumColegiado() %></td>
-                    <td> <%= medico.getEspecialidadidEspecialidad().getDescripcion() %></td>
-                    <td><%=df.format(medico.getFechaNac()) %></td>
-                    <td><%=medico.getDireccion() %></td>
-                    <td><%=medico.getLocalidad() %></td>
-                    <td><%=medico.getProvincia() %> </td>
-                    <td><%=medico.getTelefono() %></td>
+                    <td><%=medico.getNombre() == null ? "-":medico.getNombre() %> </td>
+                    <td><%= medico.getApellidos() == null ? "-":medico.getApellidos() %></td>
+                    <td><%=medico.getDni() == null ? "-":medico.getDni() %> </td>
+                    <td><%=medico.getNumColegiado() == null ? "-":medico.getNumColegiado() %></td>
+                    <td> <%= medico.getEspecialidadidEspecialidad().getDescripcion() == null ? "-":medico.getEspecialidadidEspecialidad().getDescripcion() %></td>
+                    <td><%=medico.getFechaNac() == null ? "-":df.format(medico.getFechaNac()) %></td>
+                    <td><%=medico.getDireccion() == null ? "-":medico.getDireccion() %></td>
+                    <td><%=medico.getLocalidad() == null ? "-":medico.getLocalidad() %></td>
+                    <td><%=medico.getProvincia() == null ? "-":medico.getProvincia() %> </td>
+                    <td><%=medico.getTelefono() == null ? "-":medico.getTelefono() %></td>
                 </tr>
             </table>
                 </td></tr>
