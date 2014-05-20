@@ -144,10 +144,10 @@ public class EditMedicosServlet extends HttpServlet {
                     fechaNac = df.parse(request.getParameter("fechaNac"));
                 } catch (ParseException e) {
                     
-                    RequestDispatcher rd;
-        
-                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Fecha incorrecta");
-                    rd.forward(request, response);
+                    // Al no mostrar ya los valores nulos en la tabla no es necesario esto
+                    //RequestDispatcher rd;
+                    //rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Fecha incorrecta");
+                    //rd.forward(request, response);
                     
                 }
                 usuario.setFechaNac(fechaNac);
@@ -189,10 +189,10 @@ public class EditMedicosServlet extends HttpServlet {
                 fechaNac = df.parse(request.getParameter("fechaNac"));
             } catch (ParseException e) {
                 
-                    RequestDispatcher rd;
-        
-                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoEdit.jsp?msg=Fecha incorrecta");
-                    rd.forward(request, response);
+                    // Al no mostrar ya los valores nulos en la tabla no es necesario esto
+                    //RequestDispatcher rd;
+                    //rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoEdit.jsp?msg=Fecha incorrecta");
+                    //rd.forward(request, response);
                    
             }
             usuario.setFechaNac(fechaNac);

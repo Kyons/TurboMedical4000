@@ -107,10 +107,10 @@ public class EditPacientesServlet extends HttpServlet {
                     fechaNac = df.parse(request.getParameter("fechaNac"));
                 } catch (ParseException e) {
                     
-                    RequestDispatcher rd;
-        
-                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Fecha incorrecta");
-                    rd.forward(request, response);
+                    // Al no mostrar ya los valores nulos en la tabla no es necesario esto
+                    //RequestDispatcher rd;
+                    //rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Fecha incorrecta");
+                    //rd.forward(request, response);
                     
                 }
                 
@@ -147,10 +147,10 @@ public class EditPacientesServlet extends HttpServlet {
                 fechaNac = df.parse(request.getParameter("fechaNac"));
             } catch (ParseException e) {
                 
-                    RequestDispatcher rd;
-        
-                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteEdit.jsp?msg=Fecha incorrecta");
-                    rd.forward(request, response);
+                    // Al no mostrar ya los valores nulos en la tabla no es necesario esto
+                    //RequestDispatcher rd;
+                    //rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteEdit.jsp?msg=Fecha incorrecta");
+                    //rd.forward(request, response);
                     
             }
             usuario.setFechaNac(fechaNac);

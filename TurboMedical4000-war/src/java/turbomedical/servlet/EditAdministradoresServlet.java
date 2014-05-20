@@ -98,14 +98,7 @@ public class EditAdministradoresServlet extends HttpServlet {
                 rd.forward(request, response);
             }
         } else if(action.equals("edit")){
-            // Comprobar los parámetros
-            if((request.getParameter("usuario").equals("")) || (request.getParameter("contrasena").equals(""))){
-                RequestDispatcher rd;
-
-                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=Deben rellenarse todos los campos");
-                rd.forward(request, response);
-            }
-            
+           
             // Crear el usuario modificado
             int i = Integer.valueOf(request.getParameter("idAdministrador"));
             String u = request.getParameter("usuario");
@@ -113,6 +106,14 @@ public class EditAdministradoresServlet extends HttpServlet {
             Administrador usuario = new Administrador(i, u, c);
             
             request.setAttribute("usuario", usuario);
+            
+            // Comprobar los parámetros
+            if((u.equals("")) || (c.equals(""))){
+                RequestDispatcher rd;
+
+                rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/administradorEdit.jsp?msg=Deben rellenarse todos los campos");
+                rd.forward(request, response);
+            }
             
             //Comprobar si el usuario ya existe
             Administrador usuarioExis = administradorFacade.findByUsuario(request.getParameter("usuario"));
