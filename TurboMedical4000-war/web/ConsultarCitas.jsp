@@ -53,9 +53,9 @@
                 for(Cita ct: cita){             
  %>
                   <tr>
-                      <td> <%= dfFecha.format(ct.getFecha()) %> </td>
-                      <td> <%= dfHora.format(ct.getHora()) %> </td>
-                      <td> <%= ct.getLugar() %> </td>
+                      <td> <%= ct.getFecha() == null ? "-":dfFecha.format(ct.getFecha()) %> </td>
+                      <td> <%= ct.getHora() == null ? "-":dfHora.format(ct.getHora()) %> </td>
+                      <td> <%= ct.getLugar() == null ? "-":ct.getLugar() %> </td>
                       <td> <%= ct.getMediconumColegiado().getNombre() %> <%= ct.getMediconumColegiado().getApellidos() %> </td>
                   </tr>
   <%

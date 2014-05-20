@@ -51,9 +51,9 @@
                 
  %>
                   <tr>
-                      <td><%= df.format(lh.getFecha()) %></td>
-                      <td> <%= hf.format(lh.getHora()) %></td>
-                      <td><%= lh.getEntrada() %></td>
+                      <td><%= lh.getFecha() == null ? "-":df.format(lh.getFecha()) %></td>
+                      <td> <%= lh.getHora() == null ? "-":hf.format(lh.getHora()) %></td>
+                      <td><%= lh.getEntrada() == null ? "-":lh.getEntrada() %></td>
                   </tr>
   <%
             }

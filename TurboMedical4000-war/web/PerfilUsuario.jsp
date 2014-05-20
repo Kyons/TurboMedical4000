@@ -67,14 +67,14 @@
                     <th> Tel&eacute;fono</th>
                 </tr>
                 <tr>
-                    <td> <%= paciente.getNombre() %></td>
-                    <td><%= paciente.getApellidos()%></td>
-                    <td> <%= paciente.getNumSS()%></td>
-                    <td><%= df.format( paciente.getFechaNac()) %></td>
-                    <td><%= paciente.getDireccion() %></td>
-                    <td><%= paciente.getLocalidad() %></td>
-                    <td> <%= paciente.getProvincia() %></td>
-                    <td><%= paciente.getTelefono() %></td>
+                    <td><%= paciente.getNombre() == null ? "-":paciente.getNombre() %></td>
+                    <td><%= paciente.getApellidos() == null ? "-":paciente.getApellidos() %></td>
+                    <td><%= paciente.getNumSS() == null ? "-":paciente.getNumSS() %></td>
+                    <td><%= paciente.getFechaNac() == null ? "-":df.format( paciente.getFechaNac()) %></td>
+                    <td><%= paciente.getDireccion() == null ? "-":paciente.getDireccion() %></td>
+                    <td><%= paciente.getLocalidad() == null ? "-":paciente.getLocalidad() %></td>
+                    <td><%= paciente.getProvincia() == null ? "-":paciente.getProvincia() %></td>
+                    <td><%= paciente.getTelefono() == null ? "-":paciente.getTelefono() %></td>
                 </tr>
             </table>
                 </td></tr>
