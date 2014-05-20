@@ -34,6 +34,11 @@
                         </table>
                         <input type="Submit" value="Buscar">
                     </form>
+                    <%
+                        if(!citas.isEmpty()){
+                        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                        java.text.DateFormat hf = new java.text.SimpleDateFormat("HH:mm");
+                    %>
                 <table border="1">
                    <tr>
                        <th>Paciente</th>
@@ -41,11 +46,7 @@
                        <th>Hora</th>
                    </tr>
  <%
-            if(citas!=null){
-            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-             java.text.DateFormat hf = new java.text.SimpleDateFormat("HH:mm");
-            for(Cita c: citas){
-                
+            for(Cita c: citas){          
  %>
                   <tr>
                       <td><%= c.getPacientenumSS().getNombre()+" "+c.getPacientenumSS().getApellidos() %></td>
@@ -54,12 +55,13 @@
                   </tr>
   <%
             }
-            }
   %>
                </table>  
-           
-              
-
+               <%
+                        }else{
+               %>
+               <h3>NO HAY CITAS EN ESTE MOMENTO PARA MOSTRAR</h3>          
+                <% } %>
                 </td></tr>
            <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
     </body>

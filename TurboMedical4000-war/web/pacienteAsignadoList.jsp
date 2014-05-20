@@ -51,6 +51,10 @@
                         </table>
                         <input type="Submit" value="Buscar" align="right">                       
                     </form>
+                    <%
+                        if (!lista.isEmpty()){
+                            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                    %>
         <table border="1">
             <tr>
                 <th>N&uacute;mero SS</th>                
@@ -64,8 +68,6 @@
                 <th>Tel&eacute;fono</th>
             </tr>
 <%
-    if (lista != null){
-        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
         for (Paciente paciente: lista) {
 %>
             <tr>
@@ -82,9 +84,11 @@
 
 <%            
         }
-    }
 %>            
-       </table>   
+       </table>
+       <% }else{ %>
+        <h3>NO TIENE NINGÚN PACIENTE ASIGNADO QUE MOSTRAR</h3>
+       <% } %>
                    </td> 
                
             </tr>

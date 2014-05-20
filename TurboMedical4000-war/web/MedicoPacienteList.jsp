@@ -36,6 +36,9 @@
             <input type="Submit" value="Buscar">
         </form>
         <a href="EditMedicoPacienteServet?do=add">A&ntilde;adir nueva asignaci&oacute;n</a>
+        <%
+            if(!lista.isEmpty()){
+        %>
         <table border="1">
             <tr>
                 <th>Num SS</th>
@@ -45,9 +48,7 @@
                 <th>&nbsp;</th>
             </tr>
             <% 
-            if(lista != null){
                 for(PacienteHasMedico pm : lista){
-          
             %>
             <tr>
                 <td><%=pm.getPaciente().getNumSS() %></td>
@@ -58,10 +59,12 @@
                 <td><a href="EditMedicoPacienteServet?do=delete&numss=<%=pm.getPaciente().getNumSS()%>&numc=<%=pm.getMedico().getNumColegiado() %>">Borrar</a></td>
             </tr>
             <% 
-                }
-            } 
+                } 
             %>
         </table>
+        <% }else{ %>
+        <h3>NO HAY ASIGNACIONES QUE MOSTRAR</h3>
+        <% } %>
             </td> 
                
             </tr>

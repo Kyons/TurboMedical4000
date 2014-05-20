@@ -39,6 +39,7 @@
                     </form>
                     <a href="SolicitarCita.jsp">Solicitar cita</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
+                    <% if(!cita.isEmpty()){ %>
                <table border="1">
                    <tr>
                        <th>Fecha</th>
@@ -63,6 +64,9 @@
             }
   %>
                </table>  
+                    <% }else{ %>
+                    <h3>NO HAY CITAS PARA MOSTRAR</h3>
+                    <% } %>
                 </td></tr>
 
              <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>       
