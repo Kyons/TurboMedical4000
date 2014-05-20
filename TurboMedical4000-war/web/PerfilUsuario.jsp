@@ -21,7 +21,7 @@
      
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <td rowspan="4" >
+            <tr> <th> &nbsp; </th> <td rowspan="7" >
                   <h2>Perfil personal</h2>
                   
             <table border="1">

@@ -25,7 +25,7 @@
     <body>
          <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <td rowspan="5" >
+            <tr> <th> &nbsp; </th> <td rowspan="7" >
                 Usuario: <%= medico.getNombre() %> <%= medico.getApellidos() %>
                 </td></tr>
              <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>

@@ -19,7 +19,7 @@
       <body>
          <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <td rowspan="5" >
+            <tr> <th> &nbsp; </th> <td rowspan="7" >
                     <h1>Citas actualmente registradas</h1>
                     <form name="filtrarCitas" action="BusquedaCitasMedicoServlet" method="post">
                         <table>

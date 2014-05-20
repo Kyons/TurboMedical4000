@@ -14,7 +14,7 @@
     <body>
         <h1>Crear nueva recomendaci&oacute;n</h1>
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-        <tr> <th> &nbsp; </th> <td rowspan="4" >
+        <tr> <th> &nbsp; </th> <td rowspan="7" >
         
         <form name="addRecom" action="CrearRecomendacionesServlet" method="post">
               <table>
@@ -38,7 +38,7 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td><input type="submit" name="NuevaR" value="Nueva Recomendaci&oacute;n></td>
+                        <td><input type="submit" name="NuevaR" value="Nueva Recomendaci&oacute;n"></td>
                     </tr>
                     
             </table>            

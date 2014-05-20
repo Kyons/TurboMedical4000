@@ -28,7 +28,7 @@
         <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
               
             <tr>
-                <th> &nbsp; </th> <td rowspan="5" >
+                <th> &nbsp; </th> <td rowspan="7" >
 
                     <h1>Pacientes asignados a <%= medico.getNombre() %> <%= medico.getApellidos() %></h1>
                     <form name="filtrarPacientesAsignados" action="BusquedaPacienteAsignadoServlet" method="post">

@@ -16,7 +16,7 @@
     <body>
          <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
               
-            <tr> <th> &nbsp; </th> <td rowspan="5" >
+            <tr> <th> &nbsp; </th> <td rowspan="7" >
                      <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
             <form name="add" accion="AdToHistorialServlet" method="post">
                 <table>
