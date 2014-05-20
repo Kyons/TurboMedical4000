@@ -46,12 +46,6 @@ public class EditMedicosServlet extends HttpServlet {
         
         // Obtener la acción a a realizar del parámetro do
 	String action = request.getParameter("do");
-	
-        // Obtener el id del administrador
-        int numColegiado = -1;
-	if(request.getParameter("numColegiado") != null){
-            numColegiado = Integer.valueOf(request.getParameter("numColegiado"));
-        }  
 
 	// Formularios Añadir/Editar
         if(action.equals("addForm")){
@@ -68,6 +62,13 @@ public class EditMedicosServlet extends HttpServlet {
             rd.forward(request, response);	
         
         }else if(action.equals("editForm")){
+            	
+            // Obtener el num del colegiado
+            int numColegiado = -1;
+            if(request.getParameter("numColegiado") != null){
+                numColegiado = Integer.valueOf(request.getParameter("numColegiado"));
+            }  
+            
             //Obtener el medico de la BD
             Medico usuario = medicoFacade.find(numColegiado);
 	
@@ -90,7 +91,24 @@ public class EditMedicosServlet extends HttpServlet {
             
             //Comprobar si el usuario ya existe
             // Buscar por num colegiado
-            Medico usuario = medicoFacade.findByNumColegiado(Integer.valueOf(request.getParameter("numColegiado")));
+            Medico usuario = null;
+            try{
+                usuario = medicoFacade.findByNumColegiado(Integer.valueOf(request.getParameter("numColegiado")));
+            } catch (NumberFormatException e) {
+                
+                    // Obtener la lista de especialidades
+                    List<Especialidad> especialidades;
+
+                    especialidades = especialidadFacade.findAll();
+
+                    request.setAttribute("especialidades", especialidades);
+                
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Numero de colegiado incorrecto");
+                    rd.forward(request, response);
+                    
+            }
             if(usuario == null){
                 // Si no se encuentra por num colegiado, buscar por DNI
                 usuario = medicoFacade.findByDni(request.getParameter("dni"));
@@ -125,7 +143,12 @@ public class EditMedicosServlet extends HttpServlet {
                 try {
                     fechaNac = df.parse(request.getParameter("fechaNac"));
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoAdd.jsp?msg=Fecha incorrecta");
+                    rd.forward(request, response);
+                    
                 }
                 usuario.setFechaNac(fechaNac);
 
@@ -165,7 +188,12 @@ public class EditMedicosServlet extends HttpServlet {
             try {
                 fechaNac = df.parse(request.getParameter("fechaNac"));
             } catch (ParseException e) {
-                e.printStackTrace();
+                
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/medicoEdit.jsp?msg=Fecha incorrecta");
+                    rd.forward(request, response);
+                   
             }
             usuario.setFechaNac(fechaNac);
             
@@ -197,6 +225,12 @@ public class EditMedicosServlet extends HttpServlet {
         // Eliminar
         }else if(action.equals("delete")){
             RequestDispatcher rd;
+
+            // Obtener el num del colegiado
+            int numColegiado = -1;
+            if(request.getParameter("numColegiado") != null){
+                numColegiado = Integer.valueOf(request.getParameter("numColegiado"));
+            }  
             
             //Obtener el medico de la BD
             Medico usuario = medicoFacade.find(numColegiado);

@@ -41,12 +41,6 @@ public class EditPacientesServlet extends HttpServlet {
 
         // Obtener la acción a a realizar del parámetro do
 	String action = request.getParameter("do");
-	
-        // Obtener el id del administrador
-        int numSS = -1;
-	if(request.getParameter("numSS") != null){
-            numSS = Integer.valueOf(request.getParameter("numSS"));
-        }  
 
 	// Formularios Añadir/Editar
         if(action.equals("addForm")){
@@ -56,6 +50,13 @@ public class EditPacientesServlet extends HttpServlet {
             rd.forward(request, response);	
         
         }else if(action.equals("editForm")){
+            
+            // Obtener el num de la SS
+            int numSS = -1;
+            if(request.getParameter("numSS") != null){
+                numSS = Integer.valueOf(request.getParameter("numSS"));
+            }  
+            
             //Obtener el paciente de la BD
             Paciente usuario = pacienteFacade.find(numSS);
 	
@@ -71,7 +72,17 @@ public class EditPacientesServlet extends HttpServlet {
             
             //Comprobar si el usuario ya existe
             // Buscar por num SS
-            Paciente usuario = pacienteFacade.findByNumSS(Integer.valueOf(request.getParameter("numSS")));
+            Paciente usuario = null;
+            try{
+                usuario = pacienteFacade.findByNumSS(Integer.valueOf(request.getParameter("numSS")));
+            } catch (NumberFormatException e) {
+                
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Numero de SS incorrecto");
+                    rd.forward(request, response);
+                    
+            }
             if(usuario == null){
                 // Si no se encuentra por num SS, buscar por DNI
                 usuario = pacienteFacade.findByDni(request.getParameter("dni"));
@@ -95,8 +106,14 @@ public class EditPacientesServlet extends HttpServlet {
                 try {
                     fechaNac = df.parse(request.getParameter("fechaNac"));
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteAdd.jsp?msg=Fecha incorrecta");
+                    rd.forward(request, response);
+                    
                 }
+                
                 usuario.setFechaNac(fechaNac);
 
                 usuario.setDni(request.getParameter("dni"));
@@ -116,6 +133,7 @@ public class EditPacientesServlet extends HttpServlet {
                 rd.forward(request, response);
             }
         } else if(action.equals("edit")){
+            
             // Crear el usuario modificado
             int nSS = Integer.valueOf(request.getParameter("numSS"));
             Paciente usuario = new Paciente(nSS);
@@ -128,7 +146,12 @@ public class EditPacientesServlet extends HttpServlet {
             try {
                 fechaNac = df.parse(request.getParameter("fechaNac"));
             } catch (ParseException e) {
-                e.printStackTrace();
+                
+                    RequestDispatcher rd;
+        
+                    rd = this.getServletContext().getRequestDispatcher("/GestionUsuarios/pacienteEdit.jsp?msg=Fecha incorrecta");
+                    rd.forward(request, response);
+                    
             }
             usuario.setFechaNac(fechaNac);
             
@@ -154,7 +177,13 @@ public class EditPacientesServlet extends HttpServlet {
         }else if(action.equals("delete")){
             RequestDispatcher rd;
             
-            //Obtener el medico de la BD
+            // Obtener el num de la SS
+            int numSS = -1;
+            if(request.getParameter("numSS") != null){
+                numSS = Integer.valueOf(request.getParameter("numSS"));
+            }  
+            
+            //Obtener el paciente de la BD
             Paciente usuario = pacienteFacade.find(numSS);
             
             pacienteFacade.remove(usuario);
