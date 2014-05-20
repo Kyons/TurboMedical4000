@@ -9,12 +9,14 @@ package turbomedical4000.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -48,6 +50,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Medico.findByTelefono", query = "SELECT m FROM Medico m WHERE m.telefono = :telefono"),
     @NamedQuery(name = "Medico.findByContrasena", query = "SELECT m FROM Medico m WHERE m.contrasena = :contrasena")})
 public class Medico implements Serializable {
+    @JoinTable(name = "paciente_has_medico", joinColumns = {
+        @JoinColumn(name = "Medico_numColegiado", referencedColumnName = "numColegiado")}, inverseJoinColumns = {
+        @JoinColumn(name = "Paciente_numSS", referencedColumnName = "numSS")})
+    @ManyToMany
+    private List<Paciente> pacienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
     private Collection<PacienteHasMedico> pacienteHasMedicoCollection;
     private static final long serialVersionUID = 1L;
@@ -247,6 +254,15 @@ public class Medico implements Serializable {
 
     public void setPacienteHasMedicoCollection(Collection<PacienteHasMedico> pacienteHasMedicoCollection) {
         this.pacienteHasMedicoCollection = pacienteHasMedicoCollection;
+    }
+
+    @XmlTransient
+    public List<Paciente> getPacienteList() {
+        return pacienteList;
+    }
+
+    public void setPacienteList(List<Paciente> pacienteList) {
+        this.pacienteList = pacienteList;
     }
     
     

@@ -6,9 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<tr> <td><a href="ConsultarPerfilMedicoServlet">Perfil Médico</a></td>  </tr>
-             <tr ><td ><a href="ListaPacientesAsignadosServlet">Pacientes</a></td>  </tr>
+<tr> <td><a href="ConsultarPerfilMedicoServlet">Perfil M&eacute;dico</a></td>  </tr>
+            <tr > <td ><a href="ListaPacientesAsignadosServlet">Pacientes</a></td>  </tr>
             <tr > <td ><a href="ConsultarCitasMedicoServlet">Citas</a></td>  </tr>
+            <tr > <td ><a href="CrearAlertas.jsp">Crear Alertas</a></td> </tr>
+            <tr > <td ><a href="CrearRecomendaciones.jsp">Crear Recomendaci&oacute;n</a></td> </tr>
             <tr > <td ><a href="AddToHistorialServlet">A&ntilde;adir Historial</a></td>  </tr>
 
         </table>
