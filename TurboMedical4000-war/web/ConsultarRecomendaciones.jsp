@@ -18,9 +18,7 @@
   	%>
     </head>
     <body>
-         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-              
-            <tr> <th> &nbsp; </th> <td rowspan="4" >
+         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
                     <h2>Lista de Recomendaciones</h2>
               <table border="1">
                    <tr>
@@ -58,7 +56,7 @@
                </table>  
                 </td></tr>
 
-             <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>       
+             <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />      
         
     </body>
 </html>
