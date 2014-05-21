@@ -26,7 +26,8 @@
     <body>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
-
+        <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
+        
                     <h1>Pacientes asignados a <%= medico.getNombre() %> <%= medico.getApellidos() %></h1>
                     <form name="filtrarPacientesAsignados" action="BusquedaPacienteAsignadoServlet" method="post">
                         <table>

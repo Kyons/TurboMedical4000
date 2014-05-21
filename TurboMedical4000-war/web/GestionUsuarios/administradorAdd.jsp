@@ -17,6 +17,8 @@
     <body>
         
         <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+        <a href="ListaAdministradoresServlet">&#8592; Volver</a>
+        
                 <h1>A&ntilde;adir nuevo administrador</h1>
                 
                 <form name="addForm" action="EditAdministradoresServlet" method="post">

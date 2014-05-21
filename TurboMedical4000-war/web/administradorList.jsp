@@ -24,7 +24,7 @@
     <body>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
-                
+        <a href="menuAdministrador.jsp">&#8592; Volver</a>       
                     
                     <h1>Gesti&oacute;n de Administradores</h1>
                     <form name="filtarAdmin" action="BusquedaAdministradorServlet" method="post">

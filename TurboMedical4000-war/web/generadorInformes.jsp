@@ -25,7 +25,7 @@
     <body>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
-                
+        <a href="menuAdministrador.jsp">&#8592; Volver</a>        
                     
                     <h1>Generar informe de formularios</h1>
                     

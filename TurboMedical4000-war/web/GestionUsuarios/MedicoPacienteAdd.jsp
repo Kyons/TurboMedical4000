@@ -14,6 +14,8 @@
     </head>
     <body>
           <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+          <a href="ListaMedicoPaciente">&#8592; Volver</a>
+          
         <h2>Lista de M&eacute;dico Paciente</h2>
         
          <form name="add" action="EditMedicoPacienteServet" method="post">

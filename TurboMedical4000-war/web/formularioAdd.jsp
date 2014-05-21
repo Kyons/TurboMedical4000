@@ -23,6 +23,8 @@
     <body>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        <a href="ConsultarPerfilUsuarioServlet">&#8592; Volver</a>
+        
                 <h1>Enviar un formulario de queja, reclamaci&oacute;n, etc.</h1>
                 
                 <form name="formularioAdd" action="addFormularioServlet" method="post">

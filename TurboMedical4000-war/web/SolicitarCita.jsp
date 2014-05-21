@@ -24,6 +24,7 @@
         <h1>Solicitar cita</h1>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        <a href="ConsultarCitasServlet">&#8592; Volver</a>
         
         <h2>Solicitar Cita</h2>
         <form name="addCita" action="SolicitarCitaServlet" method="post">

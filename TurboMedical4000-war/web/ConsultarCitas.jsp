@@ -21,6 +21,7 @@
     <body>
         
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        <a href="ConsultarPerfilUsuarioServlet">&#8592; Volver</a>
                     <h2>Lista de Citas</h2>
                     <form name="filtrarCitas" action="BusquedaCitasPacienteServlet" method="post">
                         <table>

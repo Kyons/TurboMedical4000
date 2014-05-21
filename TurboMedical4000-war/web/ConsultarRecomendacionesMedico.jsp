@@ -19,6 +19,7 @@
     </head>
     <body>
          <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
+
                     <h2>Lista de Recomendaciones</h2>
               <table border="1">
                    <tr>

@@ -32,6 +32,8 @@
     <body>
         
         <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+        <a href="ListaMedicosServlet">&#8592; Volver</a>
+        
                 <h1>Editar m&eacute;dico</h1>
                 
                 <form name="editForm" action="EditMedicosServlet" method="post">

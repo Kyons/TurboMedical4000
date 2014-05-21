@@ -41,7 +41,7 @@ public class LoginPacienteServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         if(session.getAttribute("paciente")!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilUsuario.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("ConsultarPerfilUsuarioServlet");
             dispatcher.forward(request, response);
 	}else{
             boolean userNum = true ;
@@ -54,7 +54,7 @@ public class LoginPacienteServlet extends HttpServlet {
             if(paciente!= null && userNum && paciente.getContrasena().equals(request.getParameter("contrasena"))){
                 session.setAttribute("paciente", paciente);
                 //RequestDispatcher dispatcher = request.getRequestDispatcher("menuPaciente.jsp");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilUsuario.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("ConsultarPerfilUsuarioServlet");
                 dispatcher.forward(request, response);
             }else{
                 RequestDispatcher dispatcher = request.getRequestDispatcher("loginPacientes.jsp?msg=Usuario y/o contraseña incorrectos");

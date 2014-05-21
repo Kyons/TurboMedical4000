@@ -21,6 +21,7 @@
     <body>
      
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        <a href="ConsultarPerfilUsuarioServlet">&#8592; Volver</a>
         
                     <h2>Historial Personal</h2>
                     <form name="filtrarHistorial" action="BusquedaHistorialPacienteServlet" method="post">

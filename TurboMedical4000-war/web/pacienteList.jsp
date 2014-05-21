@@ -25,7 +25,7 @@
     <body>
         
        <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
-                
+        <a href="menuAdministrador.jsp">&#8592; Volver</a>        
                     
                     <h1>Gesti&oacute;n de Pacientes</h1>
                     <form name="filtrarPacientes" action="BusquedaPacienteServlet" method="post">

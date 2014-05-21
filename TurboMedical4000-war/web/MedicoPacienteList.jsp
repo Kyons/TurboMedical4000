@@ -18,6 +18,7 @@
     </head>
     <body>
         <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+        <a href="menuAdministrador.jsp">&#8592; Volver</a>
         
         <h2>Lista de M&eacute;dico Paciente</h2>
         <form name="filtrarPacMed" action="BusquedaPacienteMedicoServlet" method="post">

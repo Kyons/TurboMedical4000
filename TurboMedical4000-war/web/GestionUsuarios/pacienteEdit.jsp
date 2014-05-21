@@ -27,6 +27,8 @@
     <body>
         
        <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+       <a href="ListaPacientesServlet">&#8592; Volver</a>
+       
                 <h1>Editar paciente</h1>
                 
                 <form name="editForm" action="EditPacientesServlet" method="post">

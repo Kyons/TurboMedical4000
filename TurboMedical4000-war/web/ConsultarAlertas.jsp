@@ -19,6 +19,7 @@
     </head>
     <body>
          <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+
                     <h2>Lista de Alertas</h2>
               <table border="1">
                    <tr>
