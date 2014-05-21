@@ -22,11 +22,7 @@
     </head>
     <body>
         
-        <%@ include file="/OpcionesMenu/aperturaOpcionesComun.jsp" %>
-
-        <tr>
-            <th> &nbsp; </th>
-            <td rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
                 <h1>Enviar un formulario de queja, reclamaci&oacute;n, etc.</h1>
                 
                 <form name="formularioAdd" action="addFormularioServlet" method="post">
@@ -60,7 +56,7 @@
             </td> 
         </tr>
         
-        <%@ include file="/OpcionesMenu/opcionesPaciente.jsp" %>
+        <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
             
     </body>
 </html>

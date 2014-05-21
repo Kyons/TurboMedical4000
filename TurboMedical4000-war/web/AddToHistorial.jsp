@@ -14,9 +14,7 @@
     </head>
     
     <body>
-         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-              
-            <tr> <th> &nbsp; </th> <td rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
                      <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
             <form name="add" accion="AddToHistorialServlet" method="post">
                 <table>
@@ -51,6 +49,6 @@
               </form> 
 
                 </td></tr>
-           <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
+           <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />
     </body>
 </html>

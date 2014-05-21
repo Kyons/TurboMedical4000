@@ -17,15 +17,12 @@
     </head>
     <body>
         
-        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
-              
-            <tr>
-                <th> &nbsp; </th> <th rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                     Usuario: <%= administrador.getUsuario() %> </br>
                 </th>
             </tr>
             
-            <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
+            <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
             
     </body>
 </html>

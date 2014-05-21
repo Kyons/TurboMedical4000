@@ -20,11 +20,7 @@
     </head>
     <body>
         
-        <%@ include file="../OpcionesMenu/aperturaOpcionesComun.jsp" %>
-
-        <tr>
-            <th> &nbsp; </th>
-            <td rowspan="7" >
+        <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 <h1>A&ntilde;adir nuevo paciente</h1>
                 
                 <form name="addForm" action="EditPacientesServlet" method="post">
@@ -70,7 +66,7 @@
             </td> 
         </tr>
         
-        <%@ include file="../OpcionesMenu/opcionesAdministrador.jsp" %>
+        <jsp:include page="../OpcionesMenu/opcionesAdministrador.jsp" />
             
     </body>
 </html>

@@ -25,12 +25,10 @@
     </head>
     <body>
      
-        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
-              
-            <tr> <th> &nbsp; </th> <td rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
                    Usuario:<%= paciente.getNombre()+" "+ paciente.getApellidos() %>
                 </td></tr>
             
-           <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
+           <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
     </body>
 </html>

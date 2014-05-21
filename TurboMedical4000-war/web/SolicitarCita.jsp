@@ -22,8 +22,9 @@
     </head>
     <body>
         <h1>Solicitar cita</h1>
-        <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-        <tr> <th> &nbsp; </th> <td rowspan="7" >
+        
+        <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        
         <h2>Solicitar Cita</h2>
         <form name="addCita" action="SolicitarCitaServlet" method="post">
               <table>
@@ -61,6 +62,7 @@
                     
             </table>            
       </form>
-      <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
+       
+       <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
   </body>
 </html>

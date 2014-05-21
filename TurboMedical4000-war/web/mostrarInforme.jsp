@@ -4,6 +4,11 @@
     Author     : Juan
 --%>
 
+<%--
+    Esta página no lleva las opciones de menú y demás por si se deseara imprimir
+    el informe generado.
+--%>
+
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Map"%>

@@ -39,7 +39,7 @@ public class LoginMedicoServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         if(session.getAttribute("medico")!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilMedico.jsp");
             dispatcher.forward(request, response);
 	}else{
             boolean userNum = true;
@@ -51,7 +51,8 @@ public class LoginMedicoServlet extends HttpServlet {
             }
             if(medico!= null && userNum && medico.getContrasena().equals(request.getParameter("contrasena"))){
                 session.setAttribute("medico", medico);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp");
+                //RequestDispatcher dispatcher = request.getRequestDispatcher("menuMedico.jsp"
+                RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilMedico.jsp");
                 
                 dispatcher.forward(request, response);
             }else{

@@ -4,7 +4,5 @@
     Author     : Juan
 --%>
 
-<%-- Aunque esto es solo una linea, he pensado que es mejor ponerlo a parte
-tambien y asi nos evitamos complicaciones si se le quiere añadir algo luego --%>
-
 <table width="100%" border="1" cellspacing="0" >
+<tr> <th> &nbsp; </th> <td rowspan="7" >

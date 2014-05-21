@@ -20,9 +20,8 @@
     </head>
     <body>
      
-        <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-              
-            <tr> <th> &nbsp; </th> <td rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        
                     <h2>Historial Personal</h2>
                     <form name="filtrarHistorial" action="BusquedaHistorialPacienteServlet" method="post">
                         <table>
@@ -66,5 +65,5 @@
                <h3>NO HAY NINGUNA ENTRADA EN EL HISTORIAL PARA MOSTRAR</h3>
                <% } %>
                 </td></tr>
-             <%@ include file="OpcionesMenu/opcionesPaciente.jsp" %>
+             <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
 </html>

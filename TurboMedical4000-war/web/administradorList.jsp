@@ -23,10 +23,7 @@
     </head>
     <body>
         
-        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
-        
-             <tr>
-                <th> &nbsp; </th> <td rowspan="7" >
+        <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 
                     
                     <h1>Gesti&oacute;n de Administradores</h1>
@@ -66,7 +63,7 @@
                
             </tr>
         
-        <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
+        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
         
     </body>
 </html>
