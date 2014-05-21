@@ -7,7 +7,9 @@ package turbomedical.servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 
 import javax.servlet.RequestDispatcher;
@@ -49,6 +51,13 @@ public class AddToHistorialServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Medico medico = (Medico) session.getAttribute("medico");
+
+        List<Paciente> lista = new ArrayList<>();
+        lista.addAll(medico.getPacienteCollection());
+        
+        request.setAttribute("lista", lista);
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AddToHistorial.jsp");
         dispatcher.forward(request, response);
     }

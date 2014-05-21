@@ -4,12 +4,17 @@
     Author     : Sihame
 --%>
 
+<%@page import="turbomedical4000.entity.Paciente"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>A&ntilde;adir al Historial</title>
+        <% 
+            List<Paciente> listapacientes= (List<Paciente>)request.getAttribute("lista");
+        %>
 
     </head>
     
@@ -25,7 +30,18 @@
                        
                     </tr>
                     <tr>
-                        <td><input type="text" name="usuario" value="<%=request.getParameter("id") == null ? "":request.getParameter("id")%>"></td>
+                        <td>
+                            <select name="usuario">
+        <%
+    if (listapacientes != null)
+        for (Paciente p: listapacientes) {
+%>
+                            <option value="<%= p.getNumSS() %>"><%= p.getNumSS()+" "+p.getNombre()+" "+p.getApellidos() %></option>
+<%            
+        }
+%>       
+                            </select>
+                        </td>
                         <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
                         <td> <input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''" ></td>
                         
