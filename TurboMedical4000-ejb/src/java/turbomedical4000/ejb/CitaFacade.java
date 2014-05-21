@@ -7,7 +7,6 @@
 package turbomedical4000.ejb;
 
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,47 +37,15 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
     @Override
     public Cita findProximasCitasPaciente(int numSS) {
         
-        Date auxDate = new Date();
-        //Calendar cal = Calendar.getInstance();
-        //long fecha = (long)((cal.get(Calendar.YEAR) - 1970)*31557518200l) + (long)(cal.get(Calendar.MONTH)*2591100000l) + (long)((cal.get(Calendar.DAY_OF_MONTH)-2)*86400000);
-        //long hora = cal.get(Calendar.HOUR_OF_DAY)*3600000 + cal.get(Calendar.MINUTE)*60000;
-        //Date utilDate = new Date(fecha); //86400000 son los milisegundos que dura un día
-        Date utilDate = new Date(auxDate.getTime() - 864000000l);
-        //Date utilHora = new Date(hora);
-        //System.out.println(utilHora.toString());
-        //System.out.println(utilDate.toString());
-            
         List<Cita> proximasCitas = (List<Cita>) em.createNamedQuery("Cita.findProximasCitasPaciente")
-                .setParameter("numSS", numSS).setParameter("fecha", utilDate).getResultList();
+                .setParameter("numSS", numSS).getResultList();
         
-//        Cita cita = null;
-//        if(!proximasCitas.isEmpty()){
-//            cita = proximasCitas.get(0);
-//        }
-        //Los valores no vienen ordenados, así que hay que buscar la fecha más reciente de las que hemos recibido
-        Cita cita = null;
-        
+        Cita citaProxima = null;
         if(!proximasCitas.isEmpty()){
-            cita = proximasCitas.get(0);
-            Date date = new Date();
-            java.text.DateFormat df = new java.text.SimpleDateFormat("HH:mm");
-            java.text.DateFormat df2 = new java.text.SimpleDateFormat("HH:mm");
-            java.text.DateFormat df3 = new java.text.SimpleDateFormat("HH:mm");
-            String horaCita, horaActual, horaCitaSeleccionada;
-            for(Cita c: proximasCitas){
-                horaCita = df.format(c.getHora());
-                horaActual = df2.format(date);
-                horaCitaSeleccionada = df3.format(cita.getHora());
-                System.out.println(horaActual);
-                System.out.println(horaCita);
-                if(c.getFecha().before(cita.getFecha()) && horaCita.compareTo(horaActual) > 0){
-                    cita = c;
-                }else if (c.getFecha().equals(cita.getFecha()) && horaCitaSeleccionada.compareTo(horaCita) > 0 && horaCita.compareTo(horaActual) > 0){
-                    cita = c;
-                }
-            }
+            citaProxima = proximasCitas.get(0);
         }
-        return cita;
+        
+        return citaProxima;
     }
     
      @Override
