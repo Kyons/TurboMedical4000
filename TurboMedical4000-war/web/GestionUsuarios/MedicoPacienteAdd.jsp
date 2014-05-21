@@ -13,11 +13,7 @@
         <title>A&ntilde;adir M&eacute;dico Paciente</title>
     </head>
     <body>
-          <%@ include file="../OpcionesMenu/aperturaOpcionesComun.jsp" %>
-    
-        
-             <tr>
-                <th> &nbsp; </th> <td rowspan="7" >
+          <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
         <h2>Lista de M&eacute;dico Paciente</h2>
         
          <form name="add" action="EditMedicoPacienteServet" method="post">
@@ -39,6 +35,6 @@
                
             </tr>
         
-       <%@ include file="../OpcionesMenu/opcionesAdministrador.jsp" %>
+       <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
     </body>
 </html>

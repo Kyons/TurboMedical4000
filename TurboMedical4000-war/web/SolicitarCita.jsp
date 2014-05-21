@@ -41,6 +41,6 @@
             </table>            
       </form>
        
-        <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
+       <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
   </body>
 </html>

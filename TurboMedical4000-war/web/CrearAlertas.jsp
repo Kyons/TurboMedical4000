@@ -13,8 +13,7 @@
     </head>
     <body>
         <h1>Crear nueva Alerta</h1>
-        <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-        <tr> <th> &nbsp; </th> <td rowspan="4" >
+        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
        
         <form name="addAlerta" action="CrearAlertasServlet" method="post">
               <table>
@@ -43,6 +42,6 @@
                     
             </table>            
       </form>
-        <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
+        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
   </body>
 </html>

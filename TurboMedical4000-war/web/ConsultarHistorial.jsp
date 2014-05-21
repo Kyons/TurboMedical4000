@@ -59,6 +59,6 @@
             }
   %>
                </table>  
-                </td></tr>
+               </td></tr>
              <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
 </html>

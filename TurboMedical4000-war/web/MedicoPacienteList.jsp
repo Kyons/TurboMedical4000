@@ -17,10 +17,8 @@
         %>
     </head>
     <body>
-        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
+        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
         
-             <tr>
-                <th> &nbsp; </th> <td rowspan="7" >
         <h2>Lista de M&eacute;dico Paciente</h2>
         <form name="filtrarPacMed" action="BusquedaPacienteMedicoServlet" method="post">
             <table>
@@ -66,6 +64,6 @@
                
             </tr>
         
-        <%@ include file="OpcionesMenu/opcionesAdministrador.jsp" %>
+        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
     </body>
 </html>

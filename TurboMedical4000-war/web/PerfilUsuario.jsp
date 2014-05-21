@@ -19,7 +19,7 @@
     </head>
     <body>
      
-        <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
+        <jsp:include page="OpcionesMenu/AperturaOpcionesPaciente.jsp" />
                   <h2>Perfil personal</h2>
                   
             <table border="1">

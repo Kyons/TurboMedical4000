@@ -25,10 +25,7 @@
     </head>
     <body>
         
-        <%@ include file="OpcionesMenu/aperturaOpcionesComun.jsp" %>
-              
-            <tr>
-                <th> &nbsp; </th> <td rowspan="5" >
+        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
 
                     <h1>Pacientes asignados a <%= medico.getNombre() %> <%= medico.getApellidos() %></h1>
                     <form name="filtrarPacientesAsignados" action="BusquedaPacienteAsignadoServlet" method="post">
@@ -89,7 +86,7 @@
                
             </tr>
             
-            <%@ include file="OpcionesMenu/opcionesMedico.jsp" %>
+            <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />
             
     </body>
 </html>
