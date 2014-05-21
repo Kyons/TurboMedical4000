@@ -18,7 +18,7 @@
               
             <tr> <th> &nbsp; </th> <td rowspan="7" >
                      <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
-            <form name="add" accion="AdToHistorialServlet" method="post">
+            <form name="add" accion="AddToHistorialServlet" method="post">
                 <table>
                     <tr>
                         <th>Usuario</th>
@@ -27,7 +27,7 @@
                        
                     </tr>
                     <tr>
-                        <td><input type="text" name="usuario" value=""></td>
+                        <td><input type="text" name="usuario" value="<%=request.getParameter("id") == null ? "":request.getParameter("id")%>"></td>
                         <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
                         <td> <input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''" ></td>
                         

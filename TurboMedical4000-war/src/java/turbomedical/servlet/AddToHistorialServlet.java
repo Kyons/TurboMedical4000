@@ -98,7 +98,7 @@ public class AddToHistorialServlet extends HttpServlet {
            try{
            Date fecha = formatter.parse(date);
            Date hora = formatter2.parse(time);
-           Lineahistorial l = new Lineahistorial(5); 
+           Lineahistorial l = new Lineahistorial(); 
            l.setFecha(fecha);
            l.setEntrada(entrada);
            l.setHora(hora);
