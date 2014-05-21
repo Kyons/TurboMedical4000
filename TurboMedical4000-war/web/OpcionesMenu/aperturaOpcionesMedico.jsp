@@ -1,6 +1,5 @@
 <%-- 
-    Document   : aperturaOpcionesComun
-    Created on : 24-abr-2014, 21:25:19
+    Document   : aperturaOpcionesMedico
     Author     : Juan
 --%>
 

@@ -14,7 +14,7 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ include file="ComprobacionesSesion/comprobacionPaciente.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,10 +30,10 @@
         <form name="addCita" action="SolicitarCitaServlet" method="post">
               <table>
                     <tr>
-                        <th>N&uacute;mero colegiado:</th>
+                        <th>M&eacute;dico:</th>
                         <th>Fecha:</th>
                         <th>Hora:</th>
-                        <th>Lugar:</th>
+                        <%-- <th>Lugar:</th> --%>
                     </tr>
                     <tr>
                         <%
@@ -52,12 +52,12 @@
                         <%--<td><input type="text" name="numCol" value=""></td> --%>
                         <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
                         <td><input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''"></td> 
-                        <td><input type="text" name="lugar" value=""></td>
+                        <%-- <td><input type="text" name="lugar" value=""></td> --%>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <%-- <td>&nbsp;</td> --%>
                         <td><input type="submit" name="pedir" value="Pedir Cita"></td>
                     </tr>
                     

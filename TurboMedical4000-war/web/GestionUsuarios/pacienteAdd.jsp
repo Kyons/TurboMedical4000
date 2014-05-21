@@ -4,15 +4,9 @@
     Author     : Juan
 --%>
 
-<%-- 
-    FALTA LA ASIGANACION DE PACIENTES A MEDICOS
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <%@ include file="../ComprobacionesSesion/comprobacionAdministrador.jsp" %>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

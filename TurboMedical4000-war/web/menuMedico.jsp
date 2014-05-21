@@ -8,19 +8,11 @@
 <%@page import="turbomedical4000.entity.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ include file="ComprobacionesSesion/comprobacionMedico.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Men&uacute; M&eacute;dico</title>
-<% 
-    Medico medico =(Medico) session.getAttribute("medico");
-    if(medico ==null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("loginMedicos.jsp");
-            dispatcher.forward(request, response);
-       }
-  
-%>
     </head>
     <body>
          <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />

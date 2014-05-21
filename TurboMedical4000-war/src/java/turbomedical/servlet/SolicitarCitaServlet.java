@@ -77,7 +77,8 @@ public class SolicitarCitaServlet extends HttpServlet {
         }
         cita.setHora(hora);
         
-        cita.setLugar(request.getParameter("lugar"));
+        //cita.setLugar(request.getParameter("lugar"));
+        cita.setLugar("-");
         
         citaFacade.create(cita);
 

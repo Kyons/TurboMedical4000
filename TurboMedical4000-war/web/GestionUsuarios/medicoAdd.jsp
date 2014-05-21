@@ -4,17 +4,11 @@
     Author     : Juan
 --%>
 
-<%-- 
-    FALTA LA ASIGANACION DE PACIENTES A MEDICOS -- Se hace desde el menu de administrador
---%>
-
 <%@page import="turbomedical4000.entity.Especialidad"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <%@ include file="../ComprobacionesSesion/comprobacionAdministrador.jsp" %>
-
 <%
     List<Especialidad> especialidades;
     
