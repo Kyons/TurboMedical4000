@@ -62,13 +62,18 @@ public class CitaFacade extends AbstractFacade<Cita> implements CitaFacadeLocal 
             cita = proximasCitas.get(0);
             Date date = new Date();
             java.text.DateFormat df = new java.text.SimpleDateFormat("HH:mm");
-            String horaCita, horaActual;
+            java.text.DateFormat df2 = new java.text.SimpleDateFormat("HH:mm");
+            java.text.DateFormat df3 = new java.text.SimpleDateFormat("HH:mm");
+            String horaCita, horaActual, horaCitaSeleccionada;
             for(Cita c: proximasCitas){
                 horaCita = df.format(c.getHora());
-                horaActual = df.format(date);
+                horaActual = df2.format(date);
+                horaCitaSeleccionada = df3.format(cita.getHora());
+                System.out.println(horaActual);
+                System.out.println(horaCita);
                 if(c.getFecha().before(cita.getFecha()) && horaCita.compareTo(horaActual) > 0){
                     cita = c;
-                }else if (c.getFecha().equals(cita.getFecha()) && horaCita.compareTo(horaActual) > 0){
+                }else if (c.getFecha().equals(cita.getFecha()) && horaCitaSeleccionada.compareTo(horaCita) > 0 && horaCita.compareTo(horaActual) > 0){
                     cita = c;
                 }
             }
