@@ -9,7 +9,7 @@
 <%@page import="turbomedical4000.entity.Paciente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ include file="ComprobacionesSesion/comprobacionMedico.jsp" %>
 <%
     List<Paciente> lista;
     

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="ComprobacionesSesion/comprobacionMedico.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,6 +43,6 @@
                     
             </table>            
       </form>
-        <jsp:include page="OpcionesMenu/ppcionesMedico.jsp" />
+        <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />
   </body>
 </html>

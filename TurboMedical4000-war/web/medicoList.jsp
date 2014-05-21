@@ -8,9 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <%@ include file="ComprobacionesSesion/comprobacionAdministrador.jsp" %>
-
 <%
     List<Medico> lista;
     

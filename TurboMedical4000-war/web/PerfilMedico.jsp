@@ -7,12 +7,13 @@
 <%@page import="turbomedical4000.entity.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ include file="ComprobacionesSesion/comprobacionMedico.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil M&eacute;dico</title>
         <% 
-            Medico medico= (Medico) session.getAttribute("medico");
+            //Medico medico= (Medico) session.getAttribute("medico");
             java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
         %>
     </head>

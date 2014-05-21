@@ -6,9 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <%@ include file="../ComprobacionesSesion/comprobacionAdministrador.jsp" %>
-
 <%
     Administrador usuario = (Administrador) request.getAttribute("usuario");
 %>
