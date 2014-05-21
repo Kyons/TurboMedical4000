@@ -36,6 +36,11 @@
                         </table>
                         <input type="Submit" value="Buscar">
                     </form>
+                 <% 
+                    if(!historial.isEmpty()){
+                        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                        java.text.DateFormat hf = new java.text.SimpleDateFormat("HH:mm");
+                 %>
                <table border="1">
                    <tr>
                        <th>Fecha</th>
@@ -43,10 +48,8 @@
                        <th>Entrada</th>
                    </tr>
  <%
-            if(historial!=null){
-            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-             java.text.DateFormat hf = new java.text.SimpleDateFormat("HH:mm");
-            for(Lineahistorial lh: historial){
+           
+                    for(Lineahistorial lh: historial){
                 
  %>
                   <tr>
@@ -55,10 +58,12 @@
                       <td><%= lh.getEntrada() == null ? "-":lh.getEntrada() %></td>
                   </tr>
   <%
-            }
-            }
+                    }
   %>
-               </table>  
-               </td></tr>
+               </table>
+               <% }else{ %>
+               <h3>NO HAY NINGUNA ENTRADA EN EL HISTORIAL PARA MOSTRAR</h3>
+               <% } %>
+                </td></tr>
              <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
 </html>

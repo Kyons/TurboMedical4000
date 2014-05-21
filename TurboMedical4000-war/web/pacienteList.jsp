@@ -50,6 +50,10 @@
                     </form>
                     <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
+                    <%
+                        if (!lista.isEmpty()){
+                            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                    %>
         <table border="1">
             <tr>
                 <th>N&uacute;mero SS</th>
@@ -64,8 +68,6 @@
                 <th>&nbsp;</th>
             </tr>
 <%
-    if (lista != null){
-        java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
         for (Paciente paciente: lista) {
 %>
             <tr>
@@ -84,9 +86,13 @@
 
 <%            
         }
-    }
 %>            
-       </table>   
+       </table>
+                    <%
+                        }else{
+                    %>
+                    <h3>NO HAY PACIENTES QUE MOSTRAR</h3>
+                    <% } %>
                    </td> 
                
             </tr>

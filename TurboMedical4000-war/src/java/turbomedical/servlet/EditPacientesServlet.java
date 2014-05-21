@@ -74,7 +74,7 @@ public class EditPacientesServlet extends HttpServlet {
             // Buscar por num SS
             Paciente usuario = null;
             try{
-                usuario = pacienteFacade.findByNumSS(Integer.valueOf(request.getParameter("numSS")));
+                usuario = pacienteFacade.find(Integer.valueOf(request.getParameter("numSS")));
             } catch (NumberFormatException e) {
                 
                     RequestDispatcher rd;

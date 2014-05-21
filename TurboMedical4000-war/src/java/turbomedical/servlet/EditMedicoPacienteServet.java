@@ -105,8 +105,8 @@ public class EditMedicoPacienteServet extends HttpServlet {
           
            Integer numSS = Integer.valueOf(request.getParameter("paciente"));
            
-           Medico medico = (Medico)medicoFacade.findByNumColegiado(numC);
-           Paciente paciente = (Paciente)pacienteFacade.findByNumSS(numSS);
+           Medico medico = (Medico)medicoFacade.find(numC);
+           Paciente paciente = (Paciente)pacienteFacade.find(numSS);
            PacienteHasMedico pm = new PacienteHasMedico();
            pm.setPacienteHasMedicoPK(new PacienteHasMedicoPK(numSS,numC));
            

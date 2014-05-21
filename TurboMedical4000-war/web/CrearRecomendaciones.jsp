@@ -37,7 +37,7 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td><input type="submit" name="NuevaR" value="Nueva Recomendaci&oacute;n></td>
+                        <td><input type="submit" name="NuevaR" value="Nueva Recomendaci&oacute;n"></td>
                     </tr>
                     
             </table>            

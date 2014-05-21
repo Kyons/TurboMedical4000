@@ -33,6 +33,9 @@
                     </form>
                     <a href="EditAdministradoresServlet?do=addForm">A&ntilde;adir nuevo administrador</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
+                    <%
+                        if (!lista.isEmpty()){
+                    %>
         <table border="1">
             <tr>
                 <th>Id</th>
@@ -40,7 +43,6 @@
                 <th>&nbsp;</th>
             </tr>
 <%
-    if (lista != null)
         for (Administrador usuario: lista) {
 %>
             <tr>
@@ -53,7 +55,10 @@
 <%            
         }
 %>            
-       </table>   
+       </table>
+                    <% }else{ %>
+                    <h3>NO HAY ADMINISTRADORES QUE MOSTRAR</h3>
+                    <% } %>
                    </td> 
                
             </tr>
