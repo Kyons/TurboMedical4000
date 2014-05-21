@@ -16,7 +16,7 @@
     </head>
     <body>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 <h1>A&ntilde;adir nuevo administrador</h1>
                 
                 <form name="addForm" action="EditAdministradoresServlet" method="post">
@@ -38,7 +38,7 @@
             </td> 
         </tr>
         
-        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/opcionesAdministrador.jsp" />
             
     </body>
 </html>

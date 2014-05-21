@@ -28,7 +28,7 @@
     </head>
     <body>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 <h1>A&ntilde;adir nuevo m&eacute;dico</h1>
                 
                 <form name="addForm" action="EditMedicosServlet" method="post">
@@ -86,7 +86,7 @@
             </td> 
         </tr>
         
-        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/opcionesAdministrador.jsp" />
             
     </body>
 </html>

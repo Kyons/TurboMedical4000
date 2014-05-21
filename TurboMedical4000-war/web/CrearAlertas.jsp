@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Crear nueva Alerta</h1>
-        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
        
         <form name="addAlerta" action="CrearAlertasServlet" method="post">
               <table>

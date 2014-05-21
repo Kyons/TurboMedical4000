@@ -17,7 +17,7 @@
         %>
     </head>
       <body>
-         <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
                     <h1>Citas actualmente registradas</h1>
                     <form name="filtrarCitas" action="BusquedaCitasMedicoServlet" method="post">
                         <table>

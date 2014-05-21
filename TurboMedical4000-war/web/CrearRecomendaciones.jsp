@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Crear nueva recomendaci&oacute;n</h1>
-        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
         
         <form name="addRecom" action="CrearRecomendacionesServlet" method="post">
               <table>

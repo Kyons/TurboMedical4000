@@ -25,7 +25,7 @@
     </head>
     <body>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
 
                     <h1>Pacientes asignados a <%= medico.getNombre() %> <%= medico.getApellidos() %></h1>
                     <form name="filtrarPacientesAsignados" action="BusquedaPacienteAsignadoServlet" method="post">

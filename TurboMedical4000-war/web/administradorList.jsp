@@ -23,7 +23,7 @@
     </head>
     <body>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
+        <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 
                     
                     <h1>Gesti&oacute;n de Administradores</h1>
@@ -58,7 +58,7 @@
                
             </tr>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
+        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
         
     </body>
 </html>

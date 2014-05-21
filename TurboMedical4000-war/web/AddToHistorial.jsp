@@ -14,7 +14,7 @@
     </head>
     
     <body>
-        <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
                      <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
             <form name="add" accion="AdToHistorialServlet" method="post">
                 <table>

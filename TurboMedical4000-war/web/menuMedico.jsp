@@ -23,7 +23,7 @@
 %>
     </head>
     <body>
-         <jsp:include page="OpcionesMenu/AperturaOpcionesMedico.jsp" />
+         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
                 Usuario: <%= medico.getNombre() %> <%= medico.getApellidos() %>
                 </td></tr>
              <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />

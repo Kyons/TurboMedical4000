@@ -20,7 +20,7 @@
     </head>
     <body>
         
-        <jsp:include page="OpcionesMenu/AperturaOpcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
                 <h1>A&ntilde;adir nuevo paciente</h1>
                 
                 <form name="addForm" action="EditPacientesServlet" method="post">
@@ -66,7 +66,7 @@
             </td> 
         </tr>
         
-        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+        <jsp:include page="../OpcionesMenu/opcionesAdministrador.jsp" />
             
     </body>
 </html>
