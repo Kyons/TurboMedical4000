@@ -36,7 +36,7 @@
     if (listapacientes != null)
         for (Paciente p: listapacientes) {
 %>
-                            <option value="<%= p.getNumSS() %>"><%= p.getNumSS()+" "+p.getNombre()+" "+p.getApellidos() %></option>
+<option value="<%= p.getNumSS() %>"<% if(Integer.parseInt(request.getParameter("id")) == p.getNumSS()){ %> selected="selected"  <% } %> ><%= p.getNumSS()+" "+p.getNombre()+" "+p.getApellidos() %></option>
 <%            
         }
 %>       

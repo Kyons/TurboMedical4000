@@ -53,12 +53,17 @@ public class AddToHistorialServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Medico medico = (Medico) session.getAttribute("medico");
-
-        List<Paciente> lista = new ArrayList<>();
-        lista.addAll(medico.getPacienteCollection());
         
+        List<Paciente> lista = new ArrayList<>();
+        lista.addAll(medico.getPacienteCollection()); 
+        String id;
+        if(request.getParameter("id") != null){
+            id = request.getParameter("id");
+        }else{
+            id = "0";
+        }
         request.setAttribute("lista", lista);
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AddToHistorial.jsp");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AddToHistorial.jsp?id="+id);
         dispatcher.forward(request, response);
     }
 
