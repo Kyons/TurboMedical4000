@@ -28,7 +28,7 @@ public interface MedicoFacadeLocal {
     List<Medico> findRange(int[] range);
 
     int count();
-    public Medico findByNumColegiado(int numColegiado);
+    
     
     List<Medico> filtrarMedicos(String numColP, String especialidadP, String nombreP,
             String apellidosP, String fechaNacP,  String dniP,

@@ -31,16 +31,6 @@ public class MedicoFacade extends AbstractFacade<Medico> implements MedicoFacade
         super(Medico.class);
     }
 
-    @Override
-    public Medico findByNumColegiado(int numColegiado) {
-         Medico medico = null;
-        try{
-            medico = (Medico) em.createNamedQuery("Medico.findByNumColegiado").setParameter("numColegiado", numColegiado).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("No se encontró ningún resultado");
-        }
-        return medico;
-    }
 
     @Override
     public List<Medico> filtrarMedicos(String numColP, String especialidadP, String nombreP, 

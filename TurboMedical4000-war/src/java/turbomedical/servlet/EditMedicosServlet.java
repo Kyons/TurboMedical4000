@@ -93,7 +93,7 @@ public class EditMedicosServlet extends HttpServlet {
             // Buscar por num colegiado
             Medico usuario = null;
             try{
-                usuario = medicoFacade.findByNumColegiado(Integer.valueOf(request.getParameter("numColegiado")));
+                usuario = medicoFacade.find(Integer.valueOf(request.getParameter("numColegiado")));
             } catch (NumberFormatException e) {
                 
                     // Obtener la lista de especialidades

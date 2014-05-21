@@ -31,16 +31,6 @@ public class PacienteFacade extends AbstractFacade<Paciente> implements Paciente
         super(Paciente.class);
     }
 
-    @Override
-    public Paciente findByNumSS(int numSS) {
-        Paciente paciente = null;
-        try{
-            paciente = (Paciente) em.createNamedQuery("Paciente.findByNumSS").setParameter("numSS", numSS).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("No se encontró ningún resultado");
-        }
-        return paciente;
-    }
 
     @Override
     public List<Paciente> filtrarPacientes(String numSSP, String dniP, String nombreP, 
