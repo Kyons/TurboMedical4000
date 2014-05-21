@@ -15,7 +15,6 @@
     
     lista = (List<Paciente>)request.getAttribute("lista");
     
-    Medico medico= (Medico) session.getAttribute("medico");
 %>   
 
 <html>
