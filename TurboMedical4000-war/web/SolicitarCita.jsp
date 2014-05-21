@@ -4,8 +4,17 @@
     Author     : Tomás
 --%>
 
+<%@page import="turbomedical4000.ejb.PacienteHasMedicoFacade"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
+<%@page import="turbomedical4000.ejb.PacienteHasMedicoFacadeLocal"%>
+<%@page import="javax.ejb.EJB"%>
+<%@page import="turbomedical4000.entity.Paciente"%>
+<%@page import="turbomedical4000.entity.Medico"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,7 +23,7 @@
     <body>
         <h1>Solicitar cita</h1>
         <table width="100%" border="1" cellspacing="0" bordercolor="#000000" >
-        <tr> <th> &nbsp; </th> <td rowspan="4" >
+        <tr> <th> &nbsp; </th> <td rowspan="7" >
         <h2>Solicitar Cita</h2>
         <form name="addCita" action="SolicitarCitaServlet" method="post">
               <table>
@@ -25,7 +34,20 @@
                         <th>Lugar:</th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="numCol" value=""></td>
+                        <%
+                         List<Medico> medicos = (List<Medico>) request.getAttribute("medicos");
+                        %>
+                        <td><select name="numCol">                    
+<%
+    if (!medicos.isEmpty())
+        for (Medico mec: medicos) {
+%>
+                            <option value="<%= mec.getNumColegiado() %>"><%= mec.getNombre() + " " + mec.getApellidos() %></option>
+<%            
+        }
+%>
+                            </select></td>
+                        <%--<td><input type="text" name="numCol" value=""></td> --%>
                         <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
                         <td><input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''"></td> 
                         <td><input type="text" name="lugar" value=""></td>

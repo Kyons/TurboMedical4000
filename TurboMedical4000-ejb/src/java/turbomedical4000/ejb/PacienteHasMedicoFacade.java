@@ -102,7 +102,16 @@ public class PacienteHasMedicoFacade extends AbstractFacade<PacienteHasMedico> i
         
         return pacientes;
     }
-
     
-    
+    @Override
+    public List<Medico> medicosDelPaciente(Paciente pac){
+        List<PacienteHasMedico> lista = (List<PacienteHasMedico>) em.createNamedQuery("PacienteHasMedico.findByPacientenumSS").setParameter("pacientenumSS", pac.getNumSS()).getResultList();
+        
+        List<Medico> medicos = new ArrayList<>();
+        for(PacienteHasMedico p:lista){
+            medicos.add(p.getMedico());
+        }
+        
+        return medicos;
+    }   
 }

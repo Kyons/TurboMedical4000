@@ -37,7 +37,7 @@
                         </table>
                         <input type="Submit" value="Buscar">
                     </form>
-                    <a href="SolicitarCita.jsp">Solicitar cita</a><br>
+                    <a href="SolicitarCitaAccederServlet">Solicitar cita</a><br>
                     <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
                     <% if(!cita.isEmpty()){ %>
                <table border="1">
