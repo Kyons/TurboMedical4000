@@ -42,16 +42,21 @@ div.cajaLogin {
     padding: 10px;
 }
 
+div.cajaLogin input {
+    margin: 5px;
+}
+
+#logoPagina {
+    width: 20%;
+    display: block;
+}
+
 #principal, #principal th, #principal td.opcion {
     border: none;
 }
 
 #principal td.opcion {
     text-align: center;
-}
-
-#principal td.opcion:hover {
-    background: #99ff66;
 }
 
 #principal td.opcion a, #principal td.opcion a:visited {
@@ -64,7 +69,9 @@ div.cajaLogin {
 }
 
 #principal td.opcion a:hover {
+    border-color: #ffffff;
     color: #336600;
+    background: #99ff66;
 }
 
 #principal #contenido {

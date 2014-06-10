@@ -13,7 +13,7 @@
         <title>Turbo Medical 4000 - Acceso administradores</title>
     </head>
     <body>
-        <img src="img/logo.png" id="cabeceraLogin"/>
+        <img src="img/logo.png" id="cabeceraLogin" />
         <div class="cajaLogin">
             <h3>Acceso administradores</h3>
             <form action="LoginAdministradorServlet" method="post">
@@ -25,7 +25,7 @@
             </form>
             <b><a style="color:red"><%= request.getParameter("msg") != null ? request.getParameter("msg") : ""%></a></b>       
             <br/>
-            <a href="loginPacientes.jsp">Acceso pacientes</a>| <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a>
+            <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a> | <a href="loginPacientes.jsp">Acceso pacientes</a>
         </div>
     </body>
 </html>
