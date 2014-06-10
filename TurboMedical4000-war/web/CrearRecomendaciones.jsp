@@ -13,11 +13,12 @@
         <title>Men&uacute; M&eacute;dico</title>
     </head>
     <body>
-        <h1>Crear nueva recomendaci&oacute;n</h1>
+        
         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
         
         <form name="addRecom" action="CrearRecomendacionesServlet" method="post">
               <table>
+                  <h1>Crear nueva recomendaci&oacute;n</h1>
                     <tr>
                         <th>N&uacute;mero SS Paciente:</th>
                         <th>N&uacute;mero colegiado:</th>

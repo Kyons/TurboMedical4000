@@ -8,23 +8,24 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="estilos/estiloBase.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>Turbo Medical 4000 - Acceso pacientes</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <h3>Acceso usuarios</h3>
-        <form action="LoginPacienteServlet" method="post">
-            Usuario: <input type="text" maxlength="20" size="20" name="usuario"> 
+        <img src="img/logo.png" id="cabeceraLogin"/>
+        <div class="cajaLogin">
+            <h3>Acceso pacientes</h3>
+            <form action="LoginPacienteServlet" method="post">
+                Usuario: <input type="text" maxlength="20" size="20" name="usuario"> 
+                <br/>
+                Contrase&ntilde;a: <input type="password" maxlength="20" size="20" name="contrasena"> 
+                <br/>
+                <input type="submit" value="Entrar"> 
+            </form>
+            <b><a style="color:red"><%= request.getParameter("msg") != null ? request.getParameter("msg") : ""%></a></b>
             <br/>
-            Contrase&ntilde;a: <input type="password" maxlength="20" size="20" name="contrasena"> 
-            <br/>
-            <input type="submit" value="Entrar"> 
-        </form>
-        <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
-        <br/>
-        <br/>
-        <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a>
-         | <a href="loginAdministrador.jsp">Acceso administrador</a>
+            <a href="loginMedicos.jsp">Acceso m&eacute;dicos</a>| <a href="loginAdministrador.jsp">Acceso administrador</a>
+        </div>
     </body>
 </html>

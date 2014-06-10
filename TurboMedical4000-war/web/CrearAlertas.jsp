@@ -13,11 +13,12 @@
         <title>Men&uacute; M&eacute;dico</title>
     </head>
     <body>
-        <h1>Crear nueva Alerta</h1>
+        
         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
        
         <form name="addAlerta" action="CrearAlertasServlet" method="post">
               <table>
+                  <h1>Crear nueva Alerta</h1>
                     <tr>
                         <th>N&uacute;mero SS Paciente:</th>
                         <th>N&uacute;mero colegiado:</th>

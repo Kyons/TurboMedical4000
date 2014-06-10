@@ -1,0 +1,77 @@
+/* 
+    Document   : estiloBase
+    Created on : 05-jun-2014, 22:50:21
+    Author     : Juan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    font-family: arial;
+    background-color: #009900;
+}
+
+#cabeceraLogin {
+    width: 35%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.cajaLogin {
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 30%;
+    
+    text-align: center;
+    
+    background-color: #ffffff;
+    border: 1px solid black;
+
+    /* Bordes redondeados */
+    /* Para Firefox */
+    -moz-border-radius: 15px 15px 15px 15px;
+    /* Para Safari y Chrome */
+    -webkit-border-radius: 15px 15px 15px 15px;
+    /* Para Opera */
+    border-radius: 15px 15px 15px 15px;
+    
+    font-weight: bold;
+    
+    padding: 10px;
+}
+
+#principal, #principal th, #principal td.opcion {
+    border: none;
+}
+
+#principal td.opcion {
+    text-align: center;
+}
+
+#principal td.opcion:hover {
+    background: #99ff66;
+}
+
+#principal td.opcion a, #principal td.opcion a:visited {
+    border: 1px solid;
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#principal td.opcion a:hover {
+    color: #336600;
+}
+
+#principal #contenido {
+    width: 80%;
+    
+    background-color: #ffffff;
+    border: 1px solid black;
+    
+    padding: 10px;
+}
