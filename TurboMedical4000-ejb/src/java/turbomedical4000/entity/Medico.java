@@ -50,6 +50,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Medico.findByTelefono", query = "SELECT m FROM Medico m WHERE m.telefono = :telefono"),
     @NamedQuery(name = "Medico.findByContrasena", query = "SELECT m FROM Medico m WHERE m.contrasena = :contrasena")})
 public class Medico implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mediconumColegiado")
+    private Collection<Tratamiento> tratamientoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mediconumColegiado")
+    private Collection<Formulariourgencia> formulariourgenciaCollection;
     @JoinTable(name = "paciente_has_medico", joinColumns = {
         @JoinColumn(name = "Medico_numColegiado", referencedColumnName = "numColegiado")}, inverseJoinColumns = {
         @JoinColumn(name = "Paciente_numSS", referencedColumnName = "numSS")})
@@ -263,6 +267,24 @@ public class Medico implements Serializable {
 
     public void setPacienteList(List<Paciente> pacienteList) {
         this.pacienteList = pacienteList;
+    }
+
+    @XmlTransient
+    public Collection<Formulariourgencia> getFormulariourgenciaCollection() {
+        return formulariourgenciaCollection;
+    }
+
+    public void setFormulariourgenciaCollection(Collection<Formulariourgencia> formulariourgenciaCollection) {
+        this.formulariourgenciaCollection = formulariourgenciaCollection;
+    }
+
+    @XmlTransient
+    public Collection<Tratamiento> getTratamientoCollection() {
+        return tratamientoCollection;
+    }
+
+    public void setTratamientoCollection(Collection<Tratamiento> tratamientoCollection) {
+        this.tratamientoCollection = tratamientoCollection;
     }
     
     

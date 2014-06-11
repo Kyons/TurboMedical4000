@@ -47,12 +47,16 @@ div.cajaLogin input {
 }
 
 #logoPagina {
-    width: 20%;
+    width: 80%;
     display: block;
 }
 
-#principal, #principal th, #principal td.opcion {
+#principal, #principal #menuOpciones, #principal td.opcion {
     border: none;
+}
+
+#principal #menuOpciones {
+    vertical-align: top;
 }
 
 #principal td.opcion {
@@ -75,10 +79,29 @@ div.cajaLogin input {
 }
 
 #principal #contenido {
-    width: 80%;
+    width: 85%;
     
     background-color: #ffffff;
     border: 1px solid black;
     
     padding: 10px;
+}
+
+#principal #contenido table {
+    border: none;
+    border-collapse: collapse;
+}
+
+#principal #contenido table.tablaDatos td {
+    border: solid #000000 1px;
+    padding: 5px;
+}
+
+#principal #contenido table .noAsociado {
+    font-weight: bold;
+    color: red;
+}
+
+#principal #contenido table .siAsociado {
+    color: #336600;
 }
