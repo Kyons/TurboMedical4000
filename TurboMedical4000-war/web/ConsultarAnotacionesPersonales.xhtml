@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Anotaciones</title>
+    </h:head>
+    <h:body>
+        <link rel="stylesheet" type="text/css" href="estilos/estiloBase.css"/>
+
+<a href="ConsultarPerfilUsuarioServlet"><img src="img/logoPagina.png" id="logoPagina" /></a>
+
+<table width="100%" border="1" cellspacing="0" id="principal">
+    <tr> <td id="menuOpciones">
+
+            <table>     
+                <tr>
+                    <td class="opcion"><a href="ConsultarPerfilUsuarioServlet">Perfil</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarCitasServlet">Citas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarHistorialServlet">Historial</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarAlertasServlet">Alertas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarRecomendacionServlet">Recomendaci&oacute;n</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="NuevoFormularioServlet">Enviar queja, reclamaci&oacute;n...</a></td>
+                </tr>
+            </table>
+
+        </td> <td rowspan="7" id="contenido">
+            
+            
+             <a href="ConsultarPerfilUsuarioServlet">&#8592; Volver</a>
+              <h2>Historial Personal</h2>
+              <h:form>
+                  <h:dataTable border="1" value="#{pacienteManagedBean.anotacionesPersonales()}" var="anotacion">
+                      <h:column>
+                          <f:facet name="header">
+                              Fecha
+                          </f:facet>
+                          <h:outputLabel value="#{anotacion.fecha}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              Hora
+                          </f:facet>
+                          <h:outputLabel value="#{anotacion.hora}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              Anotaci&oacute;n
+                          </f:facet>
+                          <h:outputLabel value="#{anotacion.anotacion}"/>
+                      </h:column>
+                      
+                  </h:dataTable>
+              </h:form>
+       
+        </td></tr>
+        
+            
+        <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
+        </table>
+        <br/>
+        <a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" /></a>
+    </h:body>
+</html>
+

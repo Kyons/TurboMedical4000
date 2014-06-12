@@ -4,10 +4,12 @@
  */
 package turbomedical4000.ejb;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import turbomedical4000.entity.Anotacionhistorial;
+import turbomedical4000.entity.Lineahistorial;
 
 /**
  *
@@ -25,6 +27,11 @@ public class AnotacionhistorialFacade extends AbstractFacade<Anotacionhistorial>
 
     public AnotacionhistorialFacade() {
         super(Anotacionhistorial.class);
+    }
+
+    @Override
+    public List<Anotacionhistorial> findByLineaHistorial(Lineahistorial lineaSeleccionada) {
+        return em.createNamedQuery("Anotacionhistorial.findByLineaHistorial").setParameter("lineaHistorialidLineaHistorial", lineaSeleccionada).getResultList();
     }
     
 }

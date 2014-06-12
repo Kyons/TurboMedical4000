@@ -7,6 +7,7 @@ package turbomedical4000.ejb;
 import java.util.List;
 import javax.ejb.Local;
 import turbomedical4000.entity.Anotacionhistorial;
+import turbomedical4000.entity.Lineahistorial;
 
 /**
  *
@@ -28,5 +29,7 @@ public interface AnotacionhistorialFacadeLocal {
     List<Anotacionhistorial> findRange(int[] range);
 
     int count();
+
+    public List<Anotacionhistorial> findByLineaHistorial(Lineahistorial lineaSeleccionada);
     
 }

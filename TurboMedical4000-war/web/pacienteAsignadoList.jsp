@@ -64,6 +64,7 @@
                 <th>Provincia</th>
                 <th>Tel&eacute;fono</th>
                 <th></th>
+               
             </tr>
 <%
         for (Paciente paciente: lista) {
@@ -79,12 +80,14 @@
                 <td><%= paciente.getProvincia() == null ? "-":paciente.getProvincia() %></td>
                 <td><%= paciente.getTelefono() == null ? "-":paciente.getTelefono() %></td>
                 <td><a href="AddToHistorialServlet?id=<%=paciente.getNumSS()%>">A&ntilde;adir entrada al historial</a></td>
+                
             </tr>
 
 <%            
         }
 %>            
        </table>
+       <a href="ListaPacientes.jsf">ver pacientes</a>
        <% }else{ %>
         <h3>NO TIENE NINGÚN PACIENTE ASIGNADO QUE MOSTRAR</h3>
        <% } %>

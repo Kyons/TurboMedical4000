@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Anotacionhistorial.findAll", query = "SELECT a FROM Anotacionhistorial a"),
     @NamedQuery(name = "Anotacionhistorial.findByIdAnotacionHistorial", query = "SELECT a FROM Anotacionhistorial a WHERE a.idAnotacionHistorial = :idAnotacionHistorial"),
+    @NamedQuery(name = "Anotacionhistorial.findByLineaHistorial", query = "SELECT a FROM Anotacionhistorial a WHERE a.lineaHistorialidLineaHistorial = :lineaHistorialidLineaHistorial"),
     @NamedQuery(name = "Anotacionhistorial.findByFecha", query = "SELECT a FROM Anotacionhistorial a WHERE a.fecha = :fecha"),
     @NamedQuery(name = "Anotacionhistorial.findByHora", query = "SELECT a FROM Anotacionhistorial a WHERE a.hora = :hora"),
     @NamedQuery(name = "Anotacionhistorial.findByAnotacion", query = "SELECT a FROM Anotacionhistorial a WHERE a.anotacion = :anotacion")})

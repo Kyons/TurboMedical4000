@@ -63,6 +63,7 @@
                     }
   %>
                </table>
+               <a href="ConsultarHistorialPersonal.jsf">Ver Historial</a>
                <% }else{ %>
                <h3>NO HAY NINGUNA ENTRADA EN EL HISTORIAL PARA MOSTRAR</h3>
                <% } %>
