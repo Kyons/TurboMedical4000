@@ -64,6 +64,7 @@
                 <th>Provincia</th>
                 <th>Tel&eacute;fono</th>
                 <th></th>
+                <th></th>
                
             </tr>
 <%
@@ -80,6 +81,7 @@
                 <td><%= paciente.getProvincia() == null ? "-":paciente.getProvincia() %></td>
                 <td><%= paciente.getTelefono() == null ? "-":paciente.getTelefono() %></td>
                 <td><a href="AddToHistorialServlet?id=<%=paciente.getNumSS()%>">A&ntilde;adir entrada al historial</a></td>
+                <td><a href="CrearTratamiento.jsf?id=<%=paciente.getNumSS()%>">A&ntilde;adir tratamiento</a></td>
                 
             </tr>
 

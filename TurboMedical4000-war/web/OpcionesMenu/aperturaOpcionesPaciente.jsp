@@ -21,6 +21,9 @@
                     <td class="opcion"> <a href="ConsultarHistorialServlet">Historial</a></td>
                 </tr>
                 <tr>
+                    <td class="opcion"> <a href="ConsultarTratamientos.jsf">Tratamientos</a></td>
+                </tr>
+                <tr>
                     <td class="opcion"> <a href="ConsultarAlertasServlet">Alertas</a></td>
                 </tr>
                 <tr>

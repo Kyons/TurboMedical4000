@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <link rel="stylesheet" type="text/css" href="estilos/estiloBase.css"/>
+
+        <a href="ConsultarPerfilUsuarioServlet"><img src="img/logoPagina.png" id="logoPagina" /></a>
+
+        <table width="100%" border="1" cellspacing="0" id="principal">
+            <tr> <td id="menuOpciones">
+
+            <table>     
+                <tr>
+                    <td class="opcion"><a href="ConsultarPerfilUsuarioServlet">Perfil</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarCitasServlet">Citas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarHistorialServlet">Historial</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarTratamientos.jsf">Tratamientos</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarAlertasServlet">Alertas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="ConsultarRecomendacionServlet">Recomendaci&oacute;n</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"> <a href="NuevoFormularioServlet">Enviar queja, reclamaci&oacute;n...</a></td>
+                </tr>
+            </table>
+
+            </td> <td rowspan="7" id="contenido">
+            
+            
+            <h1>Tratamientos</h1>
+            
+            <h:form>
+                <h:dataTable border="1" value="#{consultarTratamientosManagedBean.tratamientosActuales}" var="trat" rendered="#{consultarTratamientosManagedBean.tratamientosActuales.size()>0}">
+                <h:column>
+                <f:facet name="header">
+                   Medicamento
+                </f:facet>
+                    #{trat.medicamentoidMedicamento.nombre}
+                </h:column>
+                
+                <h:column>
+                <f:facet name="header">
+                   Fecha Inicio
+                </f:facet>
+                    <h:outputText value="#{trat.fechaInicio}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                <f:facet name="header">
+                   Fecha Fin
+                </f:facet>
+                    <h:outputText value="#{trat.fechaFin}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                <f:facet name="header">
+                    M&eacute;dico
+                </f:facet>
+                    #{trat.mediconumColegiado.nombre} #{trat.mediconumColegiado.apellidos}
+                </h:column>
+                
+                <h:column>
+                <f:facet name="header">
+                   Notas
+                </f:facet>
+                    #{trat.notas}
+                </h:column>
+            
+            </h:dataTable>
+            </h:form>
+            
+            <h3><h:outputText value="NO HAY TRATAMIENTOS PARA MOSTRAR" rendered="#{consultarTratamientosManagedBean.tratamientosActuales.size()==0}"/></h3>
+            
+            
+            </td></tr>
+            </table>
+            <br/>
+            <a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" /></a>
+    </h:body>
+</html>
+

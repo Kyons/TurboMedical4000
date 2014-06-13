@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
+        <link rel="stylesheet" type="text/css" href="estilos/estiloBase.css" />
+
+        <a href="ConsultarPerfilMedicoServlet"><img src="img/logoPagina.png" id="logoPagina" /></a>
+
+        <table width="100%" border="1" cellspacing="0" id="principal">
+        <tr> <td id="menuOpciones">
+
+            <table>
+                <tr>
+                    <td class="opcion"><a href="ConsultarPerfilMedicoServlet">Perfil M&eacute;dico</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="ListaPacientesAsignadosServlet">Pacientes</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="ConsultarCitasMedicoServlet">Citas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="CrearAlertas.jsp">Crear Alertas</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="CrearRecomendaciones.jsp">Crear Recomendaci&oacute;n</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="AddToHistorialServlet">A&ntilde;adir Historial</a></td>
+                </tr>
+                <tr>
+                    <td class="opcion"><a href="ListaFormulariosUrgencia.jsf">Formularios Urgencias</a></td>
+                </tr>
+            </table>  
+
+        </td> <td rowspan="8" id="contenido">
+        <!-- ............................................................. -->
+        <!-- ............................................................. -->
+        
+        <h1>Crear nuevo tratamiento</h1>
+        
+        <h:form>
+        <table border="1">
+            <tr>
+                <td>
+                    Paciente
+                </td>
+                <td>
+                    <h:selectOneMenu id="paciente" value="#{crearTratamientoManagedBean.pacienteSeleccionado}" title="Paciente">
+                        <f:selectItems value="#{crearTratamientoManagedBean.pacientes}" var="pac"
+                                       itemLabel="#{pac.numSS} #{pac.nombre} #{pac.apellidos}"
+                                       itemValue="#{pac.numSS}"/>
+                    </h:selectOneMenu>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Medicamento
+                </td>
+                <td>
+                    <h:selectOneMenu id="medicamento" value="#{crearTratamientoManagedBean.medicamentoSeleccionado}" title="Medicamento">
+                        <f:selectItems value="#{crearTratamientoManagedBean.medicamentos}" var="med"
+                                       itemLabel="#{med.nombre}"
+                                       itemValue="#{med.idMedicamento}"/>
+                    </h:selectOneMenu>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Fecha de Inicio </td>
+                <td>
+                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaInicio}" required="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Fecha de Fin </td>
+                <td>
+                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaFin}" required="true">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:inputText>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Anotaciones </td>
+                <td>
+                    <h:inputTextarea value="#{crearTratamientoManagedBean.tratamiento.notas}" rows="3"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <h:commandButton value="Crear" action="#{crearTratamientoManagedBean.crearTratamiento()}">
+                        <f:ajax execute="@form"
+                                render="@form"/>
+                    </h:commandButton>
+                </td>
+            </tr>
+            
+        </table>
+        <h:messages style="color:red" showDetail="true" showSummary="false" />
+        </h:form>
+        
+        
+        </td></tr>
+        
+            
+        <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
+        </table>
+        <br />
+        <a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" /></a>
+        <!-- ...................... -->
+    </h:body>
+</html>
+

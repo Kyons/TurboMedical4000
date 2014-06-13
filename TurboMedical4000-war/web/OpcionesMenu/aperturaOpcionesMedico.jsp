@@ -27,6 +27,9 @@
                     <td class="opcion"><a href="CrearRecomendaciones.jsp">Crear Recomendaci&oacute;n</a></td>
                 </tr>
                 <tr>
+                    <td class="opcion"><a href="CrearTratamiento.jsf">Crear Tratamiento</a></td>
+                </tr>
+                <tr>
                     <td class="opcion"><a href="AddToHistorialServlet">A&ntilde;adir Historial</a></td>
                 </tr>
                 <tr>
