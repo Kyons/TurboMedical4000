@@ -39,20 +39,24 @@
             
             
              <a href="ConsultarPerfilUsuarioServlet">&#8592; Volver</a>
-              <h2>Historial Personal</h2>
+              <h2>Anotaciones</h2>
               <h:form>
                   <h:dataTable border="1" value="#{pacienteManagedBean.anotacionesPersonales()}" var="anotacion">
                       <h:column>
                           <f:facet name="header">
                               Fecha
                           </f:facet>
-                          <h:outputLabel value="#{anotacion.fecha}"/>
+                          <h:outputLabel value="#{anotacion.fecha}">
+                              <f:convertDateTime pattern="dd/MM/yyyy"/>
+                          </h:outputLabel>
                       </h:column>
                       <h:column>
                           <f:facet name="header">
                               Hora
                           </f:facet>
-                          <h:outputLabel value="#{anotacion.hora}"/>
+                          <h:outputLabel value="#{anotacion.hora}">
+                              <f:convertDateTime pattern="HH:mm"/>
+                          </h:outputLabel>
                       </h:column>
                       <h:column>
                           <f:facet name="header">

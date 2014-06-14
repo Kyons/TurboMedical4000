@@ -81,7 +81,9 @@
                 <f:facet name="header">
                     Fecha Nacimiento
                 </f:facet>
-                    <h:outputLabel value="#{paciente.fechaNac}"/>
+                    <h:outputLabel value="#{paciente.fechaNac}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputLabel>
             </h:column>
             <h:column>
                 <f:facet name="header">
