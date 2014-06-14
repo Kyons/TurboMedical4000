@@ -2,103 +2,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Historial</title>
     </h:head>
     <h:body>
-        
-        <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
-        <link rel="stylesheet" type="text/css" href="estilos/estiloBase.css" />
 
-        <a href="ConsultarPerfilMedicoServlet"><img src="img/logoPagina.png" id="logoPagina" /></a>
+        <ui:composition template="OpcionesMenuJSF/opcionesMedico.xhtml">
+            <ui:define name="pagina">    
+                <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
 
-        <table width="100%" border="1" cellspacing="0" id="principal">
-        <tr> <td id="menuOpciones">
 
-            <table>
-                <tr>
-                    <td class="opcion"><a href="ConsultarPerfilMedicoServlet">Perfil M&eacute;dico</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="ListaPacientesAsignadosServlet">Pacientes</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="ConsultarCitasMedicoServlet">Citas</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="CrearAlertas.jsp">Crear Alertas</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="CrearRecomendaciones.jsp">Crear Recomendaci&oacute;n</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="AddToHistorialServlet">A&ntilde;adir Historial</a></td>
-                </tr>
-                <tr>
-                    <td class="opcion"><a href="ListaFormulariosUrgencia.jsf">Formularios Urgencias</a></td>
-                </tr>
-            </table>  
+                <h1>Historial</h1>
 
-        </td> <td rowspan="8" id="contenido">
-        <!-- ............................................................. -->
-        <!-- ............................................................. -->
-        
-        
-        <a href="ConsultarPerfilMedicoServlet">&#8592; Volver</a>
-        
-        
-        <h1>Historial</h1>
-        
-        
-         <h:form>
-            <h:dataTable border="1" value="#{medicoManagedBean.historialPaciente()}" var="linea">
-                <h:column>
-                    <f:facet name="header">
-                        Identificador
-                    </f:facet>
-                    <h:outputLabel value="#{linea.idLineaHistorial}"/>
-                </h:column>
-                 <h:column>
-                    <f:facet name="header">
-                        Fecha
-                    </f:facet>
-                     <h:outputLabel value="#{linea.fecha}">
-                         <f:convertDateTime pattern="dd/MM/yyyy"/>
-                     </h:outputLabel>
-                </h:column>
-                 <h:column>
-                    <f:facet name="header">
-                        Hora
-                    </f:facet>
-                     <h:outputLabel value="#{linea.hora}">
-                         <f:convertDateTime pattern="HH:mm"/>
-                     </h:outputLabel>
-                </h:column>
-                 <h:column>
-                    <f:facet name="header">
-                        Entrada
-                    </f:facet>
-                     <h:outputLabel value="#{linea.entrada}"/>
-                </h:column>
-                 <h:column>
-                    <f:facet name="header">
-                        Acci&oacute;n
-                    </f:facet>
-                     <h:commandLink value="Añadir anotaciones" action="#{medicoManagedBean.formularioAnotacion(linea)}"/>
-                </h:column>
-            </h:dataTable>
-        </h:form>
 
-        
-        </td></tr>
-        
-            
-        <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
-        </table>
-        <br />
-        <a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" /></a>
-        <!-- ...................... -->
-        
+                <h:form>
+                    <h:dataTable border="1" value="#{medicoManagedBean.historialPaciente()}" var="linea">
+                        <h:column>
+                            <f:facet name="header">
+                                Identificador
+                            </f:facet>
+                            <h:outputLabel value="#{linea.idLineaHistorial}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Fecha
+                            </f:facet>
+                            <h:outputLabel value="#{linea.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Hora
+                            </f:facet>
+                            <h:outputLabel value="#{linea.hora}">
+                                <f:convertDateTime pattern="HH:mm"/>
+                            </h:outputLabel>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Entrada
+                            </f:facet>
+                            <h:outputLabel value="#{linea.entrada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Acci&oacute;n
+                            </f:facet>
+                            <h:commandLink value="Añadir anotaciones" action="#{medicoManagedBean.formularioAnotacion(linea)}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
     </h:body>
 </html>
