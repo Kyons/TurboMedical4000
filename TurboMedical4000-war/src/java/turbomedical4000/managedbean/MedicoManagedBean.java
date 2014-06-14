@@ -105,11 +105,11 @@ public class MedicoManagedBean {
     }
     public String consultarHistorial(Paciente pacienteSeleccionado){
         this.pacienteSeleccionado=pacienteSeleccionado;
-        return "/ConsultarHistorialMedico.jsp";
+        return "/ConsultarHistorialMedico.jsf";
     }
      public String formularioAnotacion(Lineahistorial lineaSeleccionada){
         this.lineaSeleccionada=lineaSeleccionada;
-        return "/AddAnotacion.jsp";
+        return "/AddAnotacion.jsf";
     }
     public String addAnotacion() throws ParseException{
          this.nuevaAnotacion = new Anotacionhistorial();
@@ -123,7 +123,7 @@ public class MedicoManagedBean {
          this.nuevaAnotacion.setLineaHistorialidLineaHistorial(lineaSeleccionada);
          this.nuevaAnotacion.setIdAnotacionHistorial(2);
          anotacionhistorialFacade.create(nuevaAnotacion);
-        return "/ConsultarHistorialMedico.jsp";
+        return "/ConsultarHistorialMedico.jsf";
     }
    
 }

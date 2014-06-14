@@ -47,7 +47,7 @@ public class PacienteManagedBean {
     public PacienteManagedBean() {
     }
     public String consultarHistorial(){       
-        return "/ConsultarHistorialPersonal.jsp";
+        return "/ConsultarHistorialPersonal.jsf";
     }
     
     public List<Lineahistorial>historialPersonal(){
@@ -55,7 +55,7 @@ public class PacienteManagedBean {
     }
      public String consultarAnotaciones(Lineahistorial lineaSeleccionada){
         this.lineaSeleccionada=lineaSeleccionada;
-        return "/ConsultarAnotacionesPersonales.jsp";
+        return "/ConsultarAnotacionesPersonales.jsf";
     }
     public List<Anotacionhistorial> anotacionesPersonales(){
         return anotacionhistorialFacade.findByLineaHistorial(this.lineaSeleccionada);
