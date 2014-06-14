@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Formularios Urgencias</title>
+        <title>Historial</title>
     </h:head>
     <h:body>
         
@@ -63,13 +63,17 @@
                     <f:facet name="header">
                         Fecha
                     </f:facet>
-                     <h:outputLabel value="#{linea.fecha}"/>
+                     <h:outputLabel value="#{linea.fecha}">
+                         <f:convertDateTime pattern="dd/MM/yyyy"/>
+                     </h:outputLabel>
                 </h:column>
                  <h:column>
                     <f:facet name="header">
                         Hora
                     </f:facet>
-                     <h:outputLabel value="#{linea.hora}"/>
+                     <h:outputLabel value="#{linea.hora}">
+                         <f:convertDateTime pattern="HH:mm"/>
+                     </h:outputLabel>
                 </h:column>
                  <h:column>
                     <f:facet name="header">
