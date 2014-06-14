@@ -15,9 +15,9 @@
         <title>Men&uacute; M&eacute;dico</title>
     </head>
     <body>
-         <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
-                Usuario: <%= medico.getNombre() %> <%= medico.getApellidos() %>
-                </td></tr>
-             <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />
-    </body>
+        <jsp:include page="OpcionesMenu/aperturaOpcionesMedico.jsp" />
+        Usuario: <%= medico.getNombre()%> <%= medico.getApellidos()%>
+    </td></tr>
+    <jsp:include page="OpcionesMenu/opcionesMedico.jsp" />
+</body>
 </html>

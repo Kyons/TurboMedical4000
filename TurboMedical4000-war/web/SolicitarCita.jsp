@@ -22,48 +22,49 @@
     </head>
     <body>
         <h1>Solicitar cita</h1>
-        
+
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
         <a href="ConsultarCitasServlet">&#8592; Volver</a>
-        
+
         <h2>Solicitar Cita</h2>
         <form name="addCita" action="SolicitarCitaServlet" method="post">
-              <table>
-                    <tr>
-                        <th>M&eacute;dico:</th>
-                        <th>Fecha:</th>
-                        <th>Hora:</th>
+            <table>
+                <tr>
+                    <th>M&eacute;dico:</th>
+                    <th>Fecha:</th>
+                    <th>Hora:</th>
                         <%-- <th>Lugar:</th> --%>
-                    </tr>
-                    <tr>
-                        <%
-                         List<Medico> medicos = (List<Medico>) request.getAttribute("medicos");
-                        %>
-                        <td><select name="numCol">                    
-<%
-    if (!medicos.isEmpty())
-        for (Medico mec: medicos) {
-%>
-                            <option value="<%= mec.getNumColegiado() %>"><%= mec.getNombre() + " " + mec.getApellidos() %></option>
-<%            
-        }
-%>
-                            </select></td>
+                </tr>
+                <tr>
+                    <%                            List<Medico> medicos = (List<Medico>) request.getAttribute("medicos");
+                    %>
+                    <td><select name="numCol">                    
+                            <%
+                                if (!medicos.isEmpty())
+                                    for (Medico mec : medicos) {
+                            %>
+                            <option value="<%= mec.getNumColegiado()%>"><%= mec.getNombre() + " " + mec.getApellidos()%></option>
+                            <%
+                                }
+                            %>
+                        </select></td>
                         <%--<td><input type="text" name="numCol" value=""></td> --%>
-                        <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"></td>
-                        <td><input type="text" name="hora" value="HH:mm" onfocus="if(value==='HH:mm')value=''"></td> 
+                    <td><input type="text" name="fecha" value="dd/MM/yyyy" onfocus="if (value === 'dd/MM/yyyy')
+                                    value = ''"></td>
+                    <td><input type="text" name="hora" value="HH:mm" onfocus="if (value === 'HH:mm')
+                                    value = ''"></td> 
                         <%-- <td><input type="text" name="lugar" value=""></td> --%>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <%-- <td>&nbsp;</td> --%>
-                        <td><input type="submit" name="pedir" value="Pedir Cita"></td>
-                    </tr>
-                    
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <%-- <td>&nbsp;</td> --%>
+                    <td><input type="submit" name="pedir" value="Pedir Cita"></td>
+                </tr>
+
             </table>            
-      </form>
-       
-       <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
-  </body>
+        </form>
+
+        <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
+    </body>
 </html>

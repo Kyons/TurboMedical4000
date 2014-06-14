@@ -13,14 +13,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Medico-Paciente</title>
-        <%
-            List<PacienteHasMedico> lista = (List<PacienteHasMedico>)request.getAttribute("lista");
+        <%            List<PacienteHasMedico> lista = (List<PacienteHasMedico>) request.getAttribute("lista");
         %>
     </head>
     <body>
         <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
         <a href="menuAdministrador.jsp">&#8592; Volver</a>
-        
+
         <h2>Lista de M&eacute;dico Paciente</h2>
         <form name="filtrarPacMed" action="BusquedaPacienteMedicoServlet" method="post">
             <table>
@@ -37,7 +36,7 @@
         </form>
         <a href="EditMedicoPacienteServet?do=add">A&ntilde;adir nueva asignaci&oacute;n</a>
         <%
-            if(!lista.isEmpty()){
+            if (!lista.isEmpty()) {
         %>
         <table border="1">
             <tr>
@@ -47,28 +46,28 @@
                 <th>M&eacute;dico</th>
                 <th>&nbsp;</th>
             </tr>
-            <% 
-                for(PacienteHasMedico pm : lista){
+            <%
+                for (PacienteHasMedico pm : lista) {
             %>
             <tr>
-                <td><%=pm.getPaciente().getNumSS() %></td>
-                <td><%=pm.getPaciente().getNombre() %></td>
-                <td><%=pm.getMedico().getNumColegiado() %></td>
-                <td><%=pm.getMedico().getNombre() %></td>
-                
-                <td><a href="EditMedicoPacienteServet?do=delete&numss=<%=pm.getPaciente().getNumSS()%>&numc=<%=pm.getMedico().getNumColegiado() %>">Borrar</a></td>
+                <td><%=pm.getPaciente().getNumSS()%></td>
+                <td><%=pm.getPaciente().getNombre()%></td>
+                <td><%=pm.getMedico().getNumColegiado()%></td>
+                <td><%=pm.getMedico().getNombre()%></td>
+
+                <td><a href="EditMedicoPacienteServet?do=delete&numss=<%=pm.getPaciente().getNumSS()%>&numc=<%=pm.getMedico().getNumColegiado()%>">Borrar</a></td>
             </tr>
-            <% 
-                } 
+            <%
+                }
             %>
         </table>
-        <% }else{ %>
+        <% } else { %>
         <h3>NO HAY ASIGNACIONES QUE MOSTRAR</h3>
-        <% } %>
-            </td> 
-               
-            </tr>
-        
-        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
-    </body>
+        <% }%>
+    </td> 
+
+</tr>
+
+<jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+</body>
 </html>

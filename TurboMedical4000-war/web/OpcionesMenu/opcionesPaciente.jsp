@@ -6,5 +6,5 @@
 
 </table>
 
-</br>
-<a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" ></a>
+<br/>
+<a href="CerrarSessionServlet"> <input type="submit" value="Cerrar Sesión" /></a>
