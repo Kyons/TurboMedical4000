@@ -14,13 +14,13 @@
 
     </head>
     <body>
-        
+
         <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
-                    Usuario: <%= administrador.getUsuario() %> </br>
-                </th>
-            </tr>
-            
-            <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
-            
-    </body>
+        Usuario: <%= administrador.getUsuario()%> </br>
+    </th>
+</tr>
+
+<jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+
+</body>
 </html>

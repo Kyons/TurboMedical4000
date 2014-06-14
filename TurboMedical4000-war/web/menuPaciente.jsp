@@ -14,11 +14,11 @@
         <title>Men&uacute; Paciente</title>
     </head>
     <body>
-     
+
         <jsp:include page="OpcionesMenu/aperturaOpcionesPaciente.jsp" />
-                   Usuario:<%= paciente.getNombre()+" "+ paciente.getApellidos() %>
-                </td></tr>
-            
-           <jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
-    </body>
+        Usuario:<%= paciente.getNombre() + " " + paciente.getApellidos()%>
+    </td></tr>
+
+<jsp:include page="OpcionesMenu/opcionesPaciente.jsp" />
+</body>
 </html>

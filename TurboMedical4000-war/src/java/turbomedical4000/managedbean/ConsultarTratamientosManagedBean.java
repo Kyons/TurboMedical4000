@@ -11,10 +11,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import turbomedical4000.ejb.TratamientoFacadeLocal;
-import turbomedical4000.entity.Medico;
 import turbomedical4000.entity.Paciente;
 import turbomedical4000.entity.Tratamiento;
 
@@ -23,12 +23,39 @@ import turbomedical4000.entity.Tratamiento;
  * @author jorge
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ConsultarTratamientosManagedBean {
     @EJB
     private TratamientoFacadeLocal tratamientoFacade;
 
-    List<Tratamiento> tratamientosActuales;
+    private List<Tratamiento> tratamientosActuales;
+    private List<Tratamiento> tratamientosPasados;
+    private boolean mostrarTratamientosPasados;
+    private String mostrarOcultar;
+
+    public String getMostrarOcultar() {
+        return mostrarOcultar;
+    }
+
+    public void setMostrarOcultar(String mostrarOcultar) {
+        this.mostrarOcultar = mostrarOcultar;
+    }
+
+    public boolean isMostrarTratamientosPasados() {
+        return mostrarTratamientosPasados;
+    }
+
+    public void setMostrarTratamientosPasados(boolean mostrarTratamientosPasados) {
+        this.mostrarTratamientosPasados = mostrarTratamientosPasados;
+    }
+
+    public List<Tratamiento> getTratamientosPasados() {
+        return tratamientosPasados;
+    }
+
+    public void setTratamientosPasados(List<Tratamiento> tratamientosPasados) {
+        this.tratamientosPasados = tratamientosPasados;
+    }
 
     public List<Tratamiento> getTratamientosActuales() {
         return tratamientosActuales;
@@ -49,6 +76,12 @@ public class ConsultarTratamientosManagedBean {
         HttpSession sesion = (HttpSession) facesContext.getExternalContext().getSession(true);
         Paciente pac = (Paciente) sesion.getAttribute("paciente");
         tratamientosActuales = this.tratamientoFacade.findActualesbyUsuario(pac);
+        tratamientosPasados = this.tratamientoFacade.findPasadosbyUsuario(pac);
+        mostrarTratamientosPasados = false;
+    }
+    
+    public void mostrarPasados(){
+        mostrarTratamientosPasados = !mostrarTratamientosPasados;
     }
     
 }

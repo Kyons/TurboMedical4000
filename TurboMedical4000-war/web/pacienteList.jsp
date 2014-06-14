@@ -9,10 +9,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="ComprobacionesSesion/comprobacionAdministrador.jsp" %>
-<%
-    List<Paciente> lista;
-    
-    lista = (List<Paciente>)request.getAttribute("lista");
+<%    List<Paciente> lista;
+
+    lista = (List<Paciente>) request.getAttribute("lista");
 %>   
 
 <html>
@@ -21,37 +20,38 @@
         <title>Men&uacute; Administrador > Gesti&oacute;n Pacientes</title>
     </head>
     <body>
-        
-       <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
+
+        <jsp:include page="OpcionesMenu/aperturaOpcionesAdministrador.jsp" />
         <a href="menuAdministrador.jsp">&#8592; Volver</a>        
-                    
-                    <h1>Gesti&oacute;n de Pacientes</h1>
-                    <form name="filtrarPacientes" action="BusquedaPacienteServlet" method="post">
-                        <table>
-                            <tr>
-                                <td align="right">N&uacute;meroSS<input type="text" maxlength="20" size="20" name="numSS"/></td>
-                                <td align="right">DNI<input type="text" maxlength="20" size="20" name="dni"/></td>
-                                <td align="right">Nombre<input type="text" maxlength="20" size="20" name="nombre"/></td>
-                            </tr>
-                            <tr>
-                                <td align="right">Apellidos<input type="text" maxlength="20" size="20" name="apellidos"/></td>
-                                <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac" value="dd/MM/yyyy" onfocus="if(value==='dd/MM/yyyy')value=''"/></td>
-                                <td align="right">Direcci&oacute;n<input type="text" maxlength="20" size="20" name="direcc"/></td>
-                            </tr>
-                            <tr>
-                                <td align="right">Localidad<input type="text" maxlength="20" size="20" name="localidad"/></td>
-                                <td align="right">Provincia<input type="text" maxlength="20" size="20" name="provincia"/></td>
-                                <td align="right">Tel&eacute;fono<input type="text" maxlength="20" size="20" name="telefono"/></td>
-                            </tr>
-                        </table>
-                        <input type="Submit" value="Buscar" align="right">                       
-                    </form>
-                    <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a><br>
-                    <b><a style="color:red"><%= request.getParameter("msg")!=null?request.getParameter("msg"):""%></a></b>
-                    <%
-                        if (!lista.isEmpty()){
-                            java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
-                    %>
+
+        <h1>Gesti&oacute;n de Pacientes</h1>
+        <form name="filtrarPacientes" action="BusquedaPacienteServlet" method="post">
+            <table>
+                <tr>
+                    <td align="right">N&uacute;meroSS<input type="text" maxlength="20" size="20" name="numSS"/></td>
+                    <td align="right">DNI<input type="text" maxlength="20" size="20" name="dni"/></td>
+                    <td align="right">Nombre<input type="text" maxlength="20" size="20" name="nombre"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Apellidos<input type="text" maxlength="20" size="20" name="apellidos"/></td>
+                    <td align="right">Fecha Nacimiento<input type="text" maxlength="20" size="20" name="fechaNac" value="dd/MM/yyyy" onfocus="if (value === 'dd/MM/yyyy')
+                                            value = ''"/></td>
+                    <td align="right">Direcci&oacute;n<input type="text" maxlength="20" size="20" name="direcc"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Localidad<input type="text" maxlength="20" size="20" name="localidad"/></td>
+                    <td align="right">Provincia<input type="text" maxlength="20" size="20" name="provincia"/></td>
+                    <td align="right">Tel&eacute;fono<input type="text" maxlength="20" size="20" name="telefono"/></td>
+                </tr>
+            </table>
+            <input type="Submit" value="Buscar" align="right">                       
+        </form>
+        <a href="EditPacientesServlet?do=addForm">A&ntilde;adir nuevo paciente</a><br>
+        <b><a style="color:red"><%= request.getParameter("msg") != null ? request.getParameter("msg") : ""%></a></b>
+            <%
+                if (!lista.isEmpty()) {
+                    java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+            %>
         <table border="1">
             <tr>
                 <th>N&uacute;mero SS</th>
@@ -65,38 +65,38 @@
                 <th>Tel&eacute;fono</th>
                 <th>&nbsp;</th>
             </tr>
-<%
-        for (Paciente paciente: lista) {
-%>
+            <%
+                for (Paciente paciente : lista) {
+            %>
             <tr>
-                <td><%= paciente.getNumSS() == null ? "-":paciente.getNumSS() %></td>
-                <td><%= paciente.getDni() == null ? "-":paciente.getDni() %></td>
-                <td><%= paciente.getNombre() == null ? "-":paciente.getNombre() %></td>
-                <td><%= paciente.getApellidos() == null ? "-":paciente.getApellidos() %></td>
-                <td><%= paciente.getFechaNac() == null ? "-":df.format( paciente.getFechaNac()) %></td>               
-                <td><%= paciente.getDireccion() == null ? "-":paciente.getDireccion() %></td>
-                <td><%= paciente.getLocalidad() == null ? "-":paciente.getLocalidad() %></td>
-                <td><%= paciente.getProvincia() == null ? "-":paciente.getProvincia() %></td>
-                <td><%= paciente.getTelefono() == null ? "-":paciente.getTelefono() %></td>
-                <td><a href="EditPacientesServlet?do=editForm&numSS=<%= paciente.getNumSS() %>" >Editar</a>
-                    <a href="EditPacientesServlet?do=delete&numSS=<%= paciente.getNumSS() %>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= paciente.getNumSS()%>?')">Borrar</a></td>
+                <td><%= paciente.getNumSS() == null ? "-" : paciente.getNumSS()%></td>
+                <td><%= paciente.getDni() == null ? "-" : paciente.getDni()%></td>
+                <td><%= paciente.getNombre() == null ? "-" : paciente.getNombre()%></td>
+                <td><%= paciente.getApellidos() == null ? "-" : paciente.getApellidos()%></td>
+                <td><%= paciente.getFechaNac() == null ? "-" : df.format(paciente.getFechaNac())%></td>               
+                <td><%= paciente.getDireccion() == null ? "-" : paciente.getDireccion()%></td>
+                <td><%= paciente.getLocalidad() == null ? "-" : paciente.getLocalidad()%></td>
+                <td><%= paciente.getProvincia() == null ? "-" : paciente.getProvincia()%></td>
+                <td><%= paciente.getTelefono() == null ? "-" : paciente.getTelefono()%></td>
+                <td><a href="EditPacientesServlet?do=editForm&numSS=<%= paciente.getNumSS()%>" >Editar</a>
+                    <a href="EditPacientesServlet?do=delete&numSS=<%= paciente.getNumSS()%>" onclick="return confirm('¿Seguro que desea eliminar\nel usuario <%= paciente.getNumSS()%>?')">Borrar</a></td>
             </tr>
 
-<%            
-        }
-%>            
-       </table>
-                    <%
-                        }else{
-                    %>
-                    <h3>NO HAY PACIENTES QUE MOSTRAR</h3>
-                    <% } %>
-                   </td> 
-               
-            </tr>
-        
+            <%
+                }
+            %>            
+        </table>
+        <%
+        } else {
+        %>
+        <h3>NO HAY PACIENTES QUE MOSTRAR</h3>
+        <% }%>
+    </td> 
 
-        <jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
-        
-    </body>
+</tr>
+
+
+<jsp:include page="OpcionesMenu/opcionesAdministrador.jsp" />
+
+</body>
 </html>

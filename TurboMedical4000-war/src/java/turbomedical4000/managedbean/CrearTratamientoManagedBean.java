@@ -122,7 +122,13 @@ public class CrearTratamientoManagedBean {
             String message = "Tratamiento creado con éxito";
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, null));
         }else{
-            String message = "La fechas no son correctas";
+            String message; 
+            if(!tratamiento.getFechaInicio().after(new Date())){
+                message = "La fecha de inicio no puede ser una fecha ya pasada";
+                
+            }else{
+                message = "La fecha de fin tiene que ser posterior a la de inicio";
+            }
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, null));
         }
     }

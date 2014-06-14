@@ -3,7 +3,7 @@
     Author     : Juan
 --%>
 
-<link rel="stylesheet" type="text/css" href="estilos/estiloBase.css">
+<link rel="stylesheet" type="text/css" href="estilos/estiloBase.css"/>
 
 <a href="ConsultarPerfilUsuarioServlet"><img src="img/logoPagina.png" id="logoPagina" /></a>
 
