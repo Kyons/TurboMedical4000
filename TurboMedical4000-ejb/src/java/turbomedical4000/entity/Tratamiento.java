@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Tratamiento.findByFechaInicio", query = "SELECT t FROM Tratamiento t WHERE t.fechaInicio = :fechaInicio"),
     @NamedQuery(name = "Tratamiento.findByFechaFin", query = "SELECT t FROM Tratamiento t WHERE t.fechaFin = :fechaFin"),
     @NamedQuery(name = "Tratamiento.findByNotas", query = "SELECT t FROM Tratamiento t WHERE t.notas = :notas"),
-    @NamedQuery(name = "Tratamiento.findActuales", query = "SELECT t FROM Tratamiento t WHERE t.pacientenumSS = :paciente AND t.fechaFin >= CURRENT_DATE")})
+    @NamedQuery(name = "Tratamiento.findPasados", query = "SELECT t FROM Tratamiento t WHERE t.pacientenumSS = :paciente AND t.fechaFin < CURRENT_DATE ORDER BY t.fechaInicio"),
+    @NamedQuery(name = "Tratamiento.findActuales", query = "SELECT t FROM Tratamiento t WHERE t.pacientenumSS = :paciente AND t.fechaFin >= CURRENT_DATE ORDER BY t.fechaInicio")})
 public class Tratamiento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

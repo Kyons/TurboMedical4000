@@ -34,4 +34,6 @@ public interface TratamientoFacadeLocal {
     
     List<Tratamiento> findActualesbyUsuario(Paciente paciente);
     
+    List<Tratamiento> findPasadosbyUsuario(Paciente paciente);
+    
 }

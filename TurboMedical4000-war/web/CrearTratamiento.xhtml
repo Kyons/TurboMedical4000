@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Crear Tratamiento</title>
     </h:head>
     <h:body>
         <!-- BUSCAR SI SE PUEDE INCLUIR LAS OPCIONES EN JSP AQUÍ -->
@@ -43,7 +43,7 @@
         <!-- ............................................................. -->
         <!-- ............................................................. -->
         
-        <h1>Crear nuevo tratamiento</h1>
+        <h2>Crear nuevo tratamiento</h2>
         
         <h:form>
         <table border="1">
@@ -76,7 +76,9 @@
             <tr>
                 <td>Fecha de Inicio </td>
                 <td>
-                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaInicio}" required="true">
+                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaInicio}" 
+                                 converterMessage="Introduce una fecha de inicio válida" 
+                                 requiredMessage="Introduce una fecha de inicio" required="true">
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
                 </td>
@@ -85,7 +87,9 @@
             <tr>
                 <td>Fecha de Fin </td>
                 <td>
-                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaFin}" required="true">
+                    <h:inputText value="#{crearTratamientoManagedBean.tratamiento.fechaFin}" 
+                                 converterMessage="Introduce una fecha de fin válida" 
+                                 requiredMessage="Introduce una fecha de fin" required="true">
                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
                 </td>
@@ -94,7 +98,9 @@
             <tr>
                 <td>Anotaciones </td>
                 <td>
-                    <h:inputTextarea value="#{crearTratamientoManagedBean.tratamiento.notas}" rows="3"/>
+                    <h:inputTextarea value="#{crearTratamientoManagedBean.tratamiento.notas}" validatorMessage="El tama&ntilde;o m&aacute;ximo son 130 caracteres" rows="3">
+                        <f:validateLength maximum="130"/>
+                    </h:inputTextarea>
                 </td>
             </tr>
             <tr>

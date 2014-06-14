@@ -36,4 +36,9 @@ public class TratamientoFacade extends AbstractFacade<Tratamiento> implements Tr
         return em.createNamedQuery("Tratamiento.findActuales").setParameter("paciente", paciente).getResultList();
     }
     
+    @Override
+    public List<Tratamiento> findPasadosbyUsuario(Paciente paciente) {
+        return em.createNamedQuery("Tratamiento.findPasados").setParameter("paciente", paciente).getResultList();
+    }
+    
 }
