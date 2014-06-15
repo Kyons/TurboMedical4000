@@ -21,3 +21,5 @@ nbproject/*
 *.lock
 /TurboMedical4000-war/nbproject/private/
 /TurboMedical4000-ejb/nbproject/private/
+/TurboMedical4000-ejb/setup/glassfish-resources.xml
+/TurboMedical4000-ejb/src/conf/persistence.xml
